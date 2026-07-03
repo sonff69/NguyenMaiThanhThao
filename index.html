@@ -18,7 +18,7 @@
             --accent-purple: #534C9F;
             --accent-soft: #E5E1F4;
             --accent-warm: #EBE5DC;
-            --glass-bg: rgba(255, 255, 255, 0.45);
+            --glass-bg: rgba(255, 255, 255, 0.55);
             --glass-border: rgba(83, 76, 159, 0.12);
             --transition-gentle: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -38,56 +38,45 @@
             position: relative;
         }
 
-        /* Watercolor Blurred Mist Background */
-        .watercolor-mist {
-            position: absolute;
-            width: 100%;
-            height: 100%;
+        /* Fullscreen Rotated Video Background System */
+        .video-background-container {
+            position: fixed;
             top: 0;
             left: 0;
+            width: 100vw;
+            height: 100vh;
             z-index: -2;
-            pointer-events: none;
             overflow: hidden;
+            pointer-events: none;
+            background-color: var(--bg-canvas);
         }
 
-        .mist-blob {
+        .video-background {
             position: absolute;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.4;
-            mix-blend-mode: multiply;
-            animation: driftBlob 20s infinite alternate ease-in-out;
+            top: 50%;
+            left: 50%;
+            /* Hoán đổi chiều rộng và cao do xoay 90 độ để giữ đúng tỉ lệ bao phủ màn hình */
+            width: 100vh;
+            height: 100vw;
+            min-width: 100vh;
+            min-height: 100vw;
+            object-fit: cover;
+            /* Xoay ngang video 90 độ và căn giữa */
+            transform: translate(-50%, -50%) rotate(90deg);
+            opacity: 0.35; /* Làm dịu video để không bị chói */
+            filter: saturate(0.85) blur(1px); /* Tinh chỉnh màu sắc mang sắc thái tranh màu nước */
         }
 
-        .mist-1 {
-            width: 600px;
-            height: 600px;
-            background: #D5D1F2;
-            top: -10%;
-            right: -5%;
-        }
-
-        .mist-2 {
-            width: 800px;
-            height: 800px;
-            background: #EBE1D5;
-            bottom: 20%;
-            left: -10%;
-            animation-delay: -5s;
-        }
-
-        .mist-3 {
-            width: 500px;
-            height: 500px;
-            background: #DFD5E6;
-            top: 40%;
-            right: 15%;
-            animation-delay: -10s;
-        }
-
-        @keyframes driftBlob {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(80px, 50px) scale(1.15); }
+        /* Artistic paper/watercolor wash overlay on top of the video */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(246, 242, 235, 0.65) 0%, rgba(246, 242, 235, 0.88) 100%);
+            z-index: -1;
+            pointer-events: none;
         }
 
         /* Diagonal Art Path Accent */
@@ -95,7 +84,7 @@
             position: absolute;
             width: 140%;
             height: 120px;
-            background: linear-gradient(90deg, rgba(213, 209, 242, 0.3), rgba(160, 150, 220, 0.4), rgba(213, 209, 242, 0.1));
+            background: linear-gradient(90deg, rgba(213, 209, 242, 0.2), rgba(160, 150, 220, 0.3), rgba(213, 209, 242, 0.05));
             filter: blur(50px);
             transform: rotate(-12deg);
             top: 18%;
@@ -109,7 +98,7 @@
             position: absolute;
             pointer-events: none;
             z-index: -1;
-            opacity: 0.6;
+            opacity: 0.5;
         }
 
         .decor-jellyfish {
@@ -151,8 +140,8 @@
 
         @keyframes floatAlong {
             0% { transform: translate(-100px, 20px) scale(0.8); opacity: 0; }
-            10% { opacity: 0.5; }
-            90% { opacity: 0.5; }
+            10% { opacity: 0.4; }
+            90% { opacity: 0.4; }
             100% { transform: translate(250px, -40px) scale(1); opacity: 0; }
         }
 
@@ -328,7 +317,7 @@
         }
 
         .art-frame {
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.45);
             border: 1px solid rgba(255, 255, 255, 0.6);
             padding: 1.2rem;
             border-radius: 30px;
@@ -568,13 +557,6 @@
             color: #ffffff;
             border-color: var(--accent-purple);
             box-shadow: 0 4px 12px rgba(83, 76, 159, 0.2);
-        }
-
-        /* Abstract CSS Watercolor Painting Canvas (Sứa - Starfish - Rays) */
-        svg.decor-vector {
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
         }
 
         /* Interactive Detail Viewer (Modal System) */
@@ -894,22 +876,25 @@
 </head>
 <body>
 
-    <!-- Watercolor Mist & Path Accents -->
-    <div class="watercolor-mist">
-        <div class="mist-blob mist-1"></div>
-        <div class="mist-blob mist-2"></div>
-        <div class="mist-blob mist-3"></div>
+    <!-- Rotated Video Background System [1] -->
+    <div class="video-background-container">
+        <video autoplay muted loop playsinline class="video-background">
+            <source src="Video 1.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
     </div>
+
+    <!-- Diagonal Art Path Accent -->
     <div class="art-path"></div>
 
-    <!-- Watercolor Sea Life Floating Graphics -->
+    <!-- Decorative Floating Elements (SVGs) -->
     <!-- STARFISH -->
-    <svg class="decor-element decor-starfish decor-vector" viewBox="0 0 100 100" stroke="var(--accent-purple)" stroke-width="1.5">
+    <svg class="decor-element decor-starfish" viewBox="0 0 100 100" stroke="var(--accent-purple)" stroke-width="1.5" fill="none">
         <path d="M50,5 L63,35 L95,38 L70,60 L78,92 L50,75 L22,92 L30,60 L5,38 L37,35 Z" fill="rgba(83, 76, 159, 0.04)"/>
     </svg>
 
     <!-- JELLYFISH -->
-    <svg class="decor-element decor-jellyfish decor-vector" viewBox="0 0 100 150" stroke="var(--accent-purple)" stroke-width="1.5">
+    <svg class="decor-element decor-jellyfish" viewBox="0 0 100 150" stroke="var(--accent-purple)" stroke-width="1.5" fill="none">
         <path d="M20,60 C20,30 80,30 80,60 C80,68 70,68 65,64 C60,60 50,68 45,64 C40,60 30,68 20,60 Z" fill="rgba(83, 76, 159, 0.04)"/>
         <path d="M30,65 Q25,95 35,120 T28,148" />
         <path d="M42,65 Q48,100 40,125 T45,148" />
@@ -918,13 +903,13 @@
     </svg>
 
     <!-- RAY 1 -->
-    <svg class="decor-element decor-ray-1 decor-vector" viewBox="0 0 120 100" stroke="var(--accent-purple)" stroke-width="1.5">
+    <svg class="decor-element decor-ray-1" viewBox="0 0 120 100" stroke="var(--accent-purple)" stroke-width="1.5" fill="none">
         <path d="M60,50 L10,35 L60,15 L110,35 Z" fill="rgba(83, 76, 159, 0.04)"/>
         <path d="M60,50 Q65,75 55,95" />
     </svg>
 
     <!-- RAY 2 -->
-    <svg class="decor-element decor-ray-2 decor-vector" viewBox="0 0 120 100" stroke="var(--accent-purple)" stroke-width="1.5">
+    <svg class="decor-element decor-ray-2" viewBox="0 0 120 100" stroke="var(--accent-purple)" stroke-width="1.5" fill="none">
         <path d="M60,50 L15,38 L60,20 L105,38 Z" fill="rgba(83, 76, 159, 0.03)"/>
         <path d="M60,50 Q62,72 58,92" />
     </svg>
@@ -1252,7 +1237,7 @@
                 <h3>Bài 4: Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm</h3>
                 <p><strong>Mục tiêu:</strong> Làm chủ kỹ năng quản lý dự án số, tối ưu hóa sự phối hợp của các thành viên trong các dự án dịch thuật học thuật phức tạp thông qua mô hình quản lý hiện đại.</p>
                 
-                <h4>Mô hình Kanban số hóa tối ưu quy trình cộng tác</h4>
+                <h4>Mô hình Kanban số hóa tối quy trình cộng tác</h4>
                 <div class="modal-kanban">
                     <div class="modal-kanban-col">
                         <div class="modal-kanban-title" style="color: #b91c1c;">📋 Lên kế hoạch</div>
