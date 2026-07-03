@@ -38,7 +38,7 @@
             position: relative;
         }
 
-        /* Fullscreen Rotated Video Background System */
+        /* Fullscreen Rotated Video Background System [1] */
         .video-background-container {
             position: fixed;
             top: 0;
@@ -63,8 +63,8 @@
             object-fit: cover;
             /* Xoay ngang video 90 độ và căn giữa */
             transform: translate(-50%, -50%) rotate(90deg);
-            opacity: 0.35; /* Làm dịu video để không bị chói */
-            filter: saturate(0.85) blur(1px); /* Tinh chỉnh màu sắc mang sắc thái tranh màu nước */
+            opacity: 0.42; /* Tăng nhẹ độ hiển thị để nhìn rõ nét hơn */
+            filter: saturate(0.85); /* Loại bỏ blur(1px) hoàn toàn để video sắc nét */
         }
 
         /* Artistic paper/watercolor wash overlay on top of the video */
@@ -74,7 +74,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(246, 242, 235, 0.65) 0%, rgba(246, 242, 235, 0.88) 100%);
+            background: radial-gradient(circle at 50% 50%, rgba(246, 242, 235, 0.55) 0%, rgba(246, 242, 235, 0.82) 100%);
             z-index: -1;
             pointer-events: none;
         }
@@ -794,6 +794,10 @@
             margin-bottom: 0.4rem;
         }
 
+        .stat-box:hover .stat-num {
+            transform: scale(1.05);
+        }
+
         .stat-label {
             font-size: 0.8rem;
             font-weight: 700;
@@ -876,7 +880,7 @@
 </head>
 <body>
 
-    <!-- Rotated Video Background System [1] -->
+    <!-- Rotated Video Background System -->
     <div class="video-background-container">
         <video autoplay muted loop playsinline class="video-background">
             <source src="Video 1.mp4" type="video/mp4">
@@ -1136,6 +1140,19 @@
 
     <!-- JS for Interactive Systems -->
     <script>
+        // Adjust playback speed of the background video to make it slow-motion (50% speed)
+        document.addEventListener('DOMContentLoaded', () => {
+            const bgVideo = document.querySelector('.video-background');
+            if (bgVideo) {
+                bgVideo.playbackRate = 0.5; // Slow down to 50% speed
+                
+                // Re-enforce slow motion in case browser resets on play
+                bgVideo.addEventListener('play', () => {
+                    bgVideo.playbackRate = 0.5;
+                });
+            }
+        });
+
         // Modal database containing deep academic solutions for Rubric Mức 4
         const modalData = {
             1: `
