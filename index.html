@@ -324,50 +324,34 @@
             border-color: rgba(255, 255, 255, 0.35);
         }
 
-        /* Student Art Frame (Hero Right) */
+        /* Hero Right Outer Wrapper */
         .art-frame-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-
-        .art-frame {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1.5rem 1.2rem 1.2rem 1.2rem;
-            border-radius: 30px;
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(20px);
             width: 100%;
-            max-width: 420px;
-            transition: var(--transition-gentle);
         }
 
-        .art-frame:hover {
-            transform: scale(1.01);
-            box-shadow: 0 30px 60px rgba(124, 58, 237, 0.1);
-        }
-
-        /* Interactive Fanned Cards Container (Xòe bài tú lơ khơ) */
+        /* Free-Floating Cards Fan Container (No more glass border or container) */
         .cards-fan-container {
             position: relative;
             width: 100%;
-            height: 330px;
+            height: 480px; /* Tăng chiều cao để chứa thẻ bài lớn hơn */
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0;
         }
 
         .fan-card {
             position: absolute;
-            width: 195px;
-            height: 275px;
-            border-radius: 16px;
+            width: 250px; /* Tăng từ 195px giúp hiển thị ảnh chân dung lớn và rõ nét */
+            height: 350px; /* Tăng từ 275px */
+            border-radius: 20px;
             overflow: hidden;
-            background: rgba(15, 23, 42, 0.8);
-            border: 5px solid rgba(255, 255, 255, 0.95); /* Viền bài dày dặn sắc nét tương tự quân bài */
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            background: rgba(15, 23, 42, 0.85);
+            border: 6px solid rgba(255, 255, 255, 0.95); /* Viền thẻ trắng tuyết tương phản tinh tế */
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
             /* Sử dụng cubic-bezier đàn hồi lò xo để xòe bài sinh động */
             transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.45s;
             cursor: pointer;
@@ -379,53 +363,30 @@
             object-fit: cover;
         }
 
-        /* Trạng thái tĩnh: Sắp đặt xòe quạt của 2 quân bài */
+        /* Sắp đặt góc nghiêng xòe quạt của 2 quân bài */
         .card-1 {
-            transform: rotate(-10deg) translate(-25px, 8px);
+            transform: rotate(-10deg) translate(-40px, 10px);
             z-index: 1;
         }
 
         .card-2 {
-            transform: rotate(10deg) translate(25px, 8px);
+            transform: rotate(10deg) translate(40px, 10px);
             z-index: 2;
         }
 
         /* Hiệu ứng khi di chuột (Hover) */
         .fan-card:hover {
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(192, 132, 252, 0.3);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.75), 0 0 25px rgba(192, 132, 252, 0.35);
         }
 
-        /* Ảnh thẻ 1 dựng thẳng, đẩy lên và scale lớn khi chỉ định */
+        /* Thẻ bài 1 dựng thẳng, đẩy lên trên và scale lớn */
         .card-1:hover {
-            transform: rotate(-2deg) translate(-15px, -20px) scale(1.08);
+            transform: rotate(-2deg) translate(-20px, -30px) scale(1.08);
         }
 
-        /* Ảnh thẻ 2 dựng thẳng, đẩy lên và scale lớn khi chỉ định */
+        /* Thẻ bài 2 dựng thẳng, đẩy lên trên và scale lớn */
         .card-2:hover {
-            transform: rotate(2deg) translate(15px, -20px) scale(1.08);
-        }
-
-        .art-frame-footer {
-            margin-top: 1.2rem;
-            padding: 0.6rem 0.4rem 0.2rem 0.4rem;
-            border-top: 1px dashed rgba(255, 255, 255, 0.08);
-            display: flex;
-            flex-direction: column;
-            gap: 0.2rem;
-        }
-
-        .art-frame-tag {
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .art-frame-title {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-primary);
+            transform: rotate(2deg) translate(20px, -30px) scale(1.08);
         }
 
         /* Section Global Styles */
@@ -936,6 +897,26 @@
             .nav-links a {
                 font-size: 0.85rem;
             }
+            .cards-fan-container {
+                height: 380px;
+            }
+            .fan-card {
+                width: 190px; /* Thu gọn kích thước thẻ trên điện thoại */
+                height: 270px;
+                border: 4px solid rgba(255, 255, 255, 0.95);
+            }
+            .card-1 {
+                transform: rotate(-10deg) translate(-25px, 5px);
+            }
+            .card-2 {
+                transform: rotate(10deg) translate(25px, 5px);
+            }
+            .card-1:hover {
+                transform: rotate(-2deg) translate(-10px, -15px) scale(1.05);
+            }
+            .card-2:hover {
+                transform: rotate(2deg) translate(10px, -15px) scale(1.05);
+            }
         }
     </style>
 </head>
@@ -1016,20 +997,14 @@
                 </div>
             </div>
 
-            <!-- Hero Right Avatar Cards Fan (Xòe bài tú lơ khơ) -->
+            <!-- Hero Right Free-Floating Avatar Cards Fan (Xòe bài tú lơ khơ) -->
             <div class="art-frame-wrapper">
-                <div class="art-frame">
-                    <div class="cards-fan-container">
-                        <div class="fan-card card-1">
-                            <img src="Hình 1.jpg" alt="Thanh Thảo Photo 1">
-                        </div>
-                        <div class="fan-card card-2">
-                            <img src="Hình 2.jpg" alt="Thanh Thảo Photo 2">
-                        </div>
+                <div class="cards-fan-container">
+                    <div class="fan-card card-1">
+                        <img src="Hình 1.jpg" alt="Thanh Thảo Photo 1">
                     </div>
-                    <div class="art-frame-footer">
-                        <span class="art-frame-tag">Sinh viên</span>
-                        <span class="art-frame-title">Thanh Thảo • K59 • ULIS</span>
+                    <div class="fan-card card-2">
+                        <img src="Hình 2.jpg" alt="Thanh Thảo Photo 2">
                     </div>
                 </div>
             </div>
@@ -1326,7 +1301,7 @@
                 <h3>Bài 4: Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm</h3>
                 <p><strong>Mục tiêu:</strong> Làm chủ kỹ năng quản lý dự án số, tối ưu hóa sự phối hợp của các thành viên trong các dự án dịch thuật học thuật phức tạp thông qua mô hình quản lý hiện đại.</p>
                 
-                <h4>Mô hình Kanban số hóa tốiưu quy trình cộng tác</h4>
+                <h4>Mô hình Kanban số hóa tối ưu quy trình cộng tác</h4>
                 <div class="modal-kanban">
                     <div class="modal-kanban-col">
                         <div class="modal-kanban-title" style="color: #f87171;">📋 Lên kế hoạch</div>
