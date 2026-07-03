@@ -145,7 +145,7 @@
             100% { transform: translate(250px, -40px) scale(1); opacity: 0; }
         }
 
-        /* Dynamic Island Style Navigation Bar (Centered, Pill-shaped) */
+        /* Dynamic Island Navigation Bar (Centered & Pill-shaped) */
         nav {
             position: fixed;
             top: 1.8rem;
@@ -334,7 +334,7 @@
         .art-frame {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1.2rem;
+            padding: 1.5rem 1.2rem 1.2rem 1.2rem;
             border-radius: 30px;
             box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(20px);
@@ -344,43 +344,65 @@
         }
 
         .art-frame:hover {
-            transform: scale(1.02);
-            box-shadow: 0 30px 60px rgba(124, 58, 237, 0.15);
+            transform: scale(1.01);
+            box-shadow: 0 30px 60px rgba(124, 58, 237, 0.1);
         }
 
-        .art-canvas {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
-            aspect-ratio: 0.82;
-            overflow: hidden;
+        /* Interactive Fanned Cards Container (Xòe bài tú lơ khơ) */
+        .cards-fan-container {
+            position: relative;
+            width: 100%;
+            height: 330px;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            position: relative;
+            margin-bottom: 0.8rem;
         }
 
-        /* Abstract Watercolor Graphics Inside Canvas */
-        .canvas-bg-graphic {
+        .fan-card {
             position: absolute;
-            width: 130%;
-            height: 130%;
-            background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, rgba(9, 9, 11, 0.8) 70%);
-            animation: slowRotate 40s infinite linear;
+            width: 195px;
+            height: 275px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: rgba(15, 23, 42, 0.8);
+            border: 5px solid rgba(255, 255, 255, 0.95); /* Viền bài dày dặn sắc nét tương tự quân bài */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            /* Sử dụng cubic-bezier đàn hồi lò xo để xòe bài sinh động */
+            transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.45s;
+            cursor: pointer;
         }
 
-        .canvas-inner-circle {
-            position: absolute;
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(192, 132, 252, 0.25) 0%, transparent 70%);
-            animation: pulseCircle 6s infinite alternate ease-in-out;
+        .fan-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        @keyframes pulseCircle {
-            0% { transform: scale(0.9); opacity: 0.6; }
-            100% { transform: scale(1.15); opacity: 0.9; }
+        /* Trạng thái tĩnh: Sắp đặt xòe quạt của 2 quân bài */
+        .card-1 {
+            transform: rotate(-10deg) translate(-25px, 8px);
+            z-index: 1;
+        }
+
+        .card-2 {
+            transform: rotate(10deg) translate(25px, 8px);
+            z-index: 2;
+        }
+
+        /* Hiệu ứng khi di chuột (Hover) */
+        .fan-card:hover {
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(192, 132, 252, 0.3);
+        }
+
+        /* Ảnh thẻ 1 dựng thẳng, đẩy lên và scale lớn khi chỉ định */
+        .card-1:hover {
+            transform: rotate(-2deg) translate(-15px, -20px) scale(1.08);
+        }
+
+        /* Ảnh thẻ 2 dựng thẳng, đẩy lên và scale lớn khi chỉ định */
+        .card-2:hover {
+            transform: rotate(2deg) translate(15px, -20px) scale(1.08);
         }
 
         .art-frame-footer {
@@ -994,11 +1016,16 @@
                 </div>
             </div>
 
+            <!-- Hero Right Avatar Cards Fan (Xòe bài tú lơ khơ) -->
             <div class="art-frame-wrapper">
                 <div class="art-frame">
-                    <div class="art-canvas">
-                        <div class="canvas-bg-graphic"></div>
-                        <div class="canvas-inner-circle"></div>
+                    <div class="cards-fan-container">
+                        <div class="fan-card card-1">
+                            <img src="Hình 1.jpg" alt="Thanh Thảo Photo 1">
+                        </div>
+                        <div class="fan-card card-2">
+                            <img src="Hình 2.jpg" alt="Thanh Thảo Photo 2">
+                        </div>
                     </div>
                     <div class="art-frame-footer">
                         <span class="art-frame-tag">Sinh viên</span>
@@ -1188,6 +1215,16 @@
             }
         });
 
+        // Dynamic z-index handling for the fanned portrait cards
+        document.querySelectorAll('.fan-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.zIndex = '10'; // Đưa ảnh đang được hover lên vị trí cao nhất ngay lập tức
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.zIndex = ''; // Trả về cấu trúc sắp xếp tĩnh ban đầu sau khi chuột rời đi
+            });
+        });
+
         // Modal database containing deep academic solutions for Rubric Mức 4
         const modalData = {
             1: `
@@ -1289,7 +1326,7 @@
                 <h3>Bài 4: Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm</h3>
                 <p><strong>Mục tiêu:</strong> Làm chủ kỹ năng quản lý dự án số, tối ưu hóa sự phối hợp của các thành viên trong các dự án dịch thuật học thuật phức tạp thông qua mô hình quản lý hiện đại.</p>
                 
-                <h4>Mô hình Kanban số hóa tối ưu quy trình cộng tác</h4>
+                <h4>Mô hình Kanban số hóa tốiưu quy trình cộng tác</h4>
                 <div class="modal-kanban">
                     <div class="modal-kanban-col">
                         <div class="modal-kanban-title" style="color: #f87171;">📋 Lên kế hoạch</div>
