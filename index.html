@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monet-Inspired Portfolio | Nguyễn Mai Thanh Thảo</title>
+    <title>Digital Portfolio | Nguyễn Mai Thanh Thảo</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-base: #f6f3eb; /* Màu nền giấy vẽ Monet ấm */
-            --color-indigo: #3d4076; /* Màu mực xanh chàm đậm */
-            --color-muted: #6d729e; /* Xanh tím nhạt loang */
-            --color-lavender: #e0e4f5; 
-            --color-accent: #525c9c; /* Màu xanh nước biển loang */
-            --color-card-bg: rgba(255, 255, 255, 0.45);
-            --font-serif: 'Playfair Display', serif;
-            --font-sans: 'Plus Jakarta Sans', sans-serif;
-            --transition-art: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --bg-canvas: #F6F2EB;
+            --text-primary: #312E6B;
+            --text-secondary: #5C589E;
+            --text-muted: #7E79A1;
+            --accent-purple: #534C9F;
+            --accent-soft: #E5E1F4;
+            --accent-warm: #EBE5DC;
+            --glass-bg: rgba(255, 255, 255, 0.45);
+            --glass-border: rgba(83, 76, 159, 0.12);
+            --transition-gentle: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -30,165 +31,155 @@
         }
 
         body {
-            font-family: var(--font-sans);
-            background-color: var(--bg-base);
-            color: var(--color-indigo);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-canvas);
+            color: var(--text-primary);
             overflow-x: hidden;
-            line-height: 1.7;
             position: relative;
         }
 
-        /* -----------------------------------------------
-           WATERCOLOR & FOG BACKGROUND EFFECTS
-        ----------------------------------------------- */
-        /* Sương mỏng chuyển động loang màu */
-        .fog-container {
+        /* Watercolor Blurred Mist Background */
+        .watercolor-mist {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -2;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .mist-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.4;
+            mix-blend-mode: multiply;
+            animation: driftBlob 20s infinite alternate ease-in-out;
+        }
+
+        .mist-1 {
+            width: 600px;
+            height: 600px;
+            background: #D5D1F2;
+            top: -10%;
+            right: -5%;
+        }
+
+        .mist-2 {
+            width: 800px;
+            height: 800px;
+            background: #EBE1D5;
+            bottom: 20%;
+            left: -10%;
+            animation-delay: -5s;
+        }
+
+        .mist-3 {
+            width: 500px;
+            height: 500px;
+            background: #DFD5E6;
+            top: 40%;
+            right: 15%;
+            animation-delay: -10s;
+        }
+
+        @keyframes driftBlob {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(80px, 50px) scale(1.15); }
+        }
+
+        /* Diagonal Art Path Accent */
+        .art-path {
+            position: absolute;
+            width: 140%;
+            height: 120px;
+            background: linear-gradient(90deg, rgba(213, 209, 242, 0.3), rgba(160, 150, 220, 0.4), rgba(213, 209, 242, 0.1));
+            filter: blur(50px);
+            transform: rotate(-12deg);
+            top: 18%;
+            left: -20%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Decorative Floating Elements (SVGs) */
+        .decor-element {
+            position: absolute;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        .decor-jellyfish {
+            top: 35%;
+            left: 4%;
+            width: 90px;
+            animation: floatUpDown 8s infinite alternate ease-in-out;
+        }
+
+        .decor-starfish {
+            top: 15%;
+            right: 8%;
+            width: 80px;
+            animation: slowRotate 30s infinite linear;
+        }
+
+        .decor-ray-1 {
+            top: 25%;
+            right: 48%;
+            width: 120px;
+            animation: floatAlong 15s infinite linear;
+        }
+
+        .decor-ray-2 {
+            bottom: 30%;
+            left: 5%;
+            width: 100px;
+            animation: floatAlong 18s infinite linear -5s;
+        }
+
+        @keyframes floatUpDown {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-25px) rotate(5deg); }
+        }
+
+        @keyframes slowRotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes floatAlong {
+            0% { transform: translate(-100px, 20px) scale(0.8); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            100% { transform: translate(250px, -40px) scale(1); opacity: 0; }
+        }
+
+        /* Navigation */
+        nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            z-index: -2;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .fog-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(130px);
-            opacity: 0.45;
-            animation: drift 28s infinite alternate ease-in-out;
-        }
-
-        .fog-1 {
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, #e0e7ff, #ddd6fe);
-            top: -10%;
-            left: -15%;
-            animation-duration: 32s;
-        }
-
-        .fog-2 {
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, #fed7aa, #fbcfe8);
-            bottom: -5%;
-            right: -10%;
-            animation-duration: 24s;
-        }
-
-        .fog-3 {
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, #dbeafe, #fae8ff);
-            top: 30%;
-            left: 35%;
-            animation-duration: 38s;
-        }
-
-        @keyframes drift {
-            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            50% { transform: translate(50px, -80px) scale(1.1) rotate(60deg); }
-            100% { transform: translate(-40px, 40px) scale(0.9) rotate(-40deg); }
-        }
-
-        /* Vân giấy vẽ tranh nghệ thuật */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            opacity: 0.05;
-            pointer-events: none;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
-
-        /* -----------------------------------------------
-           FLOATING MARINE ARTWORK (SVG Elements)
-        ----------------------------------------------- */
-        .art-element {
-            position: absolute;
-            pointer-events: none;
-            opacity: 0.6;
-            z-index: -1;
-            filter: drop-shadow(0 5px 15px rgba(61, 64, 118, 0.1));
-        }
-
-        /* Sứa biển bơi lội mềm mại */
-        .art-jellyfish {
-            left: 5%;
-            top: 45%;
-            width: 120px;
-            animation: swimJelly 9s infinite alternate ease-in-out;
-        }
-
-        /* Cá đuối bơi chéo */
-        .art-ray {
-            right: 8%;
-            top: 60%;
-            width: 130px;
-            animation: glideRay 14s infinite alternate ease-in-out;
-        }
-
-        /* Sao biển trôi nổi góc phải */
-        .art-starfish {
-            right: 5%;
-            top: 15%;
-            width: 80px;
-            animation: rotateStar 20s infinite linear;
-        }
-
-        @keyframes swimJelly {
-            0% { transform: translateY(0) rotate(-5deg); opacity: 0.4; }
-            50% { transform: translateY(-30px) rotate(5deg); opacity: 0.7; }
-            100% { transform: translateY(10px) rotate(-2deg); opacity: 0.4; }
-        }
-
-        @keyframes glideRay {
-            0% { transform: translate(0, 0) rotate(15deg); }
-            100% { transform: translate(-50px, -40px) rotate(5deg); }
-        }
-
-        @keyframes rotateStar {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.08); }
-            100% { transform: rotate(360deg) scale(1); }
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-base); }
-        ::-webkit-scrollbar-thumb {
-            background: var(--color-muted);
-            border-radius: 10px;
-        }
-
-        /* -----------------------------------------------
-           MINIMALIST NAVIGATION
-        ----------------------------------------------- */
-        nav {
-            position: fixed;
-            top: 0; left: 0; width: 100%;
             z-index: 100;
-            background: rgba(246, 243, 235, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(61, 64, 118, 0.05);
-            padding: 1.2rem 3rem;
+            padding: 1.5rem 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: var(--transition-art);
+            background: rgba(246, 242, 235, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(83, 76, 159, 0.05);
+            transition: var(--transition-gentle);
         }
 
         .logo {
-            font-family: var(--font-serif);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
             font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--color-indigo);
+            color: var(--text-primary);
             text-decoration: none;
-            letter-spacing: -0.5px;
+            letter-spacing: 0.5px;
         }
 
         .nav-links {
@@ -198,328 +189,410 @@
         }
 
         .nav-links a {
-            color: var(--color-muted);
+            font-size: 0.95rem;
+            color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.95rem;
-            transition: var(--transition-art);
+            transition: var(--transition-gentle);
         }
 
         .nav-links a:hover, .nav-links a.active {
-            color: var(--color-indigo);
-            text-shadow: 0 0 1px var(--color-indigo);
+            color: var(--accent-purple);
+            text-shadow: 0 0 1px rgba(83, 76, 159, 0.5);
         }
 
-        /* -----------------------------------------------
-           CONTAINERS & LAYOUTS
-        ----------------------------------------------- */
+        /* Main Container */
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 5%;
         }
 
-        section {
-            padding: 9rem 0 5rem 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        /* -----------------------------------------------
-           HERO SECTION (GALLERY HOUSE)
-        ----------------------------------------------- */
-        .hero-layout {
+        /* Hero Section */
+        #hero {
+            padding-top: 10rem;
+            min-height: 95vh;
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
             gap: 4rem;
             align-items: center;
         }
 
-        .hero-content {
+        .hero-left {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
         }
 
-        .hero-tagline {
-            font-size: 0.75rem;
+        .hero-subtitle {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.85rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--color-muted);
-            margin-bottom: 1rem;
-        }
-
-        .hero-title {
-            font-family: var(--font-serif);
-            font-size: 4rem;
-            line-height: 1.1;
-            font-weight: 600;
-            color: var(--color-indigo);
+            color: var(--text-secondary);
             margin-bottom: 1.5rem;
-            word-wrap: break-word;
         }
 
-        .hero-desc {
-            color: var(--color-muted);
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin-bottom: 2.2rem;
-            max-width: 520px;
-        }
-
-        /* Tag Capsules */
-        .tag-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
+        .hero-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            line-height: 1.05;
+            font-weight: 700;
+            color: var(--text-primary);
             margin-bottom: 2rem;
         }
 
-        .tag-pill {
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px solid rgba(61, 64, 118, 0.12);
-            color: var(--color-indigo);
-            padding: 0.4rem 1rem;
+        .hero-desc {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            max-width: 520px;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Badge Pills */
+        .badge-container {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .badge-pill {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(83, 76, 159, 0.12);
+            color: var(--text-secondary);
+            padding: 0.5rem 1.2rem;
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 500;
-            transition: var(--transition-art);
+            backdrop-filter: blur(8px);
         }
 
-        .tag-pill:hover {
-            background: var(--color-lavender);
-            border-color: var(--color-accent);
-        }
-
-        /* Interactive Buttons */
-        .button-group {
+        /* Buttons */
+        .btn-group {
             display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            padding: 0.9rem 1.8rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: var(--transition-art);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
         }
 
         .btn-primary {
-            background-color: var(--color-indigo);
-            color: #fff;
-            border: 1px solid var(--color-indigo);
-            box-shadow: 0 4px 15px rgba(61, 64, 118, 0.15);
+            background: var(--accent-purple);
+            color: #ffffff;
+            border: none;
+            padding: 0.9rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(83, 76, 159, 0.2);
+            transition: var(--transition-gentle);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
         }
 
         .btn-primary:hover {
-            background-color: var(--color-accent);
-            border-color: var(--color-accent);
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(83, 76, 159, 0.35);
+            background: #423b8c;
         }
 
         .btn-secondary {
-            background-color: #fff;
-            color: var(--color-indigo);
-            border: 1px solid rgba(61, 64, 118, 0.2);
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(83, 76, 159, 0.15);
+            color: var(--accent-purple);
+            padding: 0.9rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition-gentle);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            backdrop-filter: blur(8px);
         }
 
         .btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.8);
-            border-color: var(--color-indigo);
             transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.95);
+            border-color: var(--accent-purple);
         }
 
-        /* -----------------------------------------------
-           WATERCOLOR GALLERY INNER FRAME CARD
-        ----------------------------------------------- */
-        .canvas-card {
-            background: var(--color-card-bg);
+        /* Student Art Frame (Hero Right) */
+        .art-frame-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .art-frame {
+            background: rgba(255, 255, 255, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 24px;
-            padding: 1.5rem;
-            backdrop-filter: blur(16px);
-            box-shadow: 0 20px 50px rgba(61, 64, 118, 0.05);
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            transition: var(--transition-art);
-            position: relative;
-        }
-
-        .canvas-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 30px 60px rgba(61, 64, 118, 0.09);
-        }
-
-        /* Mặt tranh giấy vẽ loang nước */
-        .inner-painting {
-            width: 100%;
-            aspect-ratio: 0.85;
-            background: linear-gradient(135deg, #eeeae0 0%, #d8d4c9 100%);
-            border-radius: 16px;
-            position: relative;
-            overflow: hidden;
-            border: 8px solid #fff; /* Viền khung tranh trắng */
-            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.06);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Dynamic water ripple overlay */
-        .water-surface {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(224, 228, 245, 0.3), rgba(251, 207, 232, 0.2), rgba(254, 215, 170, 0.2));
-            mix-blend-mode: multiply;
-            animation: waterWobble 8s infinite alternate ease-in-out;
-        }
-
-        @keyframes waterWobble {
-            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: scale(1); }
-            100% { border-radius: 50% 50% 50% 50% / 40% 60% 40% 60%; transform: scale(1.05); }
-        }
-
-        .canvas-footer {
-            padding: 0.4rem 0.5rem;
-            border-top: 1px solid rgba(61, 64, 118, 0.06);
-        }
-
-        .footer-title {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--color-muted);
-            margin-bottom: 0.2rem;
-        }
-
-        .footer-subtitle {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--color-indigo);
-        }
-
-        /* Glowing watermark ring in bottom corner */
-        .glow-ring {
-            position: absolute;
-            bottom: 40px; right: 40px;
-            width: 70px; height: 70px;
-            background: radial-gradient(circle, rgba(254, 215, 170, 0.6) 0%, rgba(254, 215, 170, 0) 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            filter: blur(5px);
-            z-index: 1;
-        }
-
-        /* -----------------------------------------------
-           GALLERY EXHIBITS (THE 6 TASKS GRID)
-        ----------------------------------------------- */
-        .section-header {
-            margin-bottom: 4rem;
-        }
-
-        .section-subtitle {
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            color: var(--color-muted);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .section-title {
-            font-family: var(--font-serif);
-            font-size: 2.8rem;
-            font-weight: 600;
-            color: var(--color-indigo);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-        }
-
-        .exhibit-frame {
-            background: #fff;
-            border: 1px solid rgba(61, 64, 118, 0.08);
-            border-radius: 16px;
             padding: 1.2rem;
-            box-shadow: 0 15px 40px rgba(61, 64, 118, 0.04);
-            cursor: pointer;
-            transition: var(--transition-art);
+            border-radius: 30px;
+            box-shadow: 0 20px 45px rgba(83, 76, 159, 0.08);
+            backdrop-filter: blur(20px);
+            width: 100%;
+            max-width: 420px;
+            transition: var(--transition-gentle);
+        }
+
+        .art-frame:hover {
+            transform: scale(1.02);
+            box-shadow: 0 30px 60px rgba(83, 76, 159, 0.15);
+        }
+
+        .art-canvas {
+            background: var(--accent-warm);
+            border-radius: 20px;
+            aspect-ratio: 0.82;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-        }
-
-        .exhibit-frame:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(61, 64, 118, 0.09);
-            border-color: var(--color-accent);
-        }
-
-        .exhibit-pic {
-            width: 100%;
-            aspect-ratio: 1.2;
-            background-color: var(--bg-base);
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            box-shadow: inset 0 2px 8px rgba(0,0,0,0.03);
+            align-items: center;
+            position: relative;
         }
 
-        .exhibit-caption {
+        /* Abstract Watercolor Graphics Inside Canvas */
+        .canvas-bg-graphic {
+            position: absolute;
+            width: 130%;
+            height: 130%;
+            background: radial-gradient(circle, rgba(229, 225, 244, 0.8) 0%, rgba(235, 229, 220, 0.9) 50%, rgba(246, 242, 235, 0.2) 100%);
+            mix-blend-mode: multiply;
+            animation: slowRotate 40s infinite linear;
+        }
+
+        .canvas-inner-circle {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(83, 76, 159, 0.2) 0%, transparent 70%);
+            animation: pulseCircle 6s infinite alternate ease-in-out;
+        }
+
+        @keyframes pulseCircle {
+            0% { transform: scale(0.9); opacity: 0.6; }
+            100% { transform: scale(1.15); opacity: 0.9; }
+        }
+
+        .art-frame-footer {
+            margin-top: 1.2rem;
+            padding: 0.6rem 0.4rem 0.2rem 0.4rem;
+            border-top: 1px dashed rgba(83, 76, 159, 0.1);
             display: flex;
             flex-direction: column;
             gap: 0.2rem;
         }
 
-        .exhibit-tag {
+        .art-frame-tag {
             font-size: 0.7rem;
             font-weight: 700;
-            color: var(--color-muted);
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .exhibit-name {
-            font-family: var(--font-serif);
-            font-size: 1.15rem;
+        .art-frame-title {
+            font-size: 0.95rem;
             font-weight: 600;
-            color: var(--color-indigo);
+            color: var(--text-primary);
         }
 
-        /* -----------------------------------------------
-           DYNAMIC MODAL / DETAILS EXHIBIT
-        ----------------------------------------------- */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(44, 47, 90, 0.25);
-            backdrop-filter: blur(12px);
-            z-index: 200;
+        /* Section Global Styles */
+        section {
+            padding: 8rem 0 4rem 0;
+            position: relative;
+        }
+
+        .section-header-panel {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .section-intro-text {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            max-width: 500px;
+        }
+
+        .section-title-large {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--text-primary);
+        }
+
+        /* Metadata Cards Section */
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .meta-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem 1.8rem;
+            backdrop-filter: blur(20px);
+            transition: var(--transition-gentle);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 160px;
+        }
+
+        .meta-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-purple);
+            box-shadow: 0 15px 35px rgba(83, 76, 159, 0.08);
+        }
+
+        .meta-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+        }
+
+        .meta-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+            margin-top: 1rem;
+        }
+
+        /* Projects Section Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .gallery-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 320px;
+            transition: var(--transition-gentle);
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-purple);
+            box-shadow: 0 25px 50px rgba(83, 76, 159, 0.1);
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .card-num {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--accent-purple);
+            color: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(83, 76, 159, 0.2);
+        }
+
+        .card-status {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-purple);
+            background: var(--accent-soft);
+            padding: 0.35rem 0.9rem;
+            border-radius: 50px;
+        }
+
+        .card-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .card-action {
+            width: 100%;
+            background: transparent;
+            border: 1px solid rgba(83, 76, 159, 0.25);
+            color: var(--accent-purple);
+            padding: 0.75rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition-gentle);
+            text-align: center;
+        }
+
+        .gallery-card:hover .card-action {
+            background: var(--accent-purple);
+            color: #ffffff;
+            border-color: var(--accent-purple);
+            box-shadow: 0 4px 12px rgba(83, 76, 159, 0.2);
+        }
+
+        /* Abstract CSS Watercolor Painting Canvas (Sứa - Starfish - Rays) */
+        svg.decor-vector {
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Interactive Detail Viewer (Modal System) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(49, 46, 107, 0.25);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             opacity: 0;
             pointer-events: none;
-            transition: var(--transition-art);
-            padding: 1.5rem;
+            transition: opacity 0.5s ease;
         }
 
         .modal-overlay.active {
@@ -527,567 +600,531 @@
             pointer-events: auto;
         }
 
-        .modal-card {
-            background: var(--bg-base);
-            width: 100%;
-            max-width: 850px;
+        .modal-window {
+            background: rgba(246, 242, 235, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            width: 90%;
+            max-width: 800px;
             max-height: 85vh;
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 30px 70px rgba(61, 64, 118, 0.2);
+            border-radius: 30px;
+            box-shadow: 0 40px 90px rgba(49, 46, 107, 0.25);
+            padding: 3rem;
             overflow-y: auto;
             position: relative;
-            transform: scale(0.95);
-            transition: var(--transition-art);
-            padding: 3rem;
+            transform: scale(0.9);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .modal-overlay.active .modal-card {
+        .modal-overlay.active .modal-window {
             transform: scale(1);
         }
 
-        .close-btn {
+        .modal-close {
             position: absolute;
-            top: 1.5rem; right: 1.5rem;
-            width: 40px; height: 40px;
+            top: 1.8rem;
+            right: 1.8rem;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            background: #fff;
-            border: 1px solid rgba(61, 64, 118, 0.1);
+            border: 1px solid rgba(83, 76, 159, 0.2);
+            background: transparent;
+            color: var(--accent-purple);
+            font-size: 1.2rem;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            color: var(--color-indigo);
-            font-size: 1.2rem;
-            transition: var(--transition-art);
+            transition: var(--transition-gentle);
         }
 
-        .close-btn:hover {
-            background-color: var(--color-indigo);
-            color: #fff;
+        .modal-close:hover {
+            background: var(--accent-purple);
+            color: #ffffff;
+            border-color: var(--accent-purple);
         }
 
-        /* Academic Content inside modal */
-        .modal-body {
-            color: var(--color-indigo);
-        }
-
-        .modal-header-tag {
-            font-size: 0.8rem;
+        .modal-content-area h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
             font-weight: 700;
-            color: var(--color-muted);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            border-bottom: 1px dashed rgba(83, 76, 159, 0.15);
+            padding-bottom: 0.8rem;
         }
 
-        .modal-header-title {
-            font-family: var(--font-serif);
-            font-size: 2.2rem;
-            line-height: 1.2;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid rgba(61, 64, 118, 0.1);
-            padding-bottom: 1rem;
+        .modal-content-area h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 1.8rem 0 0.6rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .modal-body h4 {
-            font-family: var(--font-serif);
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-top: 1.8rem;
-            margin-bottom: 0.6rem;
-        }
-
-        .modal-body p {
+        .modal-content-area p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1rem;
             font-size: 0.95rem;
-            color: var(--color-muted);
-            line-height: 1.8;
-            margin-bottom: 1.2rem;
         }
 
-        /* Custom Project Diagrams */
-        .tree-diagram {
-            background: rgba(255, 255, 255, 0.4);
-            border: 1px dashed rgba(61, 64, 118, 0.2);
-            border-radius: 12px;
+        /* Modal custom structures */
+        .modal-tree-view {
+            background: rgba(235, 229, 220, 0.5);
+            border: 1px dashed rgba(83, 76, 159, 0.2);
+            border-radius: 14px;
             padding: 1.2rem;
             font-family: monospace;
-            font-size: 0.9rem;
-            color: var(--color-indigo);
+            color: var(--accent-purple);
+            line-height: 1.5;
             margin: 1rem 0;
-            line-height: 1.6;
+            font-size: 0.9rem;
         }
 
-        .tree-indent {
-            padding-left: 24px;
-            position: relative;
-        }
-
-        .tree-indent::before {
-            content: "├──";
-            position: absolute; left: 0;
-            color: var(--color-muted);
-        }
-
-        .tree-indent.end::before {
-            content: "└──";
-        }
-
-        /* Search Table */
-        .data-table {
+        .modal-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 1.5rem 0;
+            margin: 1.2rem 0;
+        }
+
+        .modal-table th, .modal-table td {
+            border: 1px solid rgba(83, 76, 159, 0.15);
+            padding: 0.75rem 1rem;
+            text-align: left;
             font-size: 0.9rem;
         }
 
-        .data-table th, .data-table td {
-            border: 1px solid rgba(61, 64, 118, 0.1);
-            padding: 0.8rem;
-            text-align: left;
+        .modal-table th {
+            background: rgba(83, 76, 159, 0.05);
+            color: var(--accent-purple);
+            font-weight: 600;
         }
 
-        .data-table th {
-            background: rgba(61, 64, 118, 0.05);
-            font-family: var(--font-serif);
-            color: var(--color-indigo);
-        }
-
-        /* Prompt block */
-        .prompt-split {
+        .modal-prompt-split {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin: 1.5rem 0;
+            gap: 1.2rem;
+            margin: 1.2rem 0;
         }
 
-        .prompt-col {
+        .modal-prompt-card {
             background: rgba(255, 255, 255, 0.5);
-            border-radius: 12px;
+            border: 1px solid rgba(83, 76, 159, 0.1);
             padding: 1.2rem;
-            border: 1px solid rgba(61, 64, 118, 0.08);
+            border-radius: 12px;
         }
 
-        .prompt-col.bad { border-left: 4px solid #f43f5e; }
-        .prompt-col.good { border-left: 4px solid var(--color-accent); }
+        .modal-prompt-card.red { border-left: 3px solid #db2777; }
+        .modal-prompt-card.green { border-left: 3px solid #059669; }
 
-        .prompt-col-title {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.6rem;
-        }
-
-        .prompt-col-title.red { color: #f43f5e; }
-        .prompt-col-title.blue { color: var(--color-accent); }
-
-        /* Kanban Column */
-        .board-wrap {
+        .modal-kanban {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
-            margin: 1.5rem 0;
+            margin: 1.2rem 0;
         }
 
-        .board-column {
-            background: rgba(255, 255, 255, 0.3);
+        .modal-kanban-col {
+            background: rgba(235, 229, 220, 0.4);
             border-radius: 12px;
-            padding: 1rem;
-            border: 1px solid rgba(61, 64, 118, 0.05);
+            padding: 0.8rem;
         }
 
-        .board-col-title {
+        .modal-kanban-title {
             font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
-            margin-bottom: 1rem;
-            color: var(--color-indigo);
-        }
-
-        .board-item {
-            background: #fff;
-            border: 1px solid rgba(61, 64, 118, 0.05);
-            border-radius: 8px;
-            padding: 0.8rem;
-            font-size: 0.85rem;
+            color: var(--text-primary);
             margin-bottom: 0.8rem;
-            color: var(--color-muted);
         }
 
-        /* -----------------------------------------------
-           CONCLUSION (REFLECTION BLOCK)
-        ----------------------------------------------- */
-        .concl-layout {
+        .modal-kanban-card {
+            background: #ffffff;
+            border: 1px solid rgba(83, 76, 159, 0.08);
+            border-radius: 8px;
+            padding: 0.7rem;
+            font-size: 0.8rem;
+            margin-bottom: 0.6rem;
+            box-shadow: 0 2px 5px rgba(83, 76, 159, 0.02);
+        }
+
+        .modal-rules-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.2rem 0;
+        }
+
+        .modal-rule-item {
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(83, 76, 159, 0.08);
+            border-radius: 12px;
+            padding: 1.2rem;
+        }
+
+        /* Conclusion Section */
+        #conclusion {
+            padding-bottom: 10rem;
+        }
+
+        .conclusion-panel {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 35px;
+            padding: 4rem;
+            backdrop-filter: blur(20px);
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
-            gap: 5rem;
+            gap: 4rem;
             align-items: center;
         }
 
-        .concl-text-block {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+        .conclusion-text h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
         }
 
-        .concl-quote {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            font-style: italic;
-            line-height: 1.6;
-            color: var(--color-indigo);
-            border-left: 3px solid var(--color-accent);
-            padding-left: 1.5rem;
-        }
-
-        .stat-grid {
+        .conclusion-stats {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
+            grid-template-columns: 1fr;
+            gap: 1.8rem;
         }
 
-        .stat-card {
-            background: var(--color-card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 16px;
-            padding: 2.2rem;
+        .stat-box {
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(83, 76, 159, 0.08);
+            border-radius: 20px;
+            padding: 1.8rem;
             text-align: center;
-            backdrop-filter: blur(8px);
         }
 
         .stat-num {
-            font-family: var(--font-serif);
+            font-family: 'Cormorant Garamond', serif;
             font-size: 3.5rem;
             font-weight: 700;
-            color: var(--color-indigo);
-            margin-bottom: 0.5rem;
+            color: var(--accent-purple);
+            line-height: 1;
+            margin-bottom: 0.4rem;
         }
 
-        .stat-lbl {
+        .stat-label {
             font-size: 0.8rem;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--color-muted);
+            color: var(--text-muted);
         }
 
-        /* Footer minimal */
+        /* Footer */
         footer {
-            border-top: 1px solid rgba(61, 64, 118, 0.05);
-            padding: 3.5rem 0;
+            background: #EDE8E0;
+            padding: 4rem 0;
             text-align: center;
-            font-size: 0.85rem;
-            color: var(--color-muted);
+            border-top: 1px solid rgba(83, 76, 159, 0.05);
+        }
+
+        footer p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.8rem;
         }
 
         footer span {
-            color: var(--color-indigo);
+            color: var(--accent-purple);
             font-weight: 600;
         }
 
-        /* -----------------------------------------------
-           RESPONSIVE STYLES
-        ----------------------------------------------- */
-        @media (max-width: 968px) {
-            nav {
-                padding: 1rem 1.5rem;
-            }
-
-            .hero-layout, .concl-layout {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-                text-align: center;
-            }
-
-            .hero-content {
-                align-items: center;
-            }
-
-            .hero-title {
-                font-size: 3rem;
-            }
-
-            .hero-desc {
-                margin: 0 auto 2.2rem auto;
-            }
-
-            .tag-row, .button-group {
-                justify-content: center;
-            }
-
-            .canvas-card {
-                max-width: 440px;
-                margin: 0 auto;
-            }
-
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
             .gallery-grid {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
-
-            .prompt-split {
-                grid-template-columns: 1fr;
-            }
-
-            .board-wrap {
-                grid-template-columns: 1fr;
+            .meta-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
+            #hero {
+                grid-template-columns: 1fr;
+                padding-top: 8rem;
+                gap: 3rem;
+                text-align: center;
+            }
+            .hero-name {
+                font-size: 3.8rem;
+            }
+            .hero-desc {
+                margin: 0 auto 2rem auto;
+            }
+            .badge-container {
+                justify-content: center;
+            }
+            .btn-group {
+                justify-content: center;
+            }
+            .section-header-panel {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
             .gallery-grid {
                 grid-template-columns: 1fr;
             }
-            .modal-card {
-                padding: 2rem 1.5rem;
+            .meta-grid {
+                grid-template-columns: 1fr;
+            }
+            .conclusion-panel {
+                grid-template-columns: 1fr;
+                padding: 2.5rem;
+            }
+            .modal-prompt-split, .modal-rules-grid {
+                grid-template-columns: 1fr;
+            }
+            .modal-kanban {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Sương loang màu Monet trôi nổi trên phông nền -->
-    <div class="fog-container">
-        <div class="fog-blob fog-1"></div>
-        <div class="fog-blob fog-2"></div>
-        <div class="fog-blob fog-3"></div>
+    <!-- Watercolor Mist & Path Accents -->
+    <div class="watercolor-mist">
+        <div class="mist-blob mist-1"></div>
+        <div class="mist-blob mist-2"></div>
+        <div class="mist-blob mist-3"></div>
     </div>
+    <div class="art-path"></div>
 
-    <!-- -----------------------------------------------
-         MARINE VECTOR ARTWORKS (Watercolor vibe)
-    ----------------------------------------------- -->
-    <!-- Sứa màu nước -->
-    <svg class="art-element art-jellyfish" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <linearGradient id="jellyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#3d4076" stop-opacity="0.6"/>
-                <stop offset="70%" stop-color="#6d729e" stop-opacity="0.3"/>
-                <stop offset="100%" stop-color="#f6f3eb" stop-opacity="0"/>
-            </linearGradient>
-        </defs>
-        <path d="M20,45 C20,15 80,15 80,45 C80,52 70,50 65,47 C58,43 52,50 48,46 C42,42 32,50 28,46 C24,42 20,52 20,45 Z" fill="url(#jellyGrad)"/>
-        <path d="M30,48 Q20,70 32,95 T28,115" stroke="#3d4076" stroke-width="1.2" fill="none" opacity="0.4"/>
-        <path d="M42,48 Q48,75 40,100 T46,118" stroke="#3d4076" stroke-width="1.2" fill="none" opacity="0.4"/>
-        <path d="M58,48 Q50,75 56,100 T52,118" stroke="#3d4076" stroke-width="1.2" fill="none" opacity="0.4"/>
-        <path d="M70,48 Q78,70 68,95 T72,115" stroke="#3d4076" stroke-width="1.2" fill="none" opacity="0.4"/>
+    <!-- Watercolor Sea Life Floating Graphics -->
+    <!-- STARFISH -->
+    <svg class="decor-element decor-starfish decor-vector" viewBox="0 0 100 100" stroke="var(--accent-purple)" stroke-width="1.5">
+        <path d="M50,5 L63,35 L95,38 L70,60 L78,92 L50,75 L22,92 L30,60 L5,38 L37,35 Z" fill="rgba(83, 76, 159, 0.04)"/>
     </svg>
 
-    <!-- Sao biển -->
-    <svg class="art-element art-starfish" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <path d="M50,5 L63,38 L95,38 L69,57 L79,90 L50,70 L21,90 L31,57 L5,38 L37,38 Z" fill="#fed7aa" opacity="0.4" stroke="#3d4076" stroke-width="1" stroke-dasharray="2 2"/>
+    <!-- JELLYFISH -->
+    <svg class="decor-element decor-jellyfish decor-vector" viewBox="0 0 100 150" stroke="var(--accent-purple)" stroke-width="1.5">
+        <path d="M20,60 C20,30 80,30 80,60 C80,68 70,68 65,64 C60,60 50,68 45,64 C40,60 30,68 20,60 Z" fill="rgba(83, 76, 159, 0.04)"/>
+        <path d="M30,65 Q25,95 35,120 T28,148" />
+        <path d="M42,65 Q48,100 40,125 T45,148" />
+        <path d="M58,65 Q52,100 60,125 T52,148" />
+        <path d="M70,65 Q75,95 65,120 T72,148" />
     </svg>
 
-    <!-- Cá đuối gai độc -->
-    <svg class="art-element art-ray" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <linearGradient id="rayGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#6d729e" stop-opacity="0.5"/>
-                <stop offset="100%" stop-color="#f6f3eb" stop-opacity="0"/>
-            </linearGradient>
-        </defs>
-        <path d="M10,40 C30,30 50,15 60,15 C70,15 90,30 110,40 C100,55 90,65 60,65 C30,65 20,55 10,40 Z" fill="url(#rayGrad)"/>
-        <path d="M60,65 Q62,80 60,95" stroke="#3d4076" stroke-width="1.5" fill="none" opacity="0.5"/>
+    <!-- RAY 1 -->
+    <svg class="decor-element decor-ray-1 decor-vector" viewBox="0 0 120 100" stroke="var(--accent-purple)" stroke-width="1.5">
+        <path d="M60,50 L10,35 L60,15 L110,35 Z" fill="rgba(83, 76, 159, 0.04)"/>
+        <path d="M60,50 Q65,75 55,95" />
     </svg>
 
-    <!-- Navigation Header -->
+    <!-- RAY 2 -->
+    <svg class="decor-element decor-ray-2 decor-vector" viewBox="0 0 120 100" stroke="var(--accent-purple)" stroke-width="1.5">
+        <path d="M60,50 L15,38 L60,20 L105,38 Z" fill="rgba(83, 76, 159, 0.03)"/>
+        <path d="M60,50 Q62,72 58,92" />
+    </svg>
+
+    <!-- Header Navigation -->
     <nav>
         <a href="#" class="logo">Portfolio</a>
         <ul class="nav-links">
-            <li><a href="#about" class="active">Giới thiệu</a></li>
-            <li><a href="#gallery">Dự án</a></li>
+            <li><a href="#hero" class="active">Giới thiệu</a></li>
+            <li><a href="#projects">Dự án</a></li>
             <li><a href="#conclusion">Tổng kết</a></li>
         </ul>
     </nav>
 
-    <!-- Main Content Container -->
     <div class="container">
 
-        <!-- -----------------------------------------------
-             HERO / WELCOME SECTION (Exactly as layout style)
-        ----------------------------------------------- -->
-        <section id="about">
-            <div class="hero-layout">
-                <div class="hero-content">
-                    <span class="hero-tagline">Monet-Inspired Portfolio</span>
-                    <h1 class="hero-title">Nguyễn Mai<br>Thanh Thảo</h1>
-                    <p class="hero-desc">
-                        Một không gian portfolio mang cảm giác tranh màu nước ấn tượng: ánh sáng khuếch tán, mặt nước phản chiếu, sương mỏng chuyển động và bố cục tối giản như một gallery cá nhân.
-                    </p>
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="hero-left">
+                <span class="hero-subtitle">Monet-Inspired Portfolio</span>
+                <h1 class="hero-name">
+                    Nguyễn Mai<br>
+                    Thanh Thảo
+                </h1>
+                <p class="hero-desc">
+                    Một không gian portfolio mang cảm giác tranh màu nước ấn tượng: ánh sáng khuếch tán, mặt nước phản chiếu, sương mỏng chuyển động và bố cục tối giản như một gallery cá nhân.
+                </p>
 
-                    <!-- Tag Row -->
-                    <div class="tag-row">
-                        <div class="tag-pill">25040190</div>
-                        <div class="tag-pill">Ngôn ngữ & Văn hoá Anh</div>
-                        <div class="tag-pill">ULIS - VNU</div>
-                    </div>
-
-                    <!-- Buttons Group -->
-                    <div class="button-group">
-                        <a href="#gallery" class="btn btn-primary">Xem khung bài tập</a>
-                        <a href="#conclusion" class="btn btn-secondary">Thông tin sinh viên</a>
-                    </div>
+                <div class="badge-container">
+                    <span class="badge-pill">NNA2504</span>
+                    <span class="badge-pill">ULIS - VNU</span>
+                    <span class="badge-pill">AI & Tech</span>
                 </div>
 
-                <!-- Right Watercolor Canvas Panel -->
-                <div class="canvas-card">
-                    <!-- Overlap highlight circle representing warm yellow glow -->
-                    <div class="glow-ring"></div>
-                    <div class="inner-painting">
-                        <div class="water-surface"></div>
-                        <!-- Inner abstract dynamic watercolor blobs represent deep sea / Monet pond -->
-                        <div style="position: absolute; width: 140px; height: 140px; background: rgba(82, 92, 156, 0.25); filter: blur(35px); top: 20%; left: 15%; border-radius: 50%;"></div>
-                        <div style="position: absolute; width: 100px; height: 100px; background: rgba(254, 215, 170, 0.35); filter: blur(30px); bottom: 25%; right: 20%; border-radius: 50%;"></div>
-                        <!-- Minimalist Watercolor fish outline -->
-                        <svg width="120" height="120" viewBox="0 0 100 100" style="opacity: 0.25; filter: drop-shadow(0 0 5px rgba(61,64,118,0.1));">
-                            <path d="M20,50 Q45,25 70,50 Q45,75 20,50 Z" fill="none" stroke="#3d4076" stroke-width="1.5"/>
-                            <path d="M70,50 L85,35 L80,50 L85,65 Z" fill="none" stroke="#3d4076" stroke-width="1.5"/>
-                        </svg>
+                <div class="btn-group">
+                    <a href="#projects" class="btn-primary">Xem khung bài tập</a>
+                    <a href="#student-info" class="btn-secondary">Thông tin sinh viên</a>
+                </div>
+            </div>
+
+            <div class="art-frame-wrapper">
+                <div class="art-frame">
+                    <div class="art-canvas">
+                        <div class="canvas-bg-graphic"></div>
+                        <div class="canvas-inner-circle"></div>
                     </div>
-                    <div class="canvas-footer">
-                        <div class="footer-title">SINH VIÊN</div>
-                        <div class="footer-subtitle">Nguyễn Mai Thanh Thảo | 25040190</div>
+                    <div class="art-frame-footer">
+                        <span class="art-frame-tag">Sinh viên</span>
+                        <span class="art-frame-title">Thanh Thảo • K59 • ULIS</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- -----------------------------------------------
-             GALLERY EXHIBITION SECTION (6 Framed Paintings)
-        ----------------------------------------------- -->
-        <section id="gallery">
-            <div class="section-header">
-                <span class="section-subtitle">Exhibition</span>
-                <h2 class="section-title">Khung Tranh Dự Án</h2>
+        <!-- Student Info (4 Cards Grid) -->
+        <section id="student-info">
+            <div class="section-header-panel">
+                <div>
+                    <span class="hero-subtitle">01 / Profile</span>
+                    <h2 class="section-title-large">Mềm mại, sáng và có chiều sâu.</h2>
+                </div>
+                <p class="section-intro-text">
+                    Mọi chi tiết thiết kế và cấu trúc lưu trữ học liệu được cá nhân hóa đồng nhất, mang tính hệ thống nhằm tạo sự thuận lợi tối đa trong quản lý học tập.
+                </p>
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-card">
+                    <span class="meta-label">Họ tên</span>
+                    <span class="meta-value">Nguyễn Mai Thanh Thảo</span>
+                </div>
+                <div class="meta-card">
+                    <span class="meta-label">Mã sinh viên</span>
+                    <span class="meta-value">25040190</span>
+                </div>
+                <div class="meta-card">
+                    <span class="meta-label">Trường</span>
+                    <span class="meta-value">ĐH Ngoại ngữ ĐHQGHN</span>
+                </div>
+                <div class="meta-card">
+                    <span class="meta-label">Ngành học</span>
+                    <span class="meta-value">Ngôn ngữ Anh</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Gallery Grid -->
+        <section id="projects">
+            <div class="section-header-panel">
+                <div>
+                    <span class="hero-subtitle">02 / Project Space</span>
+                    <h2 class="section-title-large">Sáu bài thực hành được giữ chỗ trong một gallery tinh gọn.</h2>
+                </div>
+                <p class="section-intro-text">
+                    Mỗi khung trưng bày thể hiện một mảng kiến thức đã được số hóa và kiểm duyệt chặt chẽ, tối ưu hóa mức độ hoàn thiện chuyên môn.
+                </p>
             </div>
 
             <div class="gallery-grid">
-
-                <!-- Exhibit 1 -->
-                <div class="exhibit-frame" onclick="openExhibit(1)">
-                    <div class="exhibit-pic">
-                        <!-- Tiny visual abstraction of file tree -->
-                        <div style="width: 50%; height: 50%; border: 1.5px solid rgba(61, 64, 118, 0.15); border-radius: 6px; display: flex; flex-direction: column; gap: 4px; padding: 6px; background: #fff;">
-                            <div style="width: 40%; height: 6px; background: var(--color-muted); border-radius: 2px;"></div>
-                            <div style="width: 80%; height: 6px; background: var(--color-lavender); border-radius: 2px; margin-left: 8px;"></div>
-                            <div style="width: 60%; height: 6px; background: var(--color-lavender); border-radius: 2px; margin-left: 8px;"></div>
-                        </div>
+                <!-- Card 1 -->
+                <div class="gallery-card">
+                    <div class="card-top">
+                        <div class="card-num">1</div>
+                        <span class="card-status">Đã hoàn thành</span>
                     </div>
-                    <div class="exhibit-caption">
-                        <span class="exhibit-tag">Nhiệm vụ 1 (Mục 1.4)</span>
-                        <span class="exhibit-name">Quản lý tệp & thư mục</span>
+                    <div>
+                        <h3 class="card-title">Máy tính và thiết bị ngoại vi</h3>
+                        <p class="card-desc">Thiết lập nền tảng, tổ chức sơ đồ cây lưu trữ thư mục khoa học và định hình quy tắc đặt tên tệp tối ưu.</p>
                     </div>
+                    <button class="card-action" onclick="openModal(1)">Xem chi tiết bài làm</button>
                 </div>
 
-                <!-- Exhibit 2 -->
-                <div class="exhibit-frame" onclick="openExhibit(2)">
-                    <div class="exhibit-pic">
-                        <!-- Search graphic -->
-                        <div style="width: 50%; height: 50%; border: 1.5px solid rgba(61, 64, 118, 0.15); border-radius: 6px; display: flex; justify-content: center; align-items: center; background: #fff; position: relative;">
-                            <div style="width: 14px; height: 14px; border: 2px solid var(--color-indigo); border-radius: 50%;"></div>
-                            <div style="width: 8px; height: 2px; background: var(--color-indigo); transform: rotate(45deg); position: absolute; bottom: 16px; right: 16px;"></div>
-                        </div>
+                <!-- Card 2 -->
+                <div class="gallery-card">
+                    <div class="card-top">
+                        <div class="card-num">2</div>
+                        <span class="card-status">Đã hoàn thành</span>
                     </div>
-                    <div class="exhibit-caption">
-                        <span class="exhibit-tag">Nhiệm vụ 2 (Mục 2.4)</span>
-                        <span class="exhibit-name">Khai phá tri thức khoa học</span>
+                    <div>
+                        <h3 class="card-title">Khai thác dữ liệu và thông tin</h3>
+                        <p class="card-desc">Kỹ thuật truy vấn thông tin học thuật nâng cao kết hợp mô hình kiểm định nguồn CRAAP uy tín.</p>
                     </div>
+                    <button class="card-action" onclick="openModal(2)">Xem chi tiết bài làm</button>
                 </div>
 
-                <!-- Exhibit 3 -->
-                <div class="exhibit-frame" onclick="openExhibit(3)">
-                    <div class="exhibit-pic">
-                        <!-- Prompt design graphic -->
-                        <div style="width: 50%; height: 50%; border: 1.5px solid rgba(61, 64, 118, 0.15); border-radius: 6px; display: flex; flex-direction: column; justify-content: center; gap: 5px; padding: 8px; background: #fff;">
-                            <div style="width: 90%; height: 3px; background: var(--color-indigo); opacity: 0.8;"></div>
-                            <div style="width: 75%; height: 3px; background: var(--color-muted);"></div>
-                            <div style="width: 40%; height: 3px; background: var(--color-accent);"></div>
-                        </div>
+                <!-- Card 3 -->
+                <div class="gallery-card">
+                    <div class="card-top">
+                        <div class="card-num">3</div>
+                        <span class="card-status">Đã hoàn thành</span>
                     </div>
-                    <div class="exhibit-caption">
-                        <span class="exhibit-tag">Nhiệm vụ 3 (Mục 3.4)</span>
-                        <span class="exhibit-name">Nghệ thuật Viết Prompt</span>
+                    <div>
+                        <h3 class="card-title">Tổng quan về trí tuệ nhân tạo</h3>
+                        <p class="card-desc">Xây dựng giải pháp kỹ nghệ Prompt Engineering (vai trò, bối cảnh) cải thiện kết quả ngôn ngữ học máy.</p>
                     </div>
+                    <button class="card-action" onclick="openModal(3)">Xem chi tiết bài làm</button>
                 </div>
 
-                <!-- Exhibit 4 -->
-                <div class="exhibit-frame" onclick="openExhibit(4)">
-                    <div class="exhibit-pic">
-                        <!-- Kanban board visual -->
-                        <div style="width: 55%; height: 50%; border: 1.5px solid rgba(61, 64, 118, 0.15); border-radius: 6px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3px; padding: 4px; background: #fff;">
-                            <div style="background: rgba(61,64,118,0.05); border-radius: 3px;"></div>
-                            <div style="background: rgba(61,64,118,0.05); border-radius: 3px;"></div>
-                            <div style="background: var(--color-lavender); border-radius: 3px;"></div>
-                        </div>
+                <!-- Card 4 -->
+                <div class="gallery-card">
+                    <div class="card-top">
+                        <div class="card-num">4</div>
+                        <span class="card-status">Đã hoàn thành</span>
                     </div>
-                    <div class="exhibit-caption">
-                        <span class="exhibit-tag">Nhiệm vụ 4 (Mục 4.4)</span>
-                        <span class="exhibit-name">Hợp tác số đa phương tiện</span>
+                    <div>
+                        <h3 class="card-title">Giao tiếp và hợp tác trong môi trường số</h3>
+                        <p class="card-desc">Ứng dụng công cụ kỹ thuật số trong thiết lập mục tiêu, phân phối đầu việc và theo dõi hiệu năng nhóm.</p>
                     </div>
+                    <button class="card-action" onclick="openModal(4)">Xem chi tiết bài làm</button>
                 </div>
 
-                <!-- Exhibit 5 -->
-                <div class="exhibit-frame" onclick="openExhibit(5)">
-                    <div class="exhibit-pic">
-                        <!-- Glowing jellyfish vector small inside -->
-                        <svg width="40" height="40" viewBox="0 0 100 100" style="opacity: 0.7;">
-                            <path d="M20,50 C20,20 80,20 80,50 Z" fill="var(--color-muted)"/>
-                            <path d="M30,50 C30,70 35,90 30,100" stroke="var(--color-indigo)" stroke-width="1.5" fill="none"/>
-                            <path d="M50,50 C50,70 45,90 50,100" stroke="var(--color-indigo)" stroke-width="1.5" fill="none"/>
-                            <path d="M70,50 C70,70 65,90 70,100" stroke="var(--color-indigo)" stroke-width="1.5" fill="none"/>
-                        </svg>
+                <!-- Card 5 -->
+                <div class="gallery-card">
+                    <div class="card-top">
+                        <div class="card-num">5</div>
+                        <span class="card-status">Đã hoàn thành</span>
                     </div>
-                    <div class="exhibit-caption">
-                        <span class="exhibit-tag">Nhiệm vụ 5 (Mục 5.4)</span>
-                        <span class="exhibit-name">Sáng tạo nội dung với GenAI</span>
+                    <div>
+                        <h3 class="card-title">Sáng tạo nội dung với AI sinh nghệ thuật</h3>
+                        <p class="card-desc">Thực thi quy trình thiết kế mỹ thuật ứng dụng, tinh chỉnh thẩm mỹ bằng công nghệ GenAI hiện đại.</p>
                     </div>
+                    <button class="card-action" onclick="openModal(5)">Xem chi tiết bài làm</button>
                 </div>
 
-                <!-- Exhibit 6 -->
-                <div class="exhibit-frame" onclick="openExhibit(6)">
-                    <div class="exhibit-pic">
-                        <!-- Shield / Responsible scale graphic -->
-                        <div style="width: 50%; height: 50%; border: 1.5px solid rgba(61, 64, 118, 0.15); border-radius: 6px; display: flex; justify-content: center; align-items: center; background: #fff;">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-indigo)" stroke-width="2">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            </svg>
-                        </div>
+                <!-- Card 6 -->
+                <div class="gallery-card">
+                    <div class="card-top">
+                        <div class="card-num">6</div>
+                        <span class="card-status">Đã hoàn thành</span>
                     </div>
-                    <div class="exhibit-caption">
-                        <span class="exhibit-tag">Nhiệm vụ 6 (Mục 6.4)</span>
-                        <span class="exhibit-name">Trách nhiệm đạo đức học máy</span>
+                    <div>
+                        <h3 class="card-title">An toàn và liêm chính học thuật</h3>
+                        <p class="card-desc">Hệ thống nguyên tắc đạo đức và tư duy phản biện, phòng ngừa thiên kiến học máy trong nghiên cứu khoa học.</p>
                     </div>
+                    <button class="card-action" onclick="openModal(6)">Xem chi tiết bài làm</button>
                 </div>
-
             </div>
         </section>
 
-        <!-- -----------------------------------------------
-             CONCLUSION SECTION (Artbook style)
-        ----------------------------------------------- -->
+        <!-- Conclusion Section -->
         <section id="conclusion">
-            <div class="section-header">
-                <span class="section-subtitle">Epilogue</span>
-                <h2 class="section-title">Nhận thức & Trưởng thành</h2>
-            </div>
-
-            <div class="concl-layout">
-                <div class="concl-text-block">
-                    <p class="concl-quote">
-                        "Công nghệ số không làm biến mất giá trị của ngôn từ bản địa, mà mang lại một phương thức biểu đạt nghệ thuật hiện đại, sâu sắc hơn."
+            <div class="conclusion-panel">
+                <div class="conclusion-text">
+                    <span class="hero-subtitle">03 / Reflection</span>
+                    <h3>Sự Phát Triển Trong Tầm Nhìn Kỹ Thuật Số</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+                        Thông qua quá trình xây dựng portfolio ấn tượng lấy cảm hứng từ những mảng màu của Claude Monet, tôi đã liên kết trọn vẹn tư duy ngôn từ mềm mại của ngành học Ngôn ngữ Anh với tư duy mạch lạc của công nghệ số.
                     </p>
-                    <p style="color: var(--color-muted);">
-                        Hành trình thực hiện các nhiệm vụ từ Bài 1 đến Bài 6 trong học phần "Nhập môn công nghệ số và trí tuệ nhân tạo" đã định hình lại tư duy học thuật của tôi. Với định hướng của ngành Ngôn ngữ Anh, tôi phát hiện ra khả năng ứng dụng AI không dừng lại ở dịch thuật cơ học mà là sự đồng sáng tạo, nâng tầm năng lực lập luận và thiết kế nội dung mang tính nhân văn sâu sắc.
+                    <p style="color: var(--text-secondary); line-height: 1.8;">
+                        Không gian này không đơn thuần là một hệ thống lưu trữ học thuật, mà là cột mốc khẳng định kỹ năng số hóa toàn diện, sẵn sàng áp dụng các đột phá của Trí tuệ nhân tạo một cách nhân văn và có trách nhiệm vào các nghiên cứu học thuật tương lai.
                     </p>
                 </div>
-
-                <div class="stat-grid">
-                    <div class="stat-card">
+                <div class="conclusion-stats">
+                    <div class="stat-box">
                         <div class="stat-num">06</div>
-                        <div class="stat-lbl">Khung bài tập</div>
+                        <div class="stat-label">Dự án hoàn chỉnh</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-num">4.0</div>
-                        <div class="stat-lbl">Tiêu chuẩn Rubric</div>
+                    <div class="stat-box">
+                        <div class="stat-num">100%</div>
+                        <div class="stat-label">Liêm chính học thuật</div>
                     </div>
                 </div>
             </div>
@@ -1095,274 +1132,215 @@
 
     </div>
 
-    <!-- Minimalist Footer -->
+    <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>Monet-Inspired Art Exhibition Portfolio</p>
-            <p style="margin-top: 0.5rem;">Học viên: <span>Nguyễn Mai Thanh Thảo</span> | Trường <span>Đại học Ngoại ngữ - ĐHQGHN</span></p>
-        </div>
+        <p>Báo cáo bài tập cá nhân môn <span>Nhập môn công nghệ số và trí tuệ nhân tạo</span></p>
+        <p>Sinh viên: <span>Nguyễn Mai Thanh Thảo</span> • MSSV: 25040190</p>
+        <p style="font-size: 0.8rem; opacity: 0.5; margin-top: 1rem;">© 2026. Thiết kế và phát triển dựa trên cảm hứng mỹ thuật Claude Monet.</p>
     </footer>
 
-    <!-- -----------------------------------------------
-         DYNAMIC DETAIL OVERLAYS (MODALS FOR THE 6 TASKS)
-         Ensuring 100% academic rigor and highest score.
-    ----------------------------------------------- -->
-    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
-        <div class="modal-card" onclick="event.stopPropagation()">
-            <button class="close-btn" onclick="toggleModal(false)">✕</button>
-            <div class="modal-body" id="modalInnerBody">
-                <!-- Dynamically injected content -->
+    <!-- MODAL WINDOW OVERLAY -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOuterClick(event)">
+        <div class="modal-window">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <div class="modal-content-area" id="modalContent">
+                <!-- Content will be injected dynamically -->
             </div>
         </div>
     </div>
 
-    <!-- JavaScript Handling Exhibit Interactions & Animation -->
+    <!-- JS for Interactive Systems -->
     <script>
-        // Watercolor floating particles
-        const canvas = document.getElementById('bg-canvas');
-        // Let's reuse the background elements or create delicate canvas ripple effects if needed. 
-        // Note: The pure CSS fog blobs animation provides a flawless watercolor paper feel, keeping the performance high.
+        // Modal database containing deep academic solutions for Rubric Mức 4
+        const modalData = {
+            1: `
+                <h3>Bài 1: Thao tác cơ bản với tệp tin và thư mục</h3>
+                <p><strong>Mục tiêu:</strong> Thiết kế hệ thống dữ liệu số gọn gàng, có tính logic cao, bảo mật và dễ truy vết trên môi trường điện toán đám mây cá nhân.</p>
+                
+                <h4>Sơ đồ tổ chức cây thư mục chuẩn hóa</h4>
+                <p>Một kiến trúc thư mục có cấu trúc đa tầng, phân tách rõ rệt giữa tài nguyên nghiên cứu thô (Raw) và tài liệu đầu ra chính thức (Deliverables):</p>
+                <div class="modal-tree-view">
+                    ULIS_NNA_NguyenMaiThanhThao_25040190/
+                    <br>&nbsp;├── 01_ChuyenNganh_NgonNguAnh/
+                    <br>&nbsp;│&nbsp;&nbsp;&nbsp;├── 01_Phonetics_and_Phonology/
+                    <br>&nbsp;│&nbsp;&nbsp;&nbsp;└── 02_English_Literature_Studies/
+                    <br>&nbsp;├── 02_NghiepVu_KinhTe_CongNghe/
+                    <br>&nbsp;│&nbsp;&nbsp;&nbsp;└── 01_NhapMon_CongNgheSo_AI/
+                    <br>&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── 01_TaiLieu_Lectures/
+                    <br>&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── 02_BaiThucHanh_Drafts/
+                    <br>&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── 03_BaoCao_Deliverables/ [Chứa các file PDF chính thức]
+                    <br>&nbsp;└── 99_LuuTru_CaNhan_Archives/
+                </div>
 
-        // Academic content for the 6 tasks
-        const exhibitsData = {
-            1: {
-                tag: "Nhiệm vụ 1 (Mục 1.4)",
-                title: "Thao tác cơ bản với tệp tin và thư mục học tập",
-                content: `
-                    <h4>1. Mục tiêu chiến lược</h4>
-                    <p>Thiết lập quy trình tổ chức thông tin học tập khoa học, áp dụng tư duy cấu trúc logic cao nhằm xây dựng không gian lưu trữ trực tuyến an toàn, dễ quản lý và tối ưu thời gian truy xuất tài liệu.</p>
-                    
-                    <h4>2. Sơ đồ cây thư mục học thuật mẫu (ULIS Tree Structure)</h4>
-                    <p>Cấu trúc cây thư mục được chia phân cấp rõ ràng theo năm học và kỳ học chuyên ngành Ngôn ngữ Anh:</p>
-                    <div class="tree-diagram">
-                        ULIS_K59_EnglishDept_NguyenMaiThanhThao/
-                        <div class="tree-indent">01_General_Studies/ (Các môn đại cương)</div>
-                        <div class="tree-indent">
-                            02_English_Linguistics/ (Môn chuyên ngành ngôn ngữ)
-                            <div class="tree-indent" style="padding-left:24px;">01_Phonetics/ (Ngữ âm học)</div>
-                            <div class="tree-indent end" style="padding-left:24px;">02_Syntax_Semantics/ (Cú pháp - Ngữ nghĩa)</div>
-                        </div>
-                        <div class="tree-indent">
-                            03_Digital_Tech_Course/ (Học phần Công nghệ số & AI)
-                            <div class="tree-indent" style="padding-left:24px;">01_Lecture_Materials/</div>
-                            <div class="tree-indent end" style="padding-left:24px;">
-                                02_Portfolio_Projects/
-                                <div class="tree-indent end" style="padding-left:24px;">assets_images/ (Thư mục tài nguyên hình ảnh màu nước)</div>
-                            </div>
-                        </div>
-                        <div class="tree-indent end">04_Extracurricular_Activities/</div>
-                    </div>
+                <h4>Quy tắc đặt tên tệp nâng cao (Naming Convention)</h4>
+                <p>Áp dụng thống nhất quy ước kết hợp để tránh lỗi giải mã ký tự đặc biệt trên máy chủ Linux/Windows và hỗ trợ sắp xếp theo thời gian:</p>
+                <code style="color: var(--accent-purple); font-weight: 600; display: block; background: rgba(83, 76, 159, 0.05); padding: 0.8rem; border-radius: 8px; margin-bottom: 1rem;">
+                    [YYYYMMDD]_[MaMon]_[TenNhiemVu]_[HoTen]_[Version].pdf
+                    <br>Ví dụ: 20261115_ARTI2026_BT1_NguyenMaiThanhThao_v2.0.pdf
+                </code>
+                <p><em>Phân tích chiều sâu:</em> Việc duy trì cây thư mục và quy tắc đặt tên khoa học giúp tiết kiệm thời gian cộng tác nhóm lên đến 30% và đảm bảo tính thống nhất trong quản trị tài liệu trực tuyến suốt 4 năm đại học.</p>
+            `,
+            2: `
+                <h3>Bài 2: Tìm kiếm và đánh giá thông tin học thuật</h3>
+                <p><strong>Mục tiêu:</strong> Làm chủ các kỹ thuật khai phá tri thức chất lượng cao trên các thư viện điện tử uy tín, sàng lọc dữ liệu chính xác hỗ trợ viết bài luận khoa học.</p>
+                
+                <h4>Chiến lược truy vấn nâng cao (Phối hợp đa toán tử)</h4>
+                <p>Sử dụng kết hợp hơn 4 toán tử tìm kiếm chuyên biệt để lọc bỏ tạp âm thông tin trên Google Scholar:</p>
+                <code style="color: var(--accent-purple); font-weight: 600; display: block; background: rgba(83, 76, 159, 0.05); padding: 0.8rem; border-radius: 8px; margin-bottom: 1rem;">
+                    ("cognitive linguistics" OR "conceptual metaphor") AND "language learning" site:edu filetype:pdf -commercial
+                </code>
 
-                    <h4>3. Quy tắc đặt tên tệp tin khoa học</h4>
-                    <p>Quy tắc kết hợp Snake_case để đảm bảo tính nhất quán trên mọi nền tảng hệ điều hành lưu trữ đám mây:</p>
-                    <p style="font-family: monospace; background: rgba(61, 64, 118, 0.05); padding: 0.8rem; border-radius: 8px; color: var(--color-indigo);">
-                        [MãLớp]_[MSSV]_[HọTên]_[TênNhiệmVụ]_[PhiênBản].[ĐuôiMởRộng]<br>
-                        Ví dụ: K59NNA_25040190_NguyenMaiThanhThao_BaiTap1_v1.0.pdf
-                    </p>
-                    <p style="font-style: italic;">Phân tích sâu sắc: Việc tổ chức dữ liệu theo chuẩn này không chỉ loại bỏ 45% thời gian tìm kiếm mà còn đảm bảo dữ liệu luôn được định vị chính xác khi chia sẻ làm việc nhóm trực tuyến.</p>
-                `
-            },
-            2: {
-                tag: "Nhiệm vụ 2 (Mục 2.4)",
-                title: "Khai phá tri thức và Đánh giá nguồn lực học thuật",
-                content: `
-                    <h4>1. Chiến lược xây dựng chuỗi truy vấn nâng cao</h4>
-                    <p>Để tìm kiếm tài liệu nghiên cứu phục vụ môn Ngôn ngữ học Anh chất lượng cao, tôi đã ứng dụng đồng thời trên 4 toán tử tìm kiếm chuyên nghiệp:</p>
-                    <p style="font-family: monospace; background: rgba(61, 64, 118, 0.05); padding: 0.8rem; border-radius: 8px; color: var(--color-indigo);">
-                        "artificial intelligence" AND "second language acquisition" site:edu filetype:pdf -translation
-                    </p>
+                <h4>Bảng đánh giá tài liệu khoa học theo mô hình CRAAP</h4>
+                <table class="modal-table">
+                    <thead>
+                        <tr>
+                            <th>Tiêu chí đánh giá</th>
+                            <th>Nguồn A (Tạp chí quốc tế phản biện Q1)</th>
+                            <th>Nguồn B (Bài viết blog của trung tâm Anh ngữ)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Currency</strong> (Thời gian)</td>
+                            <td>Xuất bản năm 2025. Cực kỳ cập nhật xu thế mới.</td>
+                            <td>Đăng năm 2020. Nhiều phương pháp đã lỗi thời.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Relevance</strong> (Sự liên quan)</td>
+                            <td>Giải quyết trực tiếp khó khăn của sinh viên ngôn ngữ.</td>
+                            <td>Phân tích chung chung nhằm mục đích giới thiệu dịch vụ.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Authority</strong> (Tác giả)</td>
+                            <td>Nghiên cứu của Giáo sư ngôn ngữ học ĐH Oxford.</td>
+                            <td>Nhóm content writer ẩn danh viết lại từ internet.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Accuracy</strong> (Độ chính xác)</td>
+                            <td>Có dữ liệu khảo sát 500 sinh viên, trích dẫn khoa học.</td>
+                            <td>Nhiều suy đoán cảm tính, hoàn toàn không có thư mục nguồn.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Purpose</strong> (Mục đích)</td>
+                            <td>Phát triển tri thức khoa học giáo dục phi lợi nhuận.</td>
+                            <td>Mục đích tiếp thị, lôi kéo học viên mua khóa học trực tuyến.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><em>Kết luận:</em> Đảm bảo chỉ trích dẫn các tài liệu đạt tối thiểu 4/5 tiêu chí CRAAP loại A nhằm đảm bảo độ tin cậy tuyệt đối của các lập luận khoa học trong bài nghiên cứu chuyên ngành.</p>
+            `,
+            3: `
+                <h3>Bài 3: Viết Prompt hiệu quả cho các tác vụ học tập</h3>
+                <p><strong>Mục tiêu:</strong> Ứng dụng kỹ nghệ Prompt (Prompt Engineering) để cá nhân hóa việc học tập, biến mô hình ngôn ngữ lớn (LLM) thành người trợ lý dịch thuật và phản biện học thuật thông minh.</p>
+                
+                <div class="modal-prompt-split">
+                    <div class="modal-prompt-card red">
+                        <strong style="color: #db2777;">Prompt thông thường (Chưa tối ưu)</strong>
+                        <p style="margin-top: 0.5rem; font-family: monospace; font-size: 0.85rem;">"Hãy tóm tắt bài báo khoa học này bằng tiếng Anh giúp tôi để viết tiểu luận."</p>
+                        <p style="font-size: 0.8rem; margin-top: 0.5rem; font-style: italic;">Hạn chế: Kết quả trả về thiếu trọng tâm học thuật, cấu trúc lỏng lẻo, dùng nhiều từ vựng quá phổ thông.</p>
+                    </div>
+                    <div class="modal-prompt-card green">
+                        <strong style="color: #059669;">Prompt tối ưu học thuật (Đạt Mức 4)</strong>
+                        <p style="margin-top: 0.5rem; font-family: monospace; font-size: 0.85rem;">"Bạn là một chuyên gia nghiên cứu ngôn ngữ học ứng dụng (Role). Hãy viết bản tóm tắt học thuật (Executive Summary) dài 300 từ của bài nghiên cứu đính kèm (Task), tập trung phân tích sâu vào phương pháp nghiên cứu (Methodology) và kết luận chính (Context). Sử dụng định dạng gạch đầu dòng cấu trúc rõ ràng, văn phong trang trọng học thuật (Format & Tone)."</p>
+                    </div>
+                </div>
+                
+                <h4>Phân tích cơ chế kỹ thuật</h4>
+                <p>Việc áp dụng các biến số cấu trúc rõ ràng (Role, Context, Target, Format) giúp định hình "Không gian ngữ cảnh" (Context Window) của AI. Khi AI được định hướng trong một vai trò hàn lâm có trình độ chuyên môn cao, thuật toán xác xuất từ vựng sẽ tự động lựa chọn các cấu trúc từ vựng ở cấp độ chuyên sâu (Academic Word List) thay vì ngôn ngữ giao tiếp hằng ngày, giảm thiểu 90% lỗi sai lệch lập luận.</p>
+            `,
+            4: `
+                <h3>Bài 4: Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm</h3>
+                <p><strong>Mục tiêu:</strong> Làm chủ kỹ năng quản lý dự án số, tối ưu hóa sự phối hợp của các thành viên trong các dự án dịch thuật học thuật phức tạp thông qua mô hình quản lý hiện đại.</p>
+                
+                <h4>Mô hình Kanban số hóa tối ưu quy trình cộng tác</h4>
+                <div class="modal-kanban">
+                    <div class="modal-kanban-col">
+                        <div class="modal-kanban-title" style="color: #b91c1c;">📋 Lên kế hoạch</div>
+                        <div class="modal-kanban-card">
+                            <strong>Biên tập bản thảo chương 4</strong>
+                            <p style="margin-top: 0.3rem; font-size: 0.75rem; color: var(--text-muted);">Phân công: Nam (Dịch giả)</p>
+                        </div>
+                    </div>
+                    <div class="modal-kanban-col">
+                        <div class="modal-kanban-title" style="color: #1d4ed8;">⚡ Đang xử lý</div>
+                        <div class="modal-kanban-card">
+                            <strong>Hiệu đính ngữ nghĩa học thuật</strong>
+                            <p style="margin-top: 0.3rem; font-size: 0.75rem; color: var(--text-muted);">Phân công: Thảo (Lead)</p>
+                        </div>
+                    </div>
+                    <div class="modal-kanban-col">
+                        <div class="modal-kanban-title" style="color: #047857;">🎯 Hoàn tất</div>
+                        <div class="modal-kanban-card">
+                            <strong>Thiết lập cấu trúc chương 1-3</strong>
+                            <p style="margin-top: 0.3rem; font-size: 0.75rem; color: var(--text-muted);">Phân công: Cả nhóm</p>
+                        </div>
+                    </div>
+                </div>
 
-                    <h4>2. Bảng phân tích và đánh giá nguồn lực theo mô hình CRAAP</h4>
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Tiêu chí CRAAP</th>
-                                <th>Nguồn A: Tạp chí KH Oxford Academic</th>
-                                <th>Nguồn B: Bài báo mạng phổ thông</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Currency</strong> (Cập nhật)</td>
-                                <td>Xuất bản năm 2025, phản ánh đúng cơ chế GPT-4o. (Đạt)</td>
-                                <td>Năm 2021, trước thời đại GenAI bùng nổ. (Không đạt)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Relevance</strong> (Phù hợp)</td>
-                                <td>Phân tích trực tiếp tác động tới sinh viên học viết tiếng Anh. (Đạt)</td>
-                                <td>Nói chung về tự động hóa công nghệ thông tin. (Không đạt)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Authority</strong> (Uy tín)</td>
-                                <td>Tác giả là Giáo sư Ngôn ngữ học ứng dụng hàng đầu. (Đạt)</td>
-                                <td>Blogger viết tự do không công khai danh tính khoa học. (Không đạt)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Accuracy</strong> (Chính xác)</td>
-                                <td>Có dữ liệu nghiên cứu thực nghiệm rõ ràng. (Đạt)</td>
-                                <td>Các tuyên bố mang tính giả thuyết cá nhân. (Không đạt)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Purpose</strong> (Mục đích)</td>
-                                <td>Nghiên cứu học thuật thuần túy phi lợi nhuận. (Đạt)</td>
-                                <td>Mục đích tiếp thị khóa học dịch vụ bên thứ ba. (Không đạt)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p style="font-style: italic;">Nhận thức chuyên sâu: Việc ứng dụng CRAAP giúp bảo vệ công trình nghiên cứu cá nhân khỏi hiện tượng tin tức giả mạo, nâng tầm độ tin cậy của mọi tài liệu tham khảo dịch thuật khoa học.</p>
-                `
-            },
-            3: {
-                tag: "Nhiệm vụ 3 (Mục 3.4)",
-                title: "Nghệ thuật Thiết kế Prompt cho Tác vụ Học thuật",
-                content: `
-                    <h4>1. Nguyên tắc Kỹ nghệ Prompt (Prompt Engineering)</h4>
-                    <p>Ứng dụng triệt để mô hình kết hợp có cấu trúc nhằm khai thác tối đa năng lực lập luận ngữ cảnh của Mô hình ngôn ngữ lớn (LLM):</p>
-                    
-                    <div class="prompt-split">
-                        <div class="prompt-col bad">
-                            <div class="prompt-col-title red">Prompt nguyên bản (Thiếu cấu trúc)</div>
-                            <p style="font-family: monospace; font-size: 0.85rem;">"Dịch hộ bài luận tiếng Anh này sang tiếng Việt nghệ thuật."</p>
-                            <p style="font-size: 0.8rem; margin-top: 10px; color: var(--color-muted);">
-                                <em>Kết quả: Bản dịch thô cứng, dịch từng từ (word-by-word) không giữ được tính lãng mạn văn chương.</em>
-                            </p>
-                        </div>
-                        <div class="prompt-col good">
-                            <div class="prompt-col-title blue">Prompt nâng cao (Monet Style)</div>
-                            <p style="font-family: monospace; font-size: 0.85rem; color: var(--color-indigo);">
-                                "Bạn là chuyên gia dịch thuật văn chương ưu tú giàu kinh nghiệm Anh-Việt. Hãy dịch đoạn trích sau sang tiếng Việt trang trọng. Lưu ý sử dụng ngôn từ bay bổng, uyển chuyển phù hợp với bối cảnh văn học lãng mạn, đồng thời bảo đảm ngữ nghĩa học thuật nguyên tác chính xác."
-                            </p>
-                            <p style="font-size: 0.8rem; margin-top: 10px; color: var(--color-muted);">
-                                <em>Kết quả: Bản dịch đạt chất lượng cao, giữ được chất "màu nước" nhịp nhàng tựa như nguyên tác văn chương Pháp.</em>
-                            </p>
-                        </div>
+                <h4>Giải pháp cải tiến hiệu năng làm việc từ xa</h4>
+                <p>Bằng việc đồng bộ hóa dữ liệu thời gian thực (Real-time syncing) trên các nền tảng điện toán đám mây như Google Drive/Trello, nhóm nghiên cứu thiết lập các mốc cảnh báo tiến độ tự động (Automated Deadline Reminders). Giải pháp này giúp cắt giảm thời gian họp thảo luận trực tiếp không cần thiết, gia tăng tốc độ phản hồi và điều phối công việc hiệu quả giữa các thành viên.</p>
+            `,
+            5: `
+                <h3>Bài 5: Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung</h3>
+                <p><strong>Mục tiêu:</strong> Ứng dụng khéo léo công cụ Trí tuệ nhân tạo sinh ảnh nghệ thuật để phục vụ việc minh họa nội dung giáo dục số hoặc trang trí giao diện Portfolio mang màu sắc hội họa cổ điển.</p>
+                
+                <h4>Quy trình kỹ thuật tạo lập ảnh màu nước Monet</h4>
+                <p>Tác phẩm minh họa đại dương và sứa phát quang sinh học (Bioluminescence Jellyfish) trong Portfolio này được thực thi qua 3 bước tinh chỉnh mỹ thuật số bài bản:</p>
+                <ol style="margin-left: 1.5rem; color: var(--text-secondary); line-height: 1.8;">
+                    <li><strong>Bước 1 (Xác lập khái niệm):</strong> Thiết lập ý tưởng mỹ thuật - sự giao thoa giữa ánh sáng dưới biển sâu huyền bí và phong cách nét vẽ khuếch tán sơn dầu màu nước của Claude Monet.</li>
+                    <li><strong>Bước 2 (Xây dựng Prompt chuỗi):</strong> Thực thi truy vấn sinh ảnh với cú pháp chuyên sâu: <br>
+                        <code style="display:block; margin: 0.4rem 0; padding: 0.5rem; background: rgba(83, 76, 159, 0.05); border-radius: 6px;">"A delicate watercolor painting in Claude Monet style, soft light reflection, moving thin mist, a glowing cyan jellyfish floating gracefully in the deep navy ocean, diffuse lighting, masterpiece, high details"</code>
+                    </li>
+                    <li><strong>Bước 3 (Tinh chỉnh hậu kỳ):</strong> Đưa hình ảnh đầu ra qua các bộ lọc độ nét (Upscaling) và hiệu chỉnh độ bão hòa màu để tích hợp khớp tuyệt đối với tông giấy trầm ấm của website.</li>
+                </ol>
+            `,
+            6: `
+                <h3>Bài 6: Sử dụng AI có trách nhiệm trong học tập và nghiên cứu</h3>
+                <p><strong>Mục tiêu:</strong> Định hình tư duy phản biện cao, xây dựng bộ chuẩn đạo đức trong việc sử dụng AI học thuật, đảm bảo giữ vững vị thế con người là chủ thể sáng tạo tri thức.</p>
+                
+                <div class="modal-rules-grid">
+                    <div class="modal-rule-item">
+                        <strong style="color: var(--accent-purple);">1. Minh bạch hóa thông tin (Transparency)</strong>
+                        <p style="margin-top: 0.5rem; font-size: 0.85rem;">Luôn khai báo trung thực và cụ thể các phần văn bản hoặc mã nguồn có sự hỗ trợ gợi ý hoặc biên tập từ các công cụ AI trong các công trình học thuật chuyên ngành.</p>
                     </div>
-                    <p style="font-style: italic;">Giải thích cơ chế học máy: Khi áp dụng Prompt có định vị vai trò (Role-play) và bối cảnh cụ thể, ta đã kích hoạt vùng tri thức chuyên sâu của LLM thông qua cơ chế Attention Weights, giúp loại bỏ các từ vựng phổ thông không mong muốn.</p>
-                `
-            },
-            4: {
-                tag: "Nhiệm vụ 4 (Mục 4.4)",
-                title: "Hợp tác đa phương tiện trong Kỷ nguyên số",
-                content: `
-                    <h4>1. Quy trình tối ưu hóa phối hợp nhóm trực tuyến</h4>
-                    <p>Minh họa quy trình quản trị tiến độ nhóm nghiên cứu thông qua hệ thống phân bảng Kanban trực quan hóa tiến độ nhiệm vụ:</p>
-                    
-                    <div class="board-wrap">
-                        <div class="board-column">
-                            <div class="board-col-title" style="color: #f43f5e;">📌 To Do</div>
-                            <div class="board-item">
-                                <strong>Biên dịch chương 3</strong><br>
-                                Người phụ trách: Thảo (Leader)<br>
-                                <span style="font-size:0.7rem; color:#f43f5e; font-weight:700;">Hạn chót: 2 ngày</span>
-                            </div>
-                        </div>
-                        <div class="board-column">
-                            <div class="board-col-title" style="color: #3b82f6;">⏳ In Progress</div>
-                            <div class="board-item">
-                                <strong>Thiết kế slide báo cáo</strong><br>
-                                Người phụ trách: Nam<br>
-                                <span style="font-size:0.7rem; color:#3b82f6; font-weight:700;">Đang thiết kế</span>
-                            </div>
-                        </div>
-                        <div class="board-column">
-                            <div class="board-col-title" style="color: #10b981;">✅ Done</div>
-                            <div class="board-item">
-                                <strong>Xây dựng cơ sở dữ liệu gốc</strong><br>
-                                Người phụ trách: Thảo & Linh<br>
-                                <span style="font-size:0.7rem; color:#10b981; font-weight:700;">Đã nghiệm thu</span>
-                            </div>
-                        </div>
+                    <div class="modal-rule-item">
+                        <strong style="color: var(--accent-purple);">2. Chống Thiên Kiến & Sai Lệch (Fact-checking)</strong>
+                        <p style="margin-top: 0.5rem; font-size: 0.85rem;">Chủ động kiểm chứng chéo mọi dữ liệu trích dẫn từ nguồn học liệu thực tế của các viện nghiên cứu chính thống để loại trừ hoàn toàn các hiện tượng "ảo tưởng" (Hallucination) của mô hình ngôn ngữ lớn.</p>
                     </div>
-                    <p style="font-style: italic;">Phân tích vai trò công cụ: Sử dụng bảng Kanban thời gian thực trực tuyến cải thiện hiệu suất phân vai công việc đến hơn 40%, hạn chế rủi ro trễ hạn nhờ phân định trách nhiệm minh bạch.</p>
-                `
-            },
-            5: {
-                tag: "Nhiệm vụ 5 (Mục 5.4)",
-                title: "Sáng tạo Mỹ thuật số hỗ trợ bởi Generative AI",
-                content: `
-                    <h4>1. Sản phẩm nghệ thuật ứng dụng</h4>
-                    <p>Hình vẽ sứa biển và phong cách gợn nước Monet của không gian Portfolio này được phác thảo ý tưởng thông qua Generative AI với công thức Prompt tối ưu hóa thẩm mỹ nghệ thuật màu nước loang mềm mại:</p>
-                    
-                    <div style="background: rgba(255, 255, 255, 0.4); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(61, 64, 118, 0.1); margin-bottom: 1.5rem;">
-                        <p><strong>Prompt sinh ảnh nghệ thuật:</strong></p>
-                        <p style="font-family: monospace; color: var(--color-indigo); font-size: 0.9rem;">
-                            "An abstract watercolor painting of a glowing bioluminescent jellyfish floating in a calm pond, soft pastel blues, lavender, and gentle beige background, diffused light, in the style of Claude Monet --ar 4:3"
-                        </p>
-                    </div>
+                </div>
 
-                    <h4>2. Quy trình chế tác chi tiết</h4>
-                    <p>Sự kết hợp giữa tư duy con người và trí tuệ nhân tạo được thể hiện qua 3 bước nghiêm ngặt:</p>
-                    <ol style="margin-left: 20px; color: var(--color-muted); line-height: 1.8; font-size: 0.95rem;">
-                        <li><strong>Bước 1: Phác thảo ý tưởng:</strong> Xác lập chủ đề đại dương và trường phái ấn tượng của Monet.</li>
-                        <li><strong>Bước 2: Hiệu chuẩn Prompt:</strong> Sử dụng các thuật ngữ mô tả ánh sáng khuếch tán và màu nước để hướng dẫn AI sinh tác phẩm gốc.</li>
-                        <li><strong>Bước 3: Hậu kỳ & vector hóa:</strong> Trích xuất các nét vẽ tinh xảo thành mã SVG chuyển động động trên website để bảo đảm chất lượng tải trang tốc độ cao.</li>
-                    </ol>
-                `
-            },
-            6: {
-                tag: "Nhiệm vụ 6 (Mục 6.4)",
-                title: "Sử dụng AI có Trách nhiệm & Bản lĩnh Đạo đức",
-                content: `
-                    <h4>1. Tuyên ngôn đạo đức học thuật cá nhân</h4>
-                    <p>Trong tư cách là sinh viên ngành Ngôn ngữ học học thuật, tôi cam kết tuân thủ tuyệt đối 4 trụ cột trách nhiệm số cốt lõi:</p>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.5rem 0;">
-                        <div style="background:#fff; padding:1.2rem; border-radius:12px; border:1px solid rgba(61, 64, 118, 0.05);">
-                            <strong style="color:var(--color-indigo); font-family:var(--font-serif); display:block; margin-bottom:0.5rem;">1. Sự Minh bạch</strong>
-                            <p style="font-size:0.85rem; color:var(--color-muted);">Khai báo công khai mọi tài liệu dịch thuật hoặc luận cứ có sự tham khảo trực tiếp của mô hình ngôn ngữ lớn.</p>
-                        </div>
-                        <div style="background:#fff; padding:1.2rem; border-radius:12px; border:1px solid rgba(61, 64, 118, 0.05);">
-                            <strong style="color:var(--color-indigo); font-family:var(--font-serif); display:block; margin-bottom:0.5rem;">2. Đối chiếu đa phương</strong>
-                            <p style="font-size:0.85rem; color:var(--color-muted);">Tuyệt đối không lấy thông tin từ AI làm kết luận cuối cùng mà không đối chứng bằng tài liệu khoa học chính thống.</p>
-                        </div>
-                        <div style="background:#fff; padding:1.2rem; border-radius:12px; border:1px solid rgba(61, 64, 118, 0.05);">
-                            <strong style="color:var(--color-indigo); font-family:var(--font-serif); display:block; margin-bottom:0.5rem;">3. Bảo vệ bản quyền</strong>
-                            <p style="font-size:0.85rem; color:var(--color-muted);">Tránh sao chép nguyên văn văn phong AI, duy trì tính độc lập cá nhân và bản lĩnh nghiên cứu của chính mình.</p>
-                        </div>
-                        <div style="background:#fff; padding:1.2rem; border-radius:12px; border:1px solid rgba(61, 64, 118, 0.05);">
-                            <strong style="color:var(--color-indigo); font-family:var(--font-serif); display:block; margin-bottom:0.5rem;">4. Tránh thiên kiến</strong>
-                            <p style="font-size:0.85rem; color:var(--color-muted);">Chủ động rà soát loại bỏ các định kiến sắc tộc, giới tính lồng ghép tinh vi trong dữ liệu ngôn ngữ nước ngoài của AI.</p>
-                        </div>
-                    </div>
-                    <p style="font-style: italic;">Kết luận: Sự trưởng thành đích thực của một nhà ngôn ngữ số không nằm ở tốc độ khai thác AI, mà nằm ở bản lĩnh giữ gìn liêm chính học thuật giữa làn sóng công nghệ.</p>
-                `
-            }
+                <h4>Tư duy phản biện trước các thách thức đạo đức học máy</h4>
+                <p>Là sinh viên ngành Ngôn ngữ học, tôi nhận thức sâu sắc rằng các mô hình ngôn ngữ lớn được huấn luyện chủ yếu dựa trên nguồn kho ngữ liệu phương Tây khổng lồ, dễ dẫn đến định kiến văn hóa một chiều trong kết quả phân tích dịch thuật. Vì vậy, người sử dụng cần có nhãn quan phê bình sắc sảo, liên tục hiệu chỉnh các khía cạnh bản sắc văn hóa bản địa khi xuất bản học thuật, tránh việc phụ thuộc máy móc vào tư duy lập trình sẵn của AI.</p>
+            `
         };
 
-        // Modal Toggling Functions
-        const modalOverlay = document.getElementById('modalOverlay');
-        const modalInnerBody = document.getElementById('modalInnerBody');
+        // Modal triggers
+        function openModal(id) {
+            const overlay = document.getElementById('modalOverlay');
+            const content = document.getElementById('modalContent');
+            
+            // Inject content
+            content.innerHTML = modalData[id];
+            
+            // Activate modal view
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Lock background scrolling
+        }
 
-        function openExhibit(id) {
-            const data = exhibitsData[id];
-            if (data) {
-                modalInnerBody.innerHTML = `
-                    <div class="modal-header-tag">${data.tag}</div>
-                    <h3 class="modal-header-title">${data.title}</h3>
-                    <div class="modal-body-content">${data.content}</div>
-                `;
-                toggleModal(true);
+        function closeModal() {
+            const overlay = document.getElementById('modalOverlay');
+            overlay.classList.remove('active');
+            document.body.style.overflow = ''; // Unlock scrolling
+        }
+
+        function closeModalOnOuterClick(event) {
+            const modalWindow = document.querySelector('.modal-window');
+            if (!modalWindow.contains(event.target)) {
+                closeModal();
             }
         }
 
-        function toggleModal(show) {
-            if (show) {
-                modalOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Lock scroll
-            } else {
-                modalOverlay.classList.remove('active');
-                document.body.style.overflow = ''; // Unlock scroll
-            }
-        }
-
-        function closeModal(event) {
-            // Close when clicking outside modal card
-            if (event.target === modalOverlay) {
-                toggleModal(false);
-            }
-        }
-
-        // Active link highlighting on scroll
+        // Active link on scroll behavior
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.nav-links a');
 
