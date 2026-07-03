@@ -202,6 +202,58 @@
             text-shadow: 0 0 8px rgba(192, 132, 252, 0.6);
         }
 
+        /* Dynamic Island Dropdown Menu for "Bài tập" */
+        .dropdown-container {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(18px);
+            background: rgba(9, 9, 11, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 0.6rem;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(192, 132, 252, 0.08);
+            transition: var(--transition-gentle);
+            width: max-content;
+            min-width: 130px;
+            backdrop-filter: blur(16px);
+        }
+
+        /* Hiển thị dropdown khi hover kén chứa */
+        .dropdown-container:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(12px);
+        }
+
+        .dropdown-menu li a {
+            font-size: 0.85rem;
+            color: var(--text-secondary) !important;
+            padding: 0.45rem 1rem;
+            border-radius: 10px;
+            display: block;
+            transition: var(--transition-gentle);
+            text-align: center;
+            text-shadow: none !important;
+        }
+
+        .dropdown-menu li a:hover {
+            background: rgba(192, 132, 252, 0.15);
+            color: var(--accent-purple) !important;
+        }
+
         /* Main Container */
         .container {
             max-width: 1300px;
@@ -332,26 +384,31 @@
             width: 100%;
         }
 
-        /* Free-Floating Cards Fan Container (No more glass border or container) */
+        /* Free-Floating Cards Fan Container */
         .cards-fan-container {
             position: relative;
             width: 100%;
-            height: 480px; /* Tăng chiều cao để chứa thẻ bài lớn hơn */
+            height: 520px; /* Tăng chiều cao lên 520px để thoải mái bao quát thẻ lớn mà không bị cản trở */
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 0;
         }
 
+        /* Huge Portrait cards with Thick Glassmorphic Borders */
         .fan-card {
             position: absolute;
-            width: 250px; /* Tăng từ 195px giúp hiển thị ảnh chân dung lớn và rõ nét */
-            height: 350px; /* Tăng từ 275px */
-            border-radius: 20px;
-            overflow: hidden;
-            background: rgba(15, 23, 42, 0.85);
-            border: 6px solid rgba(255, 255, 255, 0.95); /* Viền thẻ trắng tuyết tương phản tinh tế */
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+            width: 300px; /* Phóng to kích thước vượt trội theo yêu cầu */
+            height: 420px; /* Tỉ lệ thẻ bài cân đối, tinh tế */
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.07);
+            /* Viền kính mờ cực dày tích hợp độ mờ khúc xạ sâu */
+            border: 12px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.10);
+            backdrop-filter: blur(15px);
+            padding: 10px; /* Khoảng đệm kính mờ bao quanh ảnh chân dung */
+            display: flex;
+            flex-direction: column;
             /* Sử dụng cubic-bezier đàn hồi lò xo để xòe bài sinh động */
             transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.45s;
             cursor: pointer;
@@ -361,22 +418,23 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: 12px; /* Bo góc ảnh thẻ bên trong mềm mại */
         }
 
-        /* Sắp đặt góc nghiêng xòe quạt của 2 quân bài */
+        /* Sắp đặt góc nghiêng xòe quạt của 2 quân bài khổng lồ */
         .card-1 {
-            transform: rotate(-10deg) translate(-40px, 10px);
+            transform: rotate(-10deg) translate(-40px, 12px);
             z-index: 1;
         }
 
         .card-2 {
-            transform: rotate(10deg) translate(40px, 10px);
+            transform: rotate(10deg) translate(40px, 12px);
             z-index: 2;
         }
 
         /* Hiệu ứng khi di chuột (Hover) */
         .fan-card:hover {
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.75), 0 0 25px rgba(192, 132, 252, 0.35);
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.75), 0 0 30px rgba(192, 132, 252, 0.35);
         }
 
         /* Thẻ bài 1 dựng thẳng, đẩy lên trên và scale lớn */
@@ -901,9 +959,11 @@
                 height: 380px;
             }
             .fan-card {
-                width: 190px; /* Thu gọn kích thước thẻ trên điện thoại */
-                height: 270px;
-                border: 4px solid rgba(255, 255, 255, 0.95);
+                width: 200px; /* Thu gọn kích thước thẻ bài glassmorphic trên điện thoại */
+                height: 280px;
+                border: 8px solid rgba(255, 255, 255, 0.15);
+                padding: 6px;
+                border-radius: 18px;
             }
             .card-1 {
                 transform: rotate(-10deg) translate(-25px, 5px);
@@ -916,6 +976,10 @@
             }
             .card-2:hover {
                 transform: rotate(2deg) translate(10px, -15px) scale(1.05);
+            }
+            /* Ẩn dropdown menu trên các thiết bị màn hình quá nhỏ để nhường chỗ cho sự kiện click trực tiếp */
+            .dropdown-menu {
+                display: none !important;
             }
         }
     </style>
@@ -966,7 +1030,18 @@
         <div class="island-divider"></div>
         <ul class="nav-links">
             <li><a href="#hero" class="active">Giới thiệu</a></li>
-            <li><a href="#projects">Dự án</a></li>
+            <!-- Dropdown Container for "Bài tập" -->
+            <li class="dropdown-container">
+                <a href="#projects">Bài tập</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#projects" onclick="event.preventDefault(); openModal(1);">Bài tập 1</a></li>
+                    <li><a href="#projects" onclick="event.preventDefault(); openModal(2);">Bài tập 2</a></li>
+                    <li><a href="#projects" onclick="event.preventDefault(); openModal(3);">Bài tập 3</a></li>
+                    <li><a href="#projects" onclick="event.preventDefault(); openModal(4);">Bài tập 4</a></li>
+                    <li><a href="#projects" onclick="event.preventDefault(); openModal(5);">Bài tập 5</a></li>
+                    <li><a href="#projects" onclick="event.preventDefault(); openModal(6);">Bài tập 6</a></li>
+                </ul>
+            </li>
             <li><a href="#conclusion">Tổng kết</a></li>
         </ul>
     </nav>
@@ -992,12 +1067,12 @@
                 </div>
 
                 <div class="btn-group">
-                    <a href="#projects" class="btn-primary">Xem khung bài tập</a>
+                    <a href="#projects" class="btn-primary">Xem bài tập</a>
                     <a href="#student-info" class="btn-secondary">Thông tin sinh viên</a>
                 </div>
             </div>
 
-            <!-- Hero Right Free-Floating Avatar Cards Fan (Xòe bài tú lơ khơ) -->
+            <!-- Hero Right Free-Floating Avatar Cards Fan (Thẻ bài Glassmorphic Khổng lồ) -->
             <div class="art-frame-wrapper">
                 <div class="cards-fan-container">
                     <div class="fan-card card-1">
