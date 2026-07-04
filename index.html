@@ -320,7 +320,7 @@
             top: 100%;
             left: 50%;
             transform: translateX(-50%) translateY(18px);
-            background: rgba(9, 9, 11, 0.9);
+            background: rgba(9, 9, 11, 0.95);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 0.6rem;
@@ -338,12 +338,23 @@
             backdrop-filter: blur(16px);
         }
 
+        /* Cầu nối vô hình giúp giữ trạng thái Hover liên tục không bị mất [1] */
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -20px; /* Bịt kín khoảng trống 12px chết giữa kén và thực đơn */
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: transparent; /* Trong suốt hoàn toàn */
+        }
+
         /* Hiển thị dropdown khi hover kén chứa */
         .dropdown-container:hover .dropdown-menu {
             opacity: 1;
             visibility: visible;
             pointer-events: auto;
-            transform: translateX(-50%) translateY(12px);
+            transform: translateX(-50%) translateY(8px); /* Rút ngắn khoảng cách còn 8px giúp bám chuột tốt hơn */
         }
 
         .dropdown-menu li a {
@@ -469,7 +480,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* Hero Right Spatial Board (Integrated profile only - removed portrait cards) */
+        /* Hero Right Spatial Board (Integrated profile only) */
         .hero-right-spatial-container {
             position: relative;
             width: 100%;
@@ -1420,6 +1431,7 @@
             }
         }
 
+        // Keep projects top scroll helpers
         function rightScrollToTop() {
             const pane = document.querySelector('.exercises-axis-pane');
             if (pane) {
