@@ -30,11 +30,11 @@
             scroll-behavior: smooth;
         }
 
-        /* Khóa cuộn trang mặc định của body để triển khai trục cuộn không gian */
+        /* Khóa cuộn trang mặc định và chuyển nền body sang trong suốt để video hiện lên trên [1] */
         html, body {
             overflow: hidden;
             height: 100vh;
-            background-color: var(--bg-canvas);
+            background-color: transparent; /* Trong suốt để tránh đè video nền [1] */
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: var(--text-primary);
             position: relative;
@@ -69,6 +69,7 @@
             z-index: -2;
             overflow: hidden;
             pointer-events: none;
+            background-color: var(--bg-canvas); /* Màu tối dự phòng ở đây để làm nền lót cho video */
         }
 
         .video-background {
@@ -130,29 +131,30 @@
             scroll-behavior: smooth;
         }
 
-        /* Floating Edge Swipe Indicators */
+        /* Floating Edge Swipe Indicators (TO GẤP ĐÔI & CÓ VIỀN GLASS DÀY) */
         .swipe-indicator {
             position: fixed;
             top: 50%;
             transform: translateY(-50%);
             z-index: 90;
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-            padding: 1.2rem 0.6rem;
+            background: rgba(15, 23, 42, 0.75); /* Đậm nét và đục hơn để tương phản tốt */
+            border: 1.5px solid rgba(255, 255, 255, 0.12); /* Đường viền glass mảnh sắc nét */
+            backdrop-filter: blur(16px);
+            padding: 2.5rem 1.1rem; /* Tăng gấp đôi diện tích đệm để dễ chạm/click */
             cursor: pointer;
             transition: var(--transition-gentle);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 
+                        0 0 25px rgba(192, 132, 252, 0.15); /* Quầng phát sáng tím oải hương mềm mại */
         }
 
         .swipe-indicator span {
-            font-size: 0.72rem;
-            font-weight: 700;
+            font-size: 0.95rem; /* Cỡ chữ to và dễ nhìn hơn hẳn */
+            font-weight: 800; /* Đậm nét tối đa */
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             color: var(--accent-purple);
             writing-mode: vertical-rl;
             text-orientation: mixed;
@@ -161,23 +163,25 @@
 
         .left-indicator {
             left: 0;
-            border-radius: 0 18px 18px 0;
+            border-radius: 0 24px 24px 0;
             border-left: none;
             opacity: 0;
             pointer-events: none;
-            transform: translateY(-50%) translateX(-25px);
+            transform: translateY(-50%) translateX(-40px); /* Khoảng cách trượt ẩn xa hơn */
         }
 
         .right-indicator {
             right: 0;
-            border-radius: 18px 0 0 18px;
+            border-radius: 24px 0 0 24px;
             border-right: none;
             transform: translateY(-50%) translateX(0);
         }
 
         .swipe-indicator:hover {
-            background: rgba(15, 23, 42, 0.85);
-            box-shadow: 0 0 15px rgba(192, 132, 252, 0.2);
+            background: rgba(15, 23, 42, 0.9);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 
+                        0 0 35px rgba(192, 132, 252, 0.35); /* Tăng cường quầng sáng tím khi hover */
+            border-color: var(--accent-purple);
         }
 
         /* Diagonal Art Path Accent */
@@ -1145,7 +1149,7 @@
         </ul>
     </nav>
 
-    <!-- Floating Spatial Swipe Edge Indicators -->
+    <!-- Floating Spatial Swipe Edge Indicators (TO GẤP ĐÔI & CÓ VIỀN GLASS DÀY) -->
     <div class="swipe-indicator left-indicator" onclick="slidePane('left')">
         <span>◀ Giới thiệu</span>
     </div>
@@ -1411,14 +1415,14 @@
                     }
                 });
 
-                // Toggle Floating Swipe Indicators
+                // Toggle Floating Swipe Indicators (Dịch chuyển vị trí rộng hơn cho nút to gấp đôi)
                 leftIndicator.style.opacity = '1';
                 leftIndicator.style.pointerEvents = 'auto';
                 leftIndicator.style.transform = 'translateY(-50%) translateX(0)';
 
                 rightIndicator.style.opacity = '0';
                 rightIndicator.style.pointerEvents = 'none';
-                rightIndicator.style.transform = 'translateY(-50%) translateX(25px)';
+                rightIndicator.style.transform = 'translateY(-50%) translateX(40px)';
             } else {
                 slider.style.transform = 'translateX(0)';
                 currentPane = 'left';
@@ -1429,7 +1433,7 @@
                 // Toggle Floating Swipe Indicators
                 leftIndicator.style.opacity = '0';
                 leftIndicator.style.pointerEvents = 'none';
-                leftIndicator.style.transform = 'translateY(-50%) translateX(-25px)';
+                leftIndicator.style.transform = 'translateY(-50%) translateX(-40px)';
 
                 rightIndicator.style.opacity = '1';
                 rightIndicator.style.pointerEvents = 'auto';
@@ -1613,7 +1617,7 @@
                 <h3>Bài 4: Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm</h3>
                 <p><strong>Mục tiêu:</strong> Làm chủ kỹ năng quản lý dự án số, tối ưu hóa sự phối hợp của các thành viên trong các dự án dịch thuật học thuật phức tạp thông qua mô hình quản lý hiện đại.</p>
                 
-                <h4>Mô hình Kanban số hóa tối ưu quy trình cộng tác</h4>
+                <h4>Mô hình Kanban số hóa tốiưu quy trình cộng tác</h4>
                 <div class="modal-kanban">
                     <div class="modal-kanban-col">
                         <div class="modal-kanban-title" style="color: #f87171;">📋 Lên kế hoạch</div>
