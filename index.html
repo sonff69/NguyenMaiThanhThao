@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Portfolio | Nguyễn Mai Thanh Thảo</title>
-    <!-- Google Fonts (Agbalumo, Cormorant Garamond, Plus Jakarta Sans) -->
+    <!-- Google Fonts including Agbalumo [1] -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -115,7 +115,7 @@
             transform: translateX(0);
         }
 
-        /* Left Pane (Scrolls Vertically: Hero -> Info -> Reflection) */
+        /* Left Pane (Scrolls Vertically: Hero -> Reflection) */
         .vertical-axis-pane {
             width: 100vw;
             height: 100%;
@@ -123,65 +123,13 @@
             scroll-behavior: smooth;
         }
 
-        /* Right Pane (Scrolls Vertically: 6 Cards Gallery) */
+        /* Right Pane (Scrolls Vertically: Gallery grid of exercises) */
         .exercises-axis-pane {
             width: 100vw;
             height: 100%;
             overflow-y: auto;
             scroll-behavior: smooth;
-        }
-
-        /* Floating Edge Swipe Indicators (TO GẤP ĐÔI & CÓ VIỀN GLASS DÀY) */
-        .swipe-indicator {
-            position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 90;
-            background: rgba(15, 23, 42, 0.75); /* Đậm nét và đục hơn để tương phản tốt */
-            border: 1.5px solid rgba(255, 255, 255, 0.12); /* Đường viền glass mảnh sắc nét */
-            backdrop-filter: blur(16px);
-            padding: 2.5rem 1.1rem; /* Tăng gấp đôi diện tích đệm để dễ chạm/click */
-            cursor: pointer;
-            transition: var(--transition-gentle);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 
-                        0 0 25px rgba(192, 132, 252, 0.15); /* Quầng phát sáng tím oải hương mềm mại */
-        }
-
-        .swipe-indicator span {
-            font-size: 0.95rem; /* Cỡ chữ to và dễ nhìn hơn hẳn */
-            font-weight: 800; /* Đậm nét tối đa */
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent-purple);
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            user-select: none;
-        }
-
-        .left-indicator {
-            left: 0;
-            border-radius: 0 24px 24px 0;
-            border-left: none;
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(-50%) translateX(-40px); /* Khoảng cách trượt ẩn xa hơn */
-        }
-
-        .right-indicator {
-            right: 0;
-            border-radius: 24px 0 0 24px;
-            border-right: none;
-            transform: translateY(-50%) translateX(0);
-        }
-
-        .swipe-indicator:hover {
-            background: rgba(15, 23, 42, 0.9);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 
-                        0 0 35px rgba(192, 132, 252, 0.35); /* Tăng cường quầng sáng tím khi hover */
-            border-color: var(--accent-purple);
+            background: transparent;
         }
 
         /* Diagonal Art Path Accent */
@@ -252,7 +200,7 @@
             100% { transform: translate(250px, -40px) scale(1); opacity: 0; }
         }
 
-        /* Dynamic Island Navigation Bar (Centered & Pill-shaped) */
+        /* Dynamic Island Navigation Bar */
         nav {
             position: fixed;
             top: 1.8rem;
@@ -264,11 +212,11 @@
             gap: 1.8rem;
             padding: 0.75rem 2rem;
             background: rgba(9, 9, 11, 0.75); /* Nền tối mờ nhẹ */
-            backdrop-filter: blur(16px); /* Làm mượt lớp nền phía sau */
+            backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 100px; /* Định hình dạng kén hoàn hảo */
+            border-radius: 100px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 
-                        0 0 30px rgba(192, 132, 252, 0.08); /* Ánh sáng hào quang oải hương nhẹ */
+                        0 0 30px rgba(192, 132, 252, 0.08);
             transition: var(--transition-gentle);
             width: max-content;
             max-width: 92%;
@@ -337,7 +285,6 @@
             backdrop-filter: blur(16px);
         }
 
-        /* Hiển thị dropdown khi hover kén chứa */
         .dropdown-container:hover .dropdown-menu {
             opacity: 1;
             visibility: visible;
@@ -361,6 +308,59 @@
             color: var(--accent-purple) !important;
         }
 
+        /* Floating Edge Swipe Indicators (TO GẤP ĐÔI & CÓ VIỀN GLASS DÀY) */
+        .swipe-indicator {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 90;
+            background: rgba(15, 23, 42, 0.75);
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(16px);
+            padding: 2.5rem 1.1rem;
+            cursor: pointer;
+            transition: var(--transition-gentle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 
+                        0 0 25px rgba(192, 132, 252, 0.15);
+        }
+
+        .swipe-indicator span {
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-purple);
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            user-select: none;
+        }
+
+        .left-indicator {
+            left: 0;
+            border-radius: 0 24px 24px 0;
+            border-left: none;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-50%) translateX(-40px);
+        }
+
+        .right-indicator {
+            right: 0;
+            border-radius: 24px 0 0 24px;
+            border-right: none;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        .swipe-indicator:hover {
+            background: rgba(15, 23, 42, 0.9);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 
+                        0 0 35px rgba(192, 132, 252, 0.35);
+            border-color: var(--accent-purple);
+        }
+
         /* Section Container */
         .container {
             max-width: 1300px;
@@ -368,12 +368,12 @@
             padding: 0 5%;
         }
 
-        /* Hero Section */
+        /* Hero Section (Re-designed with new spatial layout) */
         #hero {
             padding-top: 10rem;
             min-height: 100vh;
             display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
+            grid-template-columns: 1.1fr 0.9fr;
             gap: 4rem;
             align-items: center;
         }
@@ -383,217 +383,127 @@
             flex-direction: column;
         }
 
-        .hero-college-tag {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            color: var(--accent-purple);
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-        }
-
         .hero-subtitle {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            color: var(--accent-purple);
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(192, 132, 252, 0.2);
         }
 
-        /* Layered Name Typography Section (Agbalumo font) */
-        .name-container {
-            position: relative;
-            margin-bottom: 1.5rem;
-        }
-
-        .name-bg {
-            position: absolute;
-            top: -15px;
-            left: -10px;
-            font-family: 'Agbalumo', cursive;
-            font-size: 5.5rem;
-            color: rgba(255, 255, 255, 0.08); /* Chữ in bóng mờ phía sau */
-            font-weight: 900;
-            letter-spacing: -2px;
-            line-height: 1;
-            user-select: none;
-            white-space: nowrap;
-            text-transform: uppercase;
-        }
-
+        /* Heading Name using Agbalumo Google Font [1] */
         .hero-name {
-            font-family: 'Agbalumo', cursive; /* Đổi sang font Agbalumo theo yêu cầu */
-            font-size: 3.8rem;
-            line-height: 1.15;
+            font-family: 'Agbalumo', cursive, system-ui;
+            font-size: 4.8rem;
+            line-height: 1.1;
+            font-weight: 400;
             color: var(--text-primary);
-            position: relative;
-            z-index: 2;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 35px rgba(255, 255, 255, 0.35), 0 0 70px rgba(192, 132, 252, 0.15);
         }
 
         .hero-desc {
             color: var(--text-secondary);
-            font-size: 1.05rem;
-            line-height: 1.7;
-            max-width: 520px;
-            margin-bottom: 1.8rem;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Glass blur intro box */
-        .intro-box-blur {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 1.2rem 1.6rem;
-            backdrop-filter: blur(12px);
-            margin-bottom: 2rem;
-            max-width: 520px;
-            color: #ffffff;
-            font-size: 0.95rem;
+            font-size: 1rem;
             line-height: 1.6;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            max-width: 520px;
+            margin-bottom: 1.5rem;
         }
 
-        /* Contact capsule on bottom left */
-        .contact-capsule {
-            align-self: flex-start;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 50px;
-            padding: 0.6rem 1.4rem;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            backdrop-filter: blur(8px);
-            margin-top: 2rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-        }
-
-        .contact-capsule svg {
-            color: var(--accent-purple);
-        }
-
-        /* Hero Right Outer Wrapper */
-        .art-frame-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-        }
-
-        /* Cohesive Credentials Dashboard Container */
-        .hero-right-dashboard {
-            position: relative;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .profile-header-bar {
-            width: 100%;
+        /* Giới thiệu gì đó (chữ trắng, nền box mờ) */
+        .intro-glass-box {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 50px;
-            padding: 0.6rem 1.5rem;
-            backdrop-filter: blur(12px);
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--accent-purple);
-            text-align: center;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(24px);
+            border-radius: 20px;
+            padding: 1.2rem 1.6rem;
+            margin-bottom: 1.5rem;
+            max-width: 520px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
         }
 
-        /* Grid layout for the metadata cards behind the fanned photos */
-        .dashboard-grid-container {
-            position: relative;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            padding: 0.5rem 0;
-        }
-
-        .dash-card {
-            background: rgba(15, 23, 42, 0.45);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 1.6rem 1.4rem;
-            backdrop-filter: blur(20px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            min-height: 125px;
-            z-index: 1; /* Nằm dưới lớp xòe bài */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: var(--transition-gentle);
-        }
-
-        .dash-card:hover {
-            border-color: rgba(192, 132, 252, 0.25);
-            transform: scale(1.02);
-        }
-
-        .dash-card-label {
+        .intro-box-title {
+            display: block;
             font-size: 0.72rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            color: var(--accent-purple);
             margin-bottom: 0.4rem;
         }
 
-        .dash-card-value {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #ffffff;
-            line-height: 1.25;
+        .intro-glass-box p {
+            color: var(--text-primary);
+            font-size: 0.92rem;
+            line-height: 1.6;
         }
 
-        /* Free-Floating Cards Fan Container overlapping the grid */
-        .cards-fan-container {
+        /* Gmail cá nhân hay j đó của mình */
+        .contact-glass-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            width: max-content;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-icon {
+            color: var(--accent-purple);
+            font-size: 1rem;
+        }
+
+        .contact-text {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            letter-spacing: 0.5px;
+        }
+
+        /* Hero Right Spatial Board (Integrated profile and photos) */
+        .hero-right-spatial-container {
+            position: relative;
+            width: 100%;
+            height: 540px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Background Fanned Photo Cards (Embedded behind widgets) */
+        .cards-fan-container-embedded {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 100%;
             height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            pointer-events: none; /* Cho phép click xuyên qua nếu chạm khoảng không */
-            z-index: 5; /* Cao hơn 4 thẻ meta để đè lên trung tâm */
+            z-index: 1; /* Nằm dưới các widget Profile tĩnh */
         }
 
-        /* Huge Portrait cards with Thick Glassmorphic Borders (Polaroid Style) */
         .fan-card {
             position: absolute;
-            width: 240px; /* Điều chỉnh lại kích thước để vừa vặn đè lên trung tâm lưới */
-            height: 336px;
+            width: 300px;
+            height: 420px;
             border-radius: 24px;
             background: rgba(255, 255, 255, 0.07);
-            /* Viền kính mờ dày tích hợp làm mờ và phản chiếu */
-            border: 12px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), inset 0 0 15px rgba(255, 255, 255, 0.10);
+            border: 12px solid rgba(255, 255, 255, 0.15); /* Viền kính mờ dày */
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.10);
             backdrop-filter: blur(15px);
-            padding: 10px; /* Khoảng đệm kính bao quanh ảnh chân dung */
+            padding: 10px;
             display: flex;
             flex-direction: column;
-            /* Lực đẩy lò xo cubic-bezier */
             transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.45s;
             cursor: pointer;
-            pointer-events: auto; /* Bật lại tương tác riêng cho thẻ bài */
         }
 
         .fan-card img {
@@ -603,30 +513,93 @@
             border-radius: 12px;
         }
 
-        /* Góc xòe tĩnh */
         .card-1 {
-            transform: rotate(-10deg) translate(-35px, 12px);
+            transform: rotate(-10deg) translate(-45px, 20px);
             z-index: 1;
         }
 
         .card-2 {
-            transform: rotate(10deg) translate(35px, 12px);
+            transform: rotate(10deg) translate(45px, 20px);
             z-index: 2;
         }
 
-        /* Hover */
         .fan-card:hover {
             box-shadow: 0 35px 70px rgba(0, 0, 0, 0.75), 0 0 30px rgba(192, 132, 252, 0.35);
         }
 
-        /* Thẻ bài 1 dựng thẳng, đẩy lên trên và scale lớn */
+        /* Khi di chuột, ảnh thẻ tự động vươn lên trên cùng (z-index: 10) đè lên các Widget */
         .card-1:hover {
             transform: rotate(-2deg) translate(-20px, -30px) scale(1.08);
         }
 
-        /* Thẻ bài 2 dựng thẳng, đẩy lên trên và scale lớn */
         .card-2:hover {
             transform: rotate(2deg) translate(20px, -30px) scale(1.08);
+        }
+
+        /* Widgets Profile Board Overlay on Right Side */
+        .profile-widgets-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            pointer-events: none; /* Cho phép sự kiện click xuyên qua tới các ảnh bên dưới */
+            z-index: 3; /* Nằm trên ảnh tĩnh mặc định */
+        }
+
+        .widget-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            border-radius: 18px;
+            padding: 0.8rem 1.4rem;
+            transition: var(--transition-gentle);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+            pointer-events: auto; /* Kích hoạt lại tương tác riêng cho từng Widget */
+            cursor: pointer;
+        }
+
+        .widget-card:hover {
+            background: rgba(15, 23, 42, 0.85);
+            border-color: var(--accent-purple);
+            transform: scale(1.04);
+            box-shadow: 0 15px 35px rgba(124, 58, 237, 0.25);
+        }
+
+        .widget-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        .widget-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        /* 1. Profile (Top wide capsule) */
+        .wide-card {
+            width: 100%;
+            align-self: center;
+        }
+
+        /* 2x2 Grid of Profile Cards */
+        .widgets-grid-2x2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            width: 100%;
+            margin-top: auto;
         }
 
         /* Section Title Style */
@@ -652,15 +625,6 @@
             font-weight: 700;
             line-height: 1.1;
             color: var(--text-primary);
-        }
-
-        /* Profile section (Alternate detailed view for scrolling vertical pane) */
-        #student-info {
-            padding-top: 6rem;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
 
         /* Exercises Gallery Section */
@@ -1055,20 +1019,28 @@
         @media (max-width: 768px) {
             #hero {
                 grid-template-columns: 1fr;
-                padding-top: 8rem;
-                gap: 3rem;
                 text-align: center;
+                gap: 4rem;
+                padding-top: 12rem;
             }
-            .name-container {
-                display: flex;
-                justify-content: center;
+            .contact-glass-pill {
+                margin-left: auto;
+                margin-right: auto;
             }
-            .name-bg {
-                left: 50%;
-                transform: translateX(-50%);
+            .intro-glass-box {
+                margin-left: auto;
+                margin-right: auto;
             }
-            .contact-capsule {
-                align-self: center;
+            .hero-right-spatial-container {
+                height: 520px;
+            }
+            .fan-card {
+                width: 220px;
+                height: 300px;
+            }
+            .widgets-grid-2x2 {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.8rem;
             }
             .section-header-panel {
                 flex-direction: column;
@@ -1090,11 +1062,6 @@
             }
             .modal-kanban {
                 grid-template-columns: 1fr;
-            }
-            .dashboard-grid-container {
-                grid-template-columns: 1fr 1fr;
-                gap: 1rem;
-                height: 520px;
             }
         }
 
@@ -1139,8 +1106,30 @@
             .dropdown-menu {
                 display: none !important;
             }
-            .dashboard-grid-container {
+            .widgets-grid-2x2 {
+                grid-template-columns: 1fr;
+            }
+            .hero-right-spatial-container {
+                height: auto;
+                gap: 1rem;
+            }
+            .profile-widgets-overlay {
+                position: relative;
+                height: auto;
+                gap: 1rem;
+            }
+            .cards-fan-container-embedded {
+                position: relative;
+                transform: none;
+                left: 0;
+                top: 0;
                 height: 400px;
+            }
+            .card-1 {
+                left: 10%;
+            }
+            .card-2 {
+                right: 10%;
             }
         }
     </style>
@@ -1219,115 +1208,84 @@
     <div class="viewport-wrapper">
         <div class="spatial-axis-horizontal">
             
-            <!-- Left Pane (Vertical scrolling: Hero -> Info -> Reflection) -->
+            <!-- Left Pane (Vertical scrolling: Hero -> Reflection) -->
             <div class="vertical-axis-pane">
                 
-                <!-- Hero Section -->
+                <!-- Hero Section (Re-designed) -->
                 <section id="hero" class="container">
+                    
+                    <!-- Hero Left (New Sketch Layout) -->
                     <div class="hero-left">
-                        <span class="hero-college-tag">ULIS_DHQGHN</span>
-                        <span class="hero-subtitle">Monet-Inspired Portfolio</span>
+                        <span class="hero-subtitle">ULIS_DHQGHN • MONET-INSPIRED PORTFOLIO</span>
+                        <h1 class="hero-name">Nguyễn Mai<br>Thanh Thảo</h1>
                         
-                        <!-- Layered Name Section (Agbalumo font) -->
-                        <div class="name-container">
-                            <div class="name-bg">NGUYỄN MAI</div>
-                            <h1 class="hero-name">Nguyễn Mai Thanh Thảo</h1>
+                        <p class="hero-desc">
+                            Một không gian portfolio mang cảm giác tranh màu nước ấn tượng: ánh sáng khuếch tán, mặt nước phản chiếu, sương mỏng chuyển động và bố cục tối giản như một gallery cá nhân.
+                        </p>
+
+                        <!-- Giới thiệu gì đó (chữ trắng, nền box mờ) -->
+                        <div class="intro-glass-box">
+                            <span class="intro-box-title">Định hướng & Mục tiêu</span>
+                            <p>Tối ưu hóa tiềm năng của Trí tuệ nhân tạo để hỗ trợ dịch thuật học thuật khoa học, nghiên cứu dữ liệu ngôn ngữ ứng dụng và thiết lập các quy trình số hóa tư liệu hiệu quả.</p>
                         </div>
 
-                        <p class="hero-desc">Một không gian portfolio mang cảm giác tranh màu nước ấn tượng: ánh sáng khuếch tán, mặt nước phản chiếu, sương mỏng chuyển động và bố cục tối giản như một gallery cá nhân.</p>
-                        
-                        <!-- Glassmorphic Intro Text Box (Chữ trắng, nền box mờ) -->
-                        <div class="intro-box-blur">
-                            Khát khao học hỏi, tích lũy tri thức số và làm chủ các mô hình Trí tuệ nhân tạo (AI) ứng dụng sáng tạo trong nghiên cứu học thuật ngôn ngữ Anh.
-                        </div>
-
-                        <div class="badge-container">
-                            <span class="badge-pill">NNA2504</span>
-                            <span class="badge-pill">ULIS - VNU</span>
-                            <span class="badge-pill">AI & Tech</span>
+                        <!-- Gmail cá nhân hay j đó của mình -->
+                        <div class="contact-glass-pill">
+                            <span class="contact-icon">✉</span>
+                            <span class="contact-text">thanhthao2504@gmail.com</span>
                         </div>
 
                         <div class="btn-group">
                             <a href="#projects" class="btn-primary" onclick="event.preventDefault(); slidePane('right');">Xem bài tập</a>
-                            <a href="#student-info" class="btn-secondary" onclick="event.preventDefault(); leftScrollTo('student-info');">Thông tin sinh viên</a>
-                        </div>
-
-                        <!-- Gmail contact capsule on bottom left -->
-                        <div class="contact-capsule">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                            <span>thao.nguyenmai@ulis.vnu.edu.vn</span>
+                            <a href="#conclusion" class="btn-secondary" onclick="event.preventDefault(); leftScrollTo('conclusion');">Xem tổng kết</a>
                         </div>
                     </div>
 
-                    <!-- Hero Right Cohesive Credentials Dashboard -->
+                    <!-- Hero Right (New Profile Widgets Grid Overlay on top of large cards) -->
                     <div class="art-frame-wrapper">
-                        <div class="hero-right-dashboard">
-                            <!-- Header bar -->
-                            <div class="profile-header-bar">
-                                1. Profile & Academic Credentials
-                            </div>
+                        <div class="hero-right-spatial-container">
                             
-                            <!-- 2x2 Grid Background with overlapping cards fan -->
-                            <div class="dashboard-grid-container">
-                                <div class="dash-card">
-                                    <span class="dash-card-label">Họ tên</span>
-                                    <span class="dash-card-value">Nguyễn Mai Thanh Thảo</span>
+                            <!-- Background Fanned Photo Cards -->
+                            <div class="cards-fan-container-embedded">
+                                <div class="fan-card card-1">
+                                    <img src="Hình 1.jpg" alt="Thanh Thảo Photo 1">
                                 </div>
-                                <div class="dash-card">
-                                    <span class="dash-card-label">Mã sinh viên</span>
-                                    <span class="dash-card-value">25040190</span>
-                                </div>
-                                <div class="dash-card">
-                                    <span class="dash-card-label">Trường</span>
-                                    <span class="dash-card-value">ĐH Ngoại ngữ ĐHQGHN</span>
-                                </div>
-                                <div class="dash-card">
-                                    <span class="dash-card-label">Ngành học</span>
-                                    <span class="dash-card-value">Ngôn ngữ Anh</span>
-                                </div>
-
-                                <!-- Absolute Floating Cards Fan (Overlapping center) -->
-                                <div class="cards-fan-container">
-                                    <div class="fan-card card-1">
-                                        <img src="Hình 1.jpg" alt="Thanh Thảo Photo 1">
-                                    </div>
-                                    <div class="fan-card card-2">
-                                        <img src="Hình 2.jpg" alt="Thanh Thảo Photo 2">
-                                    </div>
+                                <div class="fan-card card-2">
+                                    <img src="Hình 2.jpg" alt="Thanh Thảo Photo 2">
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </section>
 
-                <!-- Student Info Section -->
-                <section id="student-info" class="container">
-                    <div class="section-header-panel">
-                        <div>
-                            <span class="hero-subtitle">01 / Profile</span>
-                            <h2 class="section-title-large">Mềm mại, sáng và có chiều sâu.</h2>
-                        </div>
-                        <p class="section-intro-text">
-                            Mọi chi tiết thiết kế và cấu trúc lưu trữ học liệu được cá nhân hóa đồng nhất, mang tính hệ thống nhằm tạo sự thuận lợi tối đa trong quản lý học tập.
-                        </p>
-                    </div>
+                            <!-- Interactive Profile Widgets Overlay -->
+                            <div class="profile-widgets-overlay">
+                                
+                                <!-- 1. Profile (Top wide capsule) -->
+                                <div class="widget-card wide-card">
+                                    <span class="widget-label">Đơn vị đào tạo</span>
+                                    <span class="widget-value">Trường Đại học Ngoại ngữ - ĐHQGHN</span>
+                                </div>
 
-                    <div class="meta-grid">
-                        <div class="meta-card">
-                            <span class="meta-label">Họ tên</span>
-                            <span class="meta-value">Nguyễn Mai Thanh Thảo</span>
-                        </div>
-                        <div class="meta-card">
-                            <span class="meta-label">Mã sinh viên</span>
-                            <span class="meta-value">25040190</span>
-                        </div>
-                        <div class="meta-card">
-                            <span class="meta-label">Trường</span>
-                            <span class="meta-value">ĐH Ngoại ngữ ĐHQGHN</span>
-                        </div>
-                        <div class="meta-card">
-                            <span class="meta-label">Ngành học</span>
-                            <span class="meta-value">Ngôn ngữ Anh</span>
+                                <!-- 2x2 Grid of Profile Cards -->
+                                <div class="widgets-grid-2x2">
+                                    <div class="widget-card">
+                                        <span class="widget-label">Họ và tên</span>
+                                        <span class="widget-value">Nguyễn Mai Thanh Thảo</span>
+                                    </div>
+                                    <div class="widget-card">
+                                        <span class="widget-label">Mã sinh viên</span>
+                                        <span class="widget-value">25040190</span>
+                                    </div>
+                                    <div class="widget-card">
+                                        <span class="widget-label">Ngành học</span>
+                                        <span class="widget-value">Ngôn ngữ và Văn hoá Anh</span>
+                                    </div>
+                                    <div class="widget-card">
+                                        <span class="widget-label">Lớp học phần</span>
+                                        <span class="widget-value">NNA2504 (Công nghệ số & AI)</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </div>
                     </div>
                 </section>
@@ -1578,7 +1536,6 @@
             }
         }
 
-        // Scroll helper for right pane
         function rightScrollToTop() {
             const pane = document.querySelector('.exercises-axis-pane');
             if (pane) {
