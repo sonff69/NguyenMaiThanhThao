@@ -20,7 +20,7 @@
             --accent-warm: rgba(255, 255, 255, 0.05);
             --glass-bg: rgba(15, 23, 42, 0.45); /* Khung kính mờ tối sang trọng */
             --glass-border: rgba(255, 255, 255, 0.08);
-            --transition-gentle: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-gentle: all 0.75s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -30,15 +30,36 @@
             scroll-behavior: smooth;
         }
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+        /* Khóa cuộn trang mặc định của body để triển khai trục cuộn không gian */
+        html, body {
+            overflow: hidden;
+            height: 100vh;
             background-color: var(--bg-canvas);
+            font-family: 'Plus Jakarta Sans', sans-serif;
             color: var(--text-primary);
-            overflow-x: hidden;
             position: relative;
         }
 
-        /* Fullscreen Video Background (No Blur) [1] */
+        /* Custom scrollbar cho các phân vùng cuộn riêng biệt */
+        .vertical-axis-pane::-webkit-scrollbar,
+        .exercises-axis-pane::-webkit-scrollbar {
+            width: 6px;
+        }
+        .vertical-axis-pane::-webkit-scrollbar-track,
+        .exercises-axis-pane::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .vertical-axis-pane::-webkit-scrollbar-thumb,
+        .exercises-axis-pane::-webkit-scrollbar-thumb {
+            background: rgba(192, 132, 252, 0.15);
+            border-radius: 3px;
+        }
+        .vertical-axis-pane::-webkit-scrollbar-thumb:hover,
+        .exercises-axis-pane::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-purple);
+        }
+
+        /* Fullscreen Video Background [1] */
         .video-background-container {
             position: fixed;
             top: 0;
@@ -48,7 +69,6 @@
             z-index: -2;
             overflow: hidden;
             pointer-events: none;
-            background-color: var(--bg-canvas);
         }
 
         .video-background {
@@ -61,8 +81,8 @@
             min-height: 100vw;
             object-fit: cover;
             transform: translate(-50%, -50%) rotate(90deg);
-            opacity: 0.45; /* Độ sáng vừa phải để tạo chiều sâu */
-            filter: saturate(0.9); /* Giữ lại độ sắc nét tự nhiên, loại bỏ hoàn toàn blur [1] */
+            opacity: 0.45;
+            filter: saturate(0.9); /* Loại bỏ hoàn toàn hiệu ứng mờ kính gốc [1] */
         }
 
         /* Dark Vignette Overlay for High Contrast Legibility */
@@ -75,6 +95,89 @@
             background: radial-gradient(circle at 50% 50%, rgba(9, 9, 11, 0.3) 0%, rgba(9, 9, 11, 0.75) 100%);
             z-index: -1;
             pointer-events: none;
+        }
+
+        /* Master Spatial Viewport Wrapper */
+        .viewport-wrapper {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Horizontal Axis Container */
+        .spatial-axis-horizontal {
+            display: flex;
+            width: 200vw;
+            height: 100%;
+            transition: var(--transition-gentle);
+            transform: translateX(0);
+        }
+
+        /* Left Pane (Scrolls Vertically: Hero -> Info -> Reflection) */
+        .vertical-axis-pane {
+            width: 100vw;
+            height: 100%;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        /* Right Pane (Scrolls Vertically: 6 Cards Gallery) */
+        .exercises-axis-pane {
+            width: 100vw;
+            height: 100%;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        /* Floating Edge Swipe Indicators */
+        .swipe-indicator {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 90;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            padding: 1.2rem 0.6rem;
+            cursor: pointer;
+            transition: var(--transition-gentle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .swipe-indicator span {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-purple);
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            user-select: none;
+        }
+
+        .left-indicator {
+            left: 0;
+            border-radius: 0 18px 18px 0;
+            border-left: none;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-50%) translateX(-25px);
+        }
+
+        .right-indicator {
+            right: 0;
+            border-radius: 18px 0 0 18px;
+            border-right: none;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        .swipe-indicator:hover {
+            background: rgba(15, 23, 42, 0.85);
+            box-shadow: 0 0 15px rgba(192, 132, 252, 0.2);
         }
 
         /* Diagonal Art Path Accent */
@@ -91,7 +194,7 @@
             pointer-events: none;
         }
 
-        /* Decorative Floating Elements (SVGs with glow effect) */
+        /* Decorative Floating Elements */
         .decor-element {
             position: absolute;
             pointer-events: none;
@@ -254,7 +357,7 @@
             color: var(--accent-purple) !important;
         }
 
-        /* Main Container */
+        /* Section Container */
         .container {
             max-width: 1300px;
             margin: 0 auto;
@@ -264,7 +367,7 @@
         /* Hero Section */
         #hero {
             padding-top: 10rem;
-            min-height: 95vh;
+            min-height: 100vh;
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
             gap: 4rem;
@@ -388,7 +491,7 @@
         .cards-fan-container {
             position: relative;
             width: 100%;
-            height: 520px; /* Tăng chiều cao lên 520px để thoải mái bao quát thẻ lớn mà không bị cản trở */
+            height: 520px; /* Chiều cao tối ưu hóa cho thẻ bài khổng lồ */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -398,18 +501,18 @@
         /* Huge Portrait cards with Thick Glassmorphic Borders */
         .fan-card {
             position: absolute;
-            width: 300px; /* Phóng to kích thước vượt trội theo yêu cầu */
-            height: 420px; /* Tỉ lệ thẻ bài cân đối, tinh tế */
+            width: 300px; /* Phóng to kích thước vượt trội */
+            height: 420px; /* Tỉ lệ quân bài thanh thoát */
             border-radius: 24px;
             background: rgba(255, 255, 255, 0.07);
-            /* Viền kính mờ cực dày tích hợp độ mờ khúc xạ sâu */
+            /* Viền kính mờ dày tích hợp làm mờ và phản chiếu */
             border: 12px solid rgba(255, 255, 255, 0.15);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.10);
             backdrop-filter: blur(15px);
-            padding: 10px; /* Khoảng đệm kính mờ bao quanh ảnh chân dung */
+            padding: 10px; /* Khoảng đệm kính bao quanh ảnh chân dung */
             display: flex;
             flex-direction: column;
-            /* Sử dụng cubic-bezier đàn hồi lò xo để xòe bài sinh động */
+            /* Lực đẩy lò xo cubic-bezier */
             transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.45s;
             cursor: pointer;
         }
@@ -418,10 +521,10 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 12px; /* Bo góc ảnh thẻ bên trong mềm mại */
+            border-radius: 12px;
         }
 
-        /* Sắp đặt góc nghiêng xòe quạt của 2 quân bài khổng lồ */
+        /* Góc xòe tĩnh */
         .card-1 {
             transform: rotate(-10deg) translate(-40px, 12px);
             z-index: 1;
@@ -432,27 +535,20 @@
             z-index: 2;
         }
 
-        /* Hiệu ứng khi di chuột (Hover) */
+        /* Hover */
         .fan-card:hover {
             box-shadow: 0 35px 70px rgba(0, 0, 0, 0.75), 0 0 30px rgba(192, 132, 252, 0.35);
         }
 
-        /* Thẻ bài 1 dựng thẳng, đẩy lên trên và scale lớn */
         .card-1:hover {
             transform: rotate(-2deg) translate(-20px, -30px) scale(1.08);
         }
 
-        /* Thẻ bài 2 dựng thẳng, đẩy lên trên và scale lớn */
         .card-2:hover {
             transform: rotate(2deg) translate(20px, -30px) scale(1.08);
         }
 
-        /* Section Global Styles */
-        section {
-            padding: 8rem 0 4rem 0;
-            position: relative;
-        }
-
+        /* Section Title Style */
         .section-header-panel {
             display: flex;
             justify-content: space-between;
@@ -475,6 +571,15 @@
             font-weight: 700;
             line-height: 1.1;
             color: var(--text-primary);
+        }
+
+        /* Profile section */
+        #student-info {
+            padding-top: 6rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         /* Metadata Cards Section */
@@ -519,6 +624,13 @@
             color: var(--text-primary);
             line-height: 1.2;
             margin-top: 1rem;
+        }
+
+        /* Exercises Gallery Section */
+        #projects {
+            padding-top: 10rem;
+            padding-bottom: 8rem;
+            min-height: 100vh;
         }
 
         /* Projects Section Gallery */
@@ -815,7 +927,12 @@
 
         /* Conclusion Section */
         #conclusion {
+            padding-top: 6rem;
             padding-bottom: 10rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .conclusion-panel {
@@ -899,24 +1016,6 @@
         }
 
         @media (max-width: 768px) {
-            #hero {
-                grid-template-columns: 1fr;
-                padding-top: 8rem;
-                gap: 3rem;
-                text-align: center;
-            }
-            .hero-name {
-                font-size: 3.8rem;
-            }
-            .hero-desc {
-                margin: 0 auto 2rem auto;
-            }
-            .badge-container {
-                justify-content: center;
-            }
-            .btn-group {
-                justify-content: center;
-            }
             .section-header-panel {
                 flex-direction: column;
                 align-items: flex-start;
@@ -1026,224 +1125,240 @@
 
     <!-- Dynamic Island Navigation Bar (Centered & Pill-shaped) -->
     <nav>
-        <a href="#" class="logo-island">Portfolio</a>
+        <a href="#" class="logo-island" onclick="event.preventDefault(); slidePane('left'); leftScrollTo('hero');">Portfolio</a>
         <div class="island-divider"></div>
         <ul class="nav-links">
-            <li><a href="#hero" class="active">Giới thiệu</a></li>
+            <li><a href="#hero" class="active" onclick="event.preventDefault(); slidePane('left'); leftScrollTo('hero');">Giới thiệu</a></li>
             <!-- Dropdown Container for "Bài tập" -->
             <li class="dropdown-container">
-                <a href="#projects">Bài tập</a>
+                <a href="#projects" onclick="event.preventDefault(); slidePane('right'); rightScrollToTop();">Bài tập</a>
                 <ul class="dropdown-menu">
-                    <li><a href="#projects" onclick="event.preventDefault(); openModal(1);">Bài tập 1</a></li>
-                    <li><a href="#projects" onclick="event.preventDefault(); openModal(2);">Bài tập 2</a></li>
-                    <li><a href="#projects" onclick="event.preventDefault(); openModal(3);">Bài tập 3</a></li>
-                    <li><a href="#projects" onclick="event.preventDefault(); openModal(4);">Bài tập 4</a></li>
-                    <li><a href="#projects" onclick="event.preventDefault(); openModal(5);">Bài tập 5</a></li>
-                    <li><a href="#projects" onclick="event.preventDefault(); openModal(6);">Bài tập 6</a></li>
+                    <li><a href="#projects" onclick="event.preventDefault(); slidePane('right'); setTimeout(() => openModal(1), 200);">Bài tập 1</a></li>
+                    <li><a href="#projects" onclick="event.preventDefault(); slidePane('right'); setTimeout(() => openModal(2), 200);">Bài tập 2</a></li>
+                    <li><a href="#projects" onclick="event.preventDefault(); slidePane('right'); setTimeout(() => openModal(3), 200);">Bài tập 3</a></li>
+                    <li><a href="#projects" onclick="event.preventDefault(); slidePane('right'); setTimeout(() => openModal(4), 200);">Bài tập 4</a></li>
+                    <li><a href="#projects" onclick="event.preventDefault(); slidePane('right'); setTimeout(() => openModal(5), 200);">Bài tập 5</a></li>
+                    <li><a href="#projects" onclick="event.preventDefault(); slidePane('right'); setTimeout(() => openModal(6), 200);">Bài tập 6</a></li>
                 </ul>
             </li>
-            <li><a href="#conclusion">Tổng kết</a></li>
+            <li><a href="#conclusion" onclick="event.preventDefault(); slidePane('left'); leftScrollTo('conclusion');">Tổng kết</a></li>
         </ul>
     </nav>
 
-    <div class="container">
-
-        <!-- Hero Section -->
-        <section id="hero">
-            <div class="hero-left">
-                <span class="hero-subtitle">Monet-Inspired Portfolio</span>
-                <h1 class="hero-name">
-                    Nguyễn Mai<br>
-                    Thanh Thảo
-                </h1>
-                <p class="hero-desc">
-                    Một không gian portfolio mang cảm giác tranh màu nước ấn tượng: ánh sáng khuếch tán, mặt nước phản chiếu, sương mỏng chuyển động và bố cục tối giản như một gallery cá nhân.
-                </p>
-
-                <div class="badge-container">
-                    <span class="badge-pill">NNA2504</span>
-                    <span class="badge-pill">ULIS - VNU</span>
-                    <span class="badge-pill">AI & Tech</span>
-                </div>
-
-                <div class="btn-group">
-                    <a href="#projects" class="btn-primary">Xem bài tập</a>
-                    <a href="#student-info" class="btn-secondary">Thông tin sinh viên</a>
-                </div>
-            </div>
-
-            <!-- Hero Right Free-Floating Avatar Cards Fan (Thẻ bài Glassmorphic Khổng lồ) -->
-            <div class="art-frame-wrapper">
-                <div class="cards-fan-container">
-                    <div class="fan-card card-1">
-                        <img src="Hình 1.jpg" alt="Thanh Thảo Photo 1">
-                    </div>
-                    <div class="fan-card card-2">
-                        <img src="Hình 2.jpg" alt="Thanh Thảo Photo 2">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Student Info (4 Cards Grid) -->
-        <section id="student-info">
-            <div class="section-header-panel">
-                <div>
-                    <span class="hero-subtitle">01 / Profile</span>
-                    <h2 class="section-title-large">Mềm mại, sáng và có chiều sâu.</h2>
-                </div>
-                <p class="section-intro-text">
-                    Mọi chi tiết thiết kế và cấu trúc lưu trữ học liệu được cá nhân hóa đồng nhất, mang tính hệ thống nhằm tạo sự thuận lợi tối đa trong quản lý học tập.
-                </p>
-            </div>
-
-            <div class="meta-grid">
-                <div class="meta-card">
-                    <span class="meta-label">Họ tên</span>
-                    <span class="meta-value">Nguyễn Mai Thanh Thảo</span>
-                </div>
-                <div class="meta-card">
-                    <span class="meta-label">Mã sinh viên</span>
-                    <span class="meta-value">25040190</span>
-                </div>
-                <div class="meta-card">
-                    <span class="meta-label">Trường</span>
-                    <span class="meta-value">ĐH Ngoại ngữ ĐHQGHN</span>
-                </div>
-                <div class="meta-card">
-                    <span class="meta-label">Ngành học</span>
-                    <span class="meta-value">Ngôn ngữ Anh</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Gallery Grid -->
-        <section id="projects">
-            <div class="section-header-panel">
-                <div>
-                    <span class="hero-subtitle">02 / Project Space</span>
-                    <h2 class="section-title-large">Sáu bài thực hành được giữ chỗ trong một gallery tinh gọn.</h2>
-                </div>
-                <p class="section-intro-text">
-                    Mỗi khung trưng bày thể hiện một mảng kiến thức đã được số hóa và kiểm duyệt chặt chẽ, tối ưu hóa mức độ hoàn thiện chuyên môn.
-                </p>
-            </div>
-
-            <div class="gallery-grid">
-                <!-- Card 1 -->
-                <div class="gallery-card">
-                    <div class="card-top">
-                        <div class="card-num">1</div>
-                        <span class="card-status">Đã hoàn thành</span>
-                    </div>
-                    <div>
-                        <h3 class="card-title">Máy tính và thiết bị ngoại vi</h3>
-                        <p class="card-desc">Thiết lập nền tảng, tổ chức sơ đồ cây lưu trữ thư mục khoa học và định hình quy tắc đặt tên tệp tối ưu.</p>
-                    </div>
-                    <button class="card-action" onclick="openModal(1)">Xem chi tiết bài làm</button>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="gallery-card">
-                    <div class="card-top">
-                        <div class="card-num">2</div>
-                        <span class="card-status">Đã hoàn thành</span>
-                    </div>
-                    <div>
-                        <h3 class="card-title">Khai thác dữ liệu và thông tin</h3>
-                        <p class="card-desc">Kỹ thuật truy vấn thông tin học thuật nâng cao kết hợp mô hình kiểm định nguồn CRAAP uy tín.</p>
-                    </div>
-                    <button class="card-action" onclick="openModal(2)">Xem chi tiết bài làm</button>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="gallery-card">
-                    <div class="card-top">
-                        <div class="card-num">3</div>
-                        <span class="card-status">Đã hoàn thành</span>
-                    </div>
-                    <div>
-                        <h3 class="card-title">Tổng quan về trí tuệ nhân tạo</h3>
-                        <p class="card-desc">Xây dựng giải pháp kỹ nghệ Prompt Engineering (vai trò, bối cảnh) cải thiện kết quả ngôn ngữ học máy.</p>
-                    </div>
-                    <button class="card-action" onclick="openModal(3)">Xem chi tiết bài làm</button>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="gallery-card">
-                    <div class="card-top">
-                        <div class="card-num">4</div>
-                        <span class="card-status">Đã hoàn thành</span>
-                    </div>
-                    <div>
-                        <h3 class="card-title">Giao tiếp và hợp tác trong môi trường số</h3>
-                        <p class="card-desc">Ứng dụng công cụ kỹ thuật số trong thiết lập mục tiêu, phân phối đầu việc và theo dõi hiệu năng nhóm.</p>
-                    </div>
-                    <button class="card-action" onclick="openModal(4)">Xem chi tiết bài làm</button>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="gallery-card">
-                    <div class="card-top">
-                        <div class="card-num">5</div>
-                        <span class="card-status">Đã hoàn thành</span>
-                    </div>
-                    <div>
-                        <h3 class="card-title">Sáng tạo nội dung với AI sinh nghệ thuật</h3>
-                        <p class="card-desc">Thực thi quy trình thiết kế mỹ thuật ứng dụng, tinh chỉnh thẩm mỹ bằng công nghệ GenAI hiện đại.</p>
-                    </div>
-                    <button class="card-action" onclick="openModal(5)">Xem chi tiết bài làm</button>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="gallery-card">
-                    <div class="card-top">
-                        <div class="card-num">6</div>
-                        <span class="card-status">Đã hoàn thành</span>
-                    </div>
-                    <div>
-                        <h3 class="card-title">An toàn và liêm chính học thuật</h3>
-                        <p class="card-desc">Hệ thống nguyên tắc đạo đức và tư duy phản biện, phòng ngừa thiên kiến học máy trong nghiên cứu khoa học.</p>
-                    </div>
-                    <button class="card-action" onclick="openModal(6)">Xem chi tiết bài làm</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Conclusion Section -->
-        <section id="conclusion">
-            <div class="conclusion-panel">
-                <div class="conclusion-text">
-                    <span class="hero-subtitle">03 / Reflection</span>
-                    <h3>Sự Phát Triển Trong Tầm Nhìn Kỹ Thuật Số</h3>
-                    <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
-                        Thông qua quá trình xây dựng portfolio ấn tượng lấy cảm hứng từ những mảng màu của Claude Monet, tôi đã liên kết trọn vẹn tư duy ngôn từ mềm mại của ngành học Ngôn ngữ Anh với tư duy mạch lạc của công nghệ số.
-                    </p>
-                    <p style="color: var(--text-secondary); line-height: 1.8;">
-                        Không gian này không đơn thuần là một hệ thống lưu trữ học thuật, mà là cột mốc khẳng định kỹ năng số hóa toàn diện, sẵn sàng áp dụng các đột phá của Trí tuệ nhân tạo một cách nhân văn và có trách nhiệm vào các nghiên cứu học thuật tương lai.
-                    </p>
-                </div>
-                <div class="conclusion-stats">
-                    <div class="stat-box">
-                        <div class="stat-num">06</div>
-                        <div class="stat-label">Dự án hoàn chỉnh</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-num">100%</div>
-                        <div class="stat-label">Liêm chính học thuật</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+    <!-- Floating Spatial Swipe Edge Indicators -->
+    <div class="swipe-indicator left-indicator" onclick="slidePane('left')">
+        <span>◀ Giới thiệu</span>
+    </div>
+    <div class="swipe-indicator right-indicator" onclick="slidePane('right')">
+        <span>Bài tập ▶</span>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>Báo cáo bài tập cá nhân môn <span>Nhập môn công nghệ số và trí tuệ nhân tạo</span></p>
-        <p>Sinh viên: <span>Nguyễn Mai Thanh Thảo</span> • MSSV: 25040190</p>
-        <p style="font-size: 0.8rem; opacity: 0.5; margin-top: 1rem;">© 2026. Thiết kế và phát triển dựa trên cảm hứng mỹ thuật Claude Monet.</p>
-    </footer>
+    <!-- Master Viewport Axis Wrapper -->
+    <div class="viewport-wrapper">
+        <div class="spatial-axis-horizontal">
+            
+            <!-- Left Pane (Vertical scrolling: Hero -> Info -> Reflection) -->
+            <div class="vertical-axis-pane">
+                
+                <!-- Hero Section -->
+                <section id="hero" class="container">
+                    <div class="hero-left">
+                        <span class="hero-subtitle">Monet-Inspired Portfolio</span>
+                        <h1 class="hero-name">
+                            Nguyễn Mai<br>
+                            Thanh Thảo
+                        </h1>
+                        <p class="hero-desc">
+                            Một không gian portfolio mang cảm giác tranh màu nước ấn tượng: ánh sáng khuếch tán, mặt nước phản chiếu, sương mỏng chuyển động và bố cục tối giản như một gallery cá nhân.
+                        </p>
+
+                        <div class="badge-container">
+                            <span class="badge-pill">NNA2504</span>
+                            <span class="badge-pill">ULIS - VNU</span>
+                            <span class="badge-pill">AI & Tech</span>
+                        </div>
+
+                        <div class="btn-group">
+                            <a href="#projects" class="btn-primary" onclick="event.preventDefault(); slidePane('right');">Xem bài tập</a>
+                            <a href="#student-info" class="btn-secondary" onclick="event.preventDefault(); leftScrollTo('student-info');">Thông tin sinh viên</a>
+                        </div>
+                    </div>
+
+                    <!-- Hero Right Free-Floating Avatar Cards Fan (Thẻ bài Glassmorphic Khổng lồ) -->
+                    <div class="art-frame-wrapper">
+                        <div class="cards-fan-container">
+                            <div class="fan-card card-1">
+                                <img src="Hình 1.jpg" alt="Thanh Thảo Photo 1">
+                            </div>
+                            <div class="fan-card card-2">
+                                <img src="Hình 2.jpg" alt="Thanh Thảo Photo 2">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Student Info Section -->
+                <section id="student-info" class="container">
+                    <div class="section-header-panel">
+                        <div>
+                            <span class="hero-subtitle">01 / Profile</span>
+                            <h2 class="section-title-large">Mềm mại, sáng và có chiều sâu.</h2>
+                        </div>
+                        <p class="section-intro-text">
+                            Mọi chi tiết thiết kế và cấu trúc lưu trữ học liệu được cá nhân hóa đồng nhất, mang tính hệ thống nhằm tạo sự thuận lợi tối đa trong quản lý học tập.
+                        </p>
+                    </div>
+
+                    <div class="meta-grid">
+                        <div class="meta-card">
+                            <span class="meta-label">Họ tên</span>
+                            <span class="meta-value">Nguyễn Mai Thanh Thảo</span>
+                        </div>
+                        <div class="meta-card">
+                            <span class="meta-label">Mã sinh viên</span>
+                            <span class="meta-value">25040190</span>
+                        </div>
+                        <div class="meta-card">
+                            <span class="meta-label">Trường</span>
+                            <span class="meta-value">ĐH Ngoại ngữ ĐHQGHN</span>
+                        </div>
+                        <div class="meta-card">
+                            <span class="meta-label">Ngành học</span>
+                            <span class="meta-value">Ngôn ngữ Anh</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Conclusion Section -->
+                <section id="conclusion">
+                    <div class="container">
+                        <div class="conclusion-panel">
+                            <div class="conclusion-text">
+                                <span class="hero-subtitle">03 / Reflection</span>
+                                <h3>Sự Phát Triển Trong Tầm Nhìn Kỹ Thuật Số</h3>
+                                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+                                    Thông qua quá trình xây dựng portfolio ấn tượng lấy cảm hứng từ những mảng màu của Claude Monet, tôi đã liên kết trọn vẹn tư duy ngôn từ mềm mại của ngành học Ngôn ngữ Anh với tư duy mạch lạc của công nghệ số.
+                                </p>
+                                <p style="color: var(--text-secondary); line-height: 1.8;">
+                                    Không gian này không đơn thuần là một hệ thống lưu trữ học thuật, mà là cột mốc khẳng định kỹ năng số hóa toàn diện, sẵn sàng áp dụng các đột phá của Trí tuệ nhân tạo một cách nhân văn và có trách nhiệm vào các nghiên cứu học thuật tương lai.
+                                </p>
+                            </div>
+                            <div class="conclusion-stats">
+                                <div class="stat-box">
+                                    <div class="stat-num">06</div>
+                                    <div class="stat-label">Dự án hoàn chỉnh</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-num">100%</div>
+                                    <div class="stat-label">Liêm chính học thuật</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Right Pane (Vertical scrolling: Gallery grid of exercises) -->
+            <div class="exercises-axis-pane">
+                
+                <!-- Projects / Exercises Section -->
+                <section id="projects" class="container">
+                    <div class="section-header-panel">
+                        <div>
+                            <span class="hero-subtitle">02 / Project Space</span>
+                            <h2 class="section-title-large">Sáu bài thực hành được lưu giữ trong một gallery tinh gọn.</h2>
+                        </div>
+                        <p class="section-intro-text">
+                            Mỗi khung trưng bày thể hiện một mảng kiến thức đã được số hóa và kiểm duyệt chặt chẽ, tối ưu hóa mức độ hoàn thiện chuyên môn.
+                        </p>
+                    </div>
+
+                    <div class="gallery-grid">
+                        <!-- Card 1 -->
+                        <div class="gallery-card">
+                            <div class="card-top">
+                                <div class="card-num">1</div>
+                                <span class="card-status">Đã hoàn thành</span>
+                            </div>
+                            <div>
+                                <h3 class="card-title">Máy tính và thiết bị ngoại vi</h3>
+                                <p class="card-desc">Thiết lập nền tảng, tổ chức sơ đồ cây lưu trữ thư mục khoa học và định hình quy tắc đặt tên tệp tối ưu.</p>
+                            </div>
+                            <button class="card-action" onclick="openModal(1)">Xem chi tiết bài làm</button>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="gallery-card">
+                            <div class="card-top">
+                                <div class="card-num">2</div>
+                                <span class="card-status">Đã hoàn thành</span>
+                            </div>
+                            <div>
+                                <h3 class="card-title">Khai thác dữ liệu và thông tin</h3>
+                                <p class="card-desc">Kỹ thuật truy vấn thông tin học thuật nâng cao kết hợp mô hình kiểm định nguồn CRAAP uy tín.</p>
+                            </div>
+                            <button class="card-action" onclick="openModal(2)">Xem chi tiết bài làm</button>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="gallery-card">
+                            <div class="card-top">
+                                <div class="card-num">3</div>
+                                <span class="card-status">Đã hoàn thành</span>
+                            </div>
+                            <div>
+                                <h3 class="card-title">Tổng quan về trí tuệ nhân tạo</h3>
+                                <p class="card-desc">Xây dựng giải pháp kỹ nghệ Prompt Engineering (vai trò, bối cảnh) cải thiện kết quả ngôn ngữ học máy.</p>
+                            </div>
+                            <button class="card-action" onclick="openModal(3)">Xem chi tiết bài làm</button>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="gallery-card">
+                            <div class="card-top">
+                                <div class="card-num">4</div>
+                                <span class="card-status">Đã hoàn thành</span>
+                            </div>
+                            <div>
+                                <h3 class="card-title">Giao tiếp và hợp tác trong môi trường số</h3>
+                                <p class="card-desc">Ứng dụng công cụ kỹ thuật số trong thiết lập mục tiêu, phân phối đầu việc và theo dõi hiệu năng nhóm.</p>
+                            </div>
+                            <button class="card-action" onclick="openModal(4)">Xem chi tiết bài làm</button>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div class="gallery-card">
+                            <div class="card-top">
+                                <div class="card-num">5</div>
+                                <span class="card-status">Đã hoàn thành</span>
+                            </div>
+                            <div>
+                                <h3 class="card-title">Sáng tạo nội dung với AI sinh nghệ thuật</h3>
+                                <p class="card-desc">Thực thi quy trình thiết kế mỹ thuật ứng dụng, tinh chỉnh thẩm mỹ bằng công nghệ GenAI hiện đại.</p>
+                            </div>
+                            <button class="card-action" onclick="openModal(5)">Xem chi tiết bài làm</button>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div class="gallery-card">
+                            <div class="card-top">
+                                <div class="card-num">6</div>
+                                <span class="card-status">Đã hoàn thành</span>
+                            </div>
+                            <div>
+                                <h3 class="card-title">An toàn và liêm chính học thuật</h3>
+                                <p class="card-desc">Hệ thống nguyên tắc đạo đức và tư duy phản biện, phòng ngừa thiên kiến học máy trong nghiên cứu khoa học.</p>
+                            </div>
+                            <button class="card-action" onclick="openModal(6)">Xem chi tiết bài làm</button>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+        </div>
+    </div>
 
     <!-- MODAL WINDOW OVERLAY -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOuterClick(event)">
@@ -1257,6 +1372,8 @@
 
     <!-- JS for Interactive Systems & Slow Motion Background Video -->
     <script>
+        let currentPane = 'left'; // 'left' or 'right'
+
         // Slow down background video playback speed smoothly [2]
         window.addEventListener('DOMContentLoaded', () => {
             const bgVideo = document.querySelector('.video-background');
@@ -1273,6 +1390,126 @@
             card.addEventListener('mouseleave', () => {
                 card.style.zIndex = ''; // Trả về cấu trúc sắp xếp tĩnh ban đầu sau khi chuột rời đi
             });
+        });
+
+        // 2D Spatial Axis Navigation Function
+        function slidePane(pane) {
+            const slider = document.querySelector('.spatial-axis-horizontal');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const leftIndicator = document.querySelector('.left-indicator');
+            const rightIndicator = document.querySelector('.right-indicator');
+
+            if (pane === 'right') {
+                slider.style.transform = 'translateX(-100vw)';
+                currentPane = 'right';
+
+                // Highlight "Bài tập" in dynamic island
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#projects') {
+                        link.classList.add('active');
+                    }
+                });
+
+                // Toggle Floating Swipe Indicators
+                leftIndicator.style.opacity = '1';
+                leftIndicator.style.pointerEvents = 'auto';
+                leftIndicator.style.transform = 'translateY(-50%) translateX(0)';
+
+                rightIndicator.style.opacity = '0';
+                rightIndicator.style.pointerEvents = 'none';
+                rightIndicator.style.transform = 'translateY(-50%) translateX(25px)';
+            } else {
+                slider.style.transform = 'translateX(0)';
+                currentPane = 'left';
+
+                // Highlight active state based on left scroll
+                leftPaneScrollCheck();
+
+                // Toggle Floating Swipe Indicators
+                leftIndicator.style.opacity = '0';
+                leftIndicator.style.pointerEvents = 'none';
+                leftIndicator.style.transform = 'translateY(-50%) translateX(-25px)';
+
+                rightIndicator.style.opacity = '1';
+                rightIndicator.style.pointerEvents = 'auto';
+                rightIndicator.style.transform = 'translateY(-50%) translateX(0)';
+            }
+        }
+
+        // Horizontal Slide Touch Swipes Detection for Mobile
+        let touchStartX = 0;
+        let touchStartY = 0;
+
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        document.addEventListener('touchend', e => {
+            // Ngăn chặn trượt trang khi các modal thuyết trình đang mở rộng hiển thị
+            if (document.getElementById('modalOverlay').classList.contains('active')) return;
+
+            const diffX = e.changedTouches[0].screenX - touchStartX;
+            const diffY = e.changedTouches[0].screenY - touchStartY;
+
+            // Xác định xem cử chỉ vuốt ngang có mạnh hơn vuốt dọc và đạt ngưỡng không
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 80) {
+                if (diffX < 0 && currentPane === 'left') {
+                    slidePane('right'); // Vuốt sang trái để dịch chuyển sang bài tập
+                } else if (diffX > 0 && currentPane === 'right') {
+                    slidePane('left'); // Vuốt sang phải để quay về trang chính
+                }
+            }
+        }, { passive: true });
+
+        // Scroll helpers inside the panes
+        function leftScrollTo(elementId) {
+            const pane = document.querySelector('.vertical-axis-pane');
+            const target = document.getElementById(elementId);
+            if (pane && target) {
+                pane.scrollTo({
+                    top: target.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        function rightScrollToTop() {
+            const pane = document.querySelector('.exercises-axis-pane');
+            if (pane) {
+                pane.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Listeners for internal pane scrolling to update Dynamic Island active highlight
+        const leftPane = document.querySelector('.vertical-axis-pane');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        function leftPaneScrollCheck() {
+            const hero = document.getElementById('hero');
+            const conclusion = document.getElementById('conclusion');
+            const scrollPos = leftPane.scrollTop;
+            
+            let activeId = 'hero';
+            if (scrollPos >= (conclusion.offsetTop - leftPane.clientHeight / 2)) {
+                activeId = 'conclusion';
+            }
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === activeId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        leftPane.addEventListener('scroll', () => {
+            if (currentPane === 'right') return;
+            leftPaneScrollCheck();
         });
 
         // Modal database containing deep academic solutions for Rubric Mức 4
@@ -1463,28 +1700,6 @@
                 closeModal();
             }
         }
-
-        // Active link on scroll behavior
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-links a');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-        });
     </script>
 </body>
 </html>
