@@ -687,62 +687,51 @@
             margin-bottom: 2rem;
         }
 
-        /* Split-button action row for gallery cards [1] */
+        /* Split-button action row for gallery cards with robust direct hover states [1] */
         .card-btn-group {
             display: grid;
-            grid-template-columns: 1.15fr 0.85fr; /* Cân chỉnh lại tỷ lệ hoàn hảo */
+            grid-template-columns: 1.12fr 0.88fr;
             gap: 0.6rem;
             width: 100%;
-            margin-top: auto; /* Đẩy sát đáy thẻ một cách nhất quán */
+            align-items: center;
         }
 
-        /* Chi tiết (Modal) - Solid Purple Design [1] */
-        .btn-card-modal {
-            background: #7c3aed;
+        .card-action, .card-action-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 42px; /* Đồng bộ hóa độ cao để tránh lỗi lệch cấu trúc hiển thị [1] */
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.15);
             color: #ffffff;
-            border: none;
-            padding: 0.7rem 1rem;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 0.98rem; /* Tăng 15% kích thước */
+            font-size: 0.95rem; /* Tăng 15% */
             cursor: pointer;
             transition: var(--transition-gentle);
-            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn-card-modal:hover {
-            background: #8b5cf6;
-            box-shadow: 0 6px 18px rgba(124, 58, 237, 0.4);
-            transform: translateY(-2px);
-        }
-
-        /* Tệp gốc - Glowing Glassmorphic Design [1] */
-        .btn-card-drive {
-            background: rgba(192, 132, 252, 0.05);
-            border: 1px solid rgba(192, 132, 252, 0.3);
-            color: var(--accent-purple) !important;
-            padding: 0.7rem 1rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.98rem; /* Tăng 15% kích thước */
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            transition: var(--transition-gentle);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
+            box-sizing: border-box;
+            outline: none;
         }
 
-        .btn-card-drive:hover {
+        /* Đồng bộ hóa hiệu ứng hover trực tiếp trên phím bấm để sửa lỗi sáng trắng sớm [1] */
+        .card-action:hover {
+            background: var(--accent-purple);
+            color: #120d24;
+            border-color: var(--accent-purple);
+            box-shadow: 0 4px 12px rgba(192, 132, 252, 0.3);
+        }
+
+        .card-action-link {
+            border-color: rgba(192, 132, 252, 0.25);
+            color: var(--accent-purple);
+        }
+
+        .card-action-link:hover {
             background: rgba(192, 132, 252, 0.15);
             border-color: var(--accent-purple);
-            box-shadow: 0 6px 18px rgba(192, 132, 252, 0.2);
-            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(192, 132, 252, 0.2);
+            color: var(--accent-purple);
         }
 
         /* Vector lines style */
@@ -1296,7 +1285,7 @@
                                 <span class="hero-subtitle">03 / Reflection</span>
                                 <h3>Tổng Kết Học Phần (Khó khăn, Thuận lợi & Bài học)</h3>
                                 <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
-                                    <strong>Thuận lợi:</strong> Được rèn luyện học tập dưới sự dẫn dắt tận tâm của các Thầy Cô giáo khoa Sư phạm Anh ULIS, kết hợp nền tảng tri thức EdTech phong phú và kho tàng cơ sở dữ liệu học thuật mở chất lượng cao. Khung chính sách AI cởi mở, khuyến khích tư duy của trường đã tạo điều kiện tối đa để em tự tin khai phá công nghệ một cách có trách nhiệm.
+                                    <strong>Thuận lợi:</strong> Được rèn luyện học tập dưới sự dẫn dắt tâm huyết của các Thầy Cô giáo khoa Sư phạm Anh ULIS, kết hợp nền tảng tri thức EdTech phong phú và kho tàng cơ sở dữ liệu học thuật mở chất lượng cao. Khung chính sách AI cởi mở, khuyến khích tư duy của trường đã tạo điều kiện tối đa để em tự tin khai phá công nghệ một cách có trách nhiệm.
                                 </p>
                                 <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
                                     <strong>Khó khăn:</strong> Thách thức lớn nhất trong lộ trình nghiên cứu số là ranh giới mong manh giữa việc sử dụng AI làm bệ phóng tư duy và thói quen ỷ lại kỹ thuật số (Digital Laziness). Ngoài ra, việc chọn lọc, đối chiếu dữ liệu để triệt tiêu các lỗi ảo tưởng ngôn ngữ của LLM cũng đòi hỏi tính cẩn trọng và năng lực phản biện không ngừng nghỉ.
@@ -1334,7 +1323,7 @@
                             <p class="section-intro-text" style="margin-top: 1rem; max-width: 650px;">
                                 Tổng hợp và tóm tắt tiến trình thực hiện các bài tập thực hành học phần được lưu giữ chính thức trên Google Drive cá nhân.
                             </p>
-                            <!-- Harmonious, sleek glowing glassmorphic button matching the website design [1] -->
+                            <!-- Elegant glowing glassmorphic button perfectly matching the website design -->
                             <div style="margin-top: 1.5rem;">
                                 <a href="https://drive.google.com/drive/folders/1WxK5N13-DsHVcmxPzxaP6B_z1EcSHbcb" target="_blank" class="btn-drive-glass">
                                     <span style="font-size: 1.1rem; vertical-align: middle;">📂</span> Xem báo cáo GG drive
@@ -1355,8 +1344,8 @@
                                 <p class="card-desc">Thiết lập nền tảng, tổ chức sơ đồ cây lưu trữ thư mục khoa học và định hình quy tắc đặt tên tệp tối ưu.</p>
                             </div>
                             <div class="card-btn-group">
-                                <button class="btn-card-modal" onclick="openModal(1)">Chi tiết (Modal)</button>
-                                <a href="https://drive.google.com/file/d/1hg7ES0Lz_4SFlyO84o5T3WCLY7QwcJ8y/view?usp=drive_link" target="_blank" class="btn-card-drive">Tệp gốc 📂</a>
+                                <button class="card-action" onclick="openModal(1)">Chi tiết (Modal)</button>
+                                <a href="https://drive.google.com/file/d/1hg7ES0Lz_4SFlyO84o5T3WCLY7QwcJ8y/view?usp=drive_link" target="_blank" class="card-action-link">Tệp gốc 📂</a>
                             </div>
                         </div>
 
@@ -1371,8 +1360,8 @@
                                 <p class="card-desc">Kỹ thuật truy vấn thông tin học thuật nâng cao kết hợp mô hình kiểm định nguồn CRAAP uy tín.</p>
                             </div>
                             <div class="card-btn-group">
-                                <button class="btn-card-modal" onclick="openModal(2)">Chi tiết (Modal)</button>
-                                <a href="https://drive.google.com/file/d/1YrH7FMfryK2P2yKjfNdQSdmcX70VK5mb/view?usp=drive_link" target="_blank" class="btn-card-drive">Tệp gốc 📂</a>
+                                <button class="card-action" onclick="openModal(2)">Chi tiết (Modal)</button>
+                                <a href="https://drive.google.com/file/d/1YrH7FMfryK2P2yKjfNdQSdmcX70VK5mb/view?usp=drive_link" target="_blank" class="card-action-link">Tệp gốc 📂</a>
                             </div>
                         </div>
 
@@ -1387,8 +1376,8 @@
                                 <p class="card-desc">Xây dựng giải pháp kỹ nghệ Prompt Engineering (vai trò, bối cảnh) cải thiện kết quả ngôn ngữ học máy.</p>
                             </div>
                             <div class="card-btn-group">
-                                <button class="btn-card-modal" onclick="openModal(3)">Chi tiết (Modal)</button>
-                                <a href="https://drive.google.com/file/d/19940-k2CX1aoSr7I8i1n9CBgAGFj4LrZ/view?usp=drive_link" target="_blank" class="btn-card-drive">Tệp gốc 📂</a>
+                                <button class="card-action" onclick="openModal(3)">Chi tiết (Modal)</button>
+                                <a href="https://drive.google.com/file/d/19940-k2CX1aoSr7I8i1n9CBgAGFj4LrZ/view?usp=drive_link" target="_blank" class="card-action-link">Tệp gốc 📂</a>
                             </div>
                         </div>
 
@@ -1403,8 +1392,8 @@
                                 <p class="card-desc">Ứng dụng công cụ kỹ thuật số trong thiết lập mục tiêu, phân phối đầu việc và theo dõi hiệu năng nhóm.</p>
                             </div>
                             <div class="card-btn-group">
-                                <button class="btn-card-modal" onclick="openModal(4)">Chi tiết (Modal)</button>
-                                <a href="https://drive.google.com/file/d/1fXwbZSF18DPDm5VFjsDMSqi4tD800wlU/view?usp=drive_link" target="_blank" class="btn-card-drive">Tệp gốc 📂</a>
+                                <button class="card-action" onclick="openModal(4)">Chi tiết (Modal)</button>
+                                <a href="https://drive.google.com/file/d/1fXwbZSF18DPDm5VFjsDMSqi4tD800wlU/view?usp=drive_link" target="_blank" class="card-action-link">Tệp gốc 📂</a>
                             </div>
                         </div>
 
@@ -1419,8 +1408,8 @@
                                 <p class="card-desc">Thực thi quy trình thiết kế mỹ thuật ứng dụng, tinh chỉnh thẩm mỹ bằng công nghệ GenAI hiện đại.</p>
                             </div>
                             <div class="card-btn-group">
-                                <button class="btn-card-modal" onclick="openModal(5)">Chi tiết (Modal)</button>
-                                <a href="https://drive.google.com/file/d/1j41mbKOmIQtgBWsmy57JvNxidVKx_7hE/view?usp=drive_link" target="_blank" class="btn-card-drive">Tệp gốc 📂</a>
+                                <button class="card-action" onclick="openModal(5)">Chi tiết (Modal)</button>
+                                <a href="https://drive.google.com/file/d/1j41mbKOmIQtgBWsmy57JvNxidVKx_7hE/view?usp=drive_link" target="_blank" class="card-action-link">Tệp gốc 📂</a>
                             </div>
                         </div>
 
@@ -1435,8 +1424,8 @@
                                 <p class="card-desc">Hệ thống nguyên tắc đạo đức và tư duy phản biện, phòng ngừa thiên kiến học máy trong nghiên cứu khoa học.</p>
                             </div>
                             <div class="card-btn-group">
-                                <button class="btn-card-modal" onclick="openModal(6)">Chi tiết (Modal)</button>
-                                <a href="https://drive.google.com/file/d/18HhMDGGIiZ6cOkcLndAln6fuxNsljypb/view?usp=drive_link" target="_blank" class="btn-card-drive">Tệp gốc 📂</a>
+                                <button class="card-action" onclick="openModal(6)">Chi tiết (Modal)</button>
+                                <a href="https://drive.google.com/file/d/18HhMDGGIiZ6cOkcLndAln6fuxNsljypb/view?usp=drive_link" target="_blank" class="card-action-link">Tệp gốc 📂</a>
                             </div>
                         </div>
                     </div>
@@ -1875,7 +1864,7 @@
                 <p>Làm việc nhóm trên môi trường số đòi hỏi tư duy tổ chức dữ liệu khoa học, phân quyền an toàn thông tin chặt chẽ và tác phong giao tiếp minh bạch giữa các thành viên.</p>
             `,
             5: `
-                <h3>Bài 5: Sáng tạo nội dung with AI sinh nghệ thuật</h3>
+                <h3>Bài 5: Sáng tạo nội dung với AI sinh nghệ thuật</h3>
                 <div style="margin: 1rem 0 1.5rem 0;">
                     <a href="https://drive.google.com/file/d/1j41mbKOmIQtgBWsmy57JvNxidVKx_7hE/view?usp=drive_link" target="_blank" class="btn-drive-glass" style="font-size: 0.85rem; padding: 0.5rem 1.2rem;">
                         <span>📂 Xem tệp báo cáo gốc trên Google Drive</span>
@@ -1960,13 +1949,13 @@
                 { id: 2, title: "Nguyen, T. H. (2024) - Generative AI in English language...", type: "article", desc: "Bám sát ĐH VN. Tạp chí chuẩn quốc gia ULIS-VNU.", rank: "Rất tốt" },
                 { id: 3, title: "UNESCO (2024) - Guidance for generative AI...", type: "report", desc: "Tổ chức giáo dục toàn cầu. Khung năng lực chiến lược vĩ mô.", rank: "Rất tốt" },
                 { id: 4, title: "Warschauer, M. (2023) - Automated writing evaluation...", type: "article", desc: "Phương pháp tổng quan hệ thống. Tính học thuật và độ tin cậy cao.", rank: "Tốt" },
-                { id: 5, title: "Zhang, D. & Cui, Y. (2024) - The impact of AI-assisted...", type: "article", desc: "Phương pháp: Thực nghiệm định lượng. Phân tích tâm lý viết của sinh viên.", rank: "Rất tốt" },
-                { id: 6, title: "Bailey, S. (2021) - Academic Writing: A Handbook...", type: "book", desc: "Nhà xuất bản: Routledge uy tín. Cẩm nang cấu trúc viết chuẩn mực.", rank: "Rất tốt" },
-                { id: 7, title: "Belcher, D. (2023) - Writing in the disciplines...", type: "article", desc: "Nội dung: Đánh giá thách thức kỹ năng. Tạp chí chuyên ngành ngôn ngữ sâu.", rank: "Tốt" },
-                { id: 8, title: "Tran, Q. M. (2025) - Ứng dụng mô hình ngôn ngữ lớn...", type: "article", desc: "Nghiên cứu sâu về tư duy ngôn ngữ. Phù hợp thực tiễn sinh viên ngoại ngữ.", rank: "Tốt" },
-                { id: 9, title: "Swales, J. M. & Feak, C. B. (2020) - Academic Writing...", type: "book", desc: "Khung lý thuyết kinh điển về thể loại. Độ tin cậy tuyệt đối trong giảng dạy.", rank: "Rất tốt" },
-                { id: 10, title: "British Council (2023) - Artificial Intelligence...", type: "report", desc: "Số liệu khảo sát diện rộng chất lượng. Định hướng phương pháp giảng dạy mới.", rank: "Tốt" },
-                { id: 11, title: "Stanford Human-AI (2025) - AI and the Future of...", type: "report", desc: "Góc nhìn công nghệ mang tính tương lai. Phân tích đa chiều từ ĐH hàng đầu.", rank: "Tốt" }
+                { id: 5, title: "Zhang, D. & Cui, Y. (2024) - The impact of AI-assisted...", type: "article", desc: "Thực nghiệm định lượng tâm lý và kết quả viết luận.", rank: "Rất tốt" },
+                { id: 6, title: "Bailey, S. (2021) - Academic Writing: A Handbook...", type: "book", desc: "NXB Routledge. Cẩm nang cấu trúc chuẩn quốc tế kinh điển.", rank: "Rất tốt" },
+                { id: 7, title: "Belcher, D. (2023) - Writing in the disciplines...", type: "article", desc: "Đánh giá trực diện rủi ro suy giảm kỹ năng. Scopus Q1.", rank: "Tốt" },
+                { id: 8, title: "Tran, Q. M. (2025) - Ứng dụng mô hình ngôn ngữ lớn...", type: "article", desc: "Phù hợp bối cảnh tự học thực tiễn của sinh viên ngoại ngữ.", rank: "Tốt" },
+                { id: 9, title: "Swales, J. M. & Feak, C. B. (2020) - Academic Writing...", type: "book", desc: "NXB Đại học Michigan. Phân tích thể loại chuẩn mực.", rank: "Rất tốt" },
+                { id: 10, title: "British Council (2023) - Artificial Intelligence...", type: "report", desc: "Hội đồng Anh. Khảo sát diện rộng, gợi mở định hướng số.", rank: "Tốt" },
+                { id: 11, title: "Stanford Human-AI (2025) - AI and the Future of...", type: "report", desc: "Stanford University. Phân tích đa diện, phản biện tương lai.", rank: "Tốt" }
             ],
             3: {
                 1: {
@@ -1992,7 +1981,7 @@
                     },
                     improved: {
                         prompt: "Giải thích khái niệm Syntactic Ambiguity (Mơ hồ cú pháp) trong tiếng Anh. Cho 2 ví dụ minh họa rõ ràng và phân tích cấu trúc của các ví dụ đó.",
-                        response: "Syntactic Ambiguity xảy ra khi cấu trúc ngữ pháp của một câu tạo ra nhiều cách hiểu.\nVí dụ 1: 'The chicken is ready to eat' (Con gà đã sẵn sàng để được ăn hoặc con gà sẵn sàng ăn cái gì đó).\nVí dụ 2: 'I saw the man with the telescope' (Tôi nhìn thấy người đàn ông bằng kính viễn vọng của tôi, hoặc người đàn ông đó cầm kính viễn vọng)."
+                        response: "Syntactic Ambiguity xảy ra khi cấu trúc ngữ pháp của một câu tạo ra nhiều cách hiểu.\nVí dụ 1: 'The chicken is ready to eat' (Con gà đã sẵn sàng để được ăn hoặc con gà sẵn sàng ăn cái gì đó).\nVí dụ 2: 'I saw the man with the telescope' (Tôi nhìn thấy người đơn ông bằng kính viễn vọng của tôi, hoặc người đàn ông đó cầm kính viễn vọng)."
                     },
                     advanced: {
                         prompt: "Bạn là một giảng viên ngữ pháp tiếng Anh kỳ cựu. Hãy giải thích khái niệm ’Syntactic Ambiguity’ cho sinh viên năm nhất theo 2 cấp độ: (1) Định nghĩa bình dân kèm ví dụ hài hước; (2) Phân tích sơ đồ cây cú pháp sâu sắc. Hãy học theo cách giải thích mẫu sau: [Ví dụ mẫu về Lexical Ambiguity: ’Bank’ có thể là bờ sông hoặc ngân hàng]. Hãy thực hiện tương tự cho Syntactic Ambiguity.",
@@ -2043,6 +2032,97 @@
         let currentKanbanIndex = 1; // 1: todo, 2: progress, 3: done
         let currentDesignTimelineStep = 1;
         let currentEthicalRuleIndex = 1;
+
+        const widgetContents = {
+            1: {
+                root: `
+                    <div>📄 GhiChuQuanTrong.txt (Tệp tin gốc)</div>
+                    <div style="color: #60a5fa;">📁 TaiLieu (Thư mục con)</div>
+                `,
+                child: `
+                    <div>📄 GhiChuQuanTrong.txt (Bản sao sao chép)</div>
+                    <div style="color: #94a3b8; font-style: italic;">[Trống - tệp DiChuyen.txt đã xóa vĩnh viễn]</div>
+                `
+            },
+            2: [
+                { id: 1, title: "Hyland, K. (2024) - Academic writing in the age of AI...", type: "article", desc: "Tác giả: Chuyên gia đầu ngành viết luận. Tạp chí Scopus Q1 uy tín.", rank: "Rất tốt" },
+                { id: 2, title: "Nguyen, T. H. (2024) - Generative AI in English language...", type: "article", desc: "Bám sát ĐH VN. Tạp chí chuẩn quốc gia ULIS-VNU.", rank: "Rất tốt" },
+                { id: 3, title: "UNESCO (2024) - Guidance for generative AI...", type: "report", desc: "Tổ chức giáo dục toàn cầu. Khung năng lực chiến lược vĩ mô.", rank: "Rất tốt" },
+                { id: 4, title: "Warschauer, M. (2023) - Automated writing evaluation...", type: "article", desc: "Phương pháp tổng quan hệ thống. Tính học thuật và độ tin cậy cao.", rank: "Tốt" },
+                { id: 5, title: "Zhang, D. & Cui, Y. (2024) - The impact of AI-assisted...", type: "article", desc: "Thực nghiệm định lượng tâm lý và kết quả viết luận.", rank: "Rất tốt" },
+                { id: 6, title: "Bailey, S. (2021) - Academic Writing: A Handbook...", type: "book", desc: "NXB Routledge. Cẩm nang cấu trúc chuẩn quốc tế kinh điển.", rank: "Rất tốt" },
+                { id: 7, title: "Belcher, D. (2023) - Writing in the disciplines...", type: "article", desc: "Đánh giá trực diện rủi ro suy giảm kỹ năng. Scopus Q1.", rank: "Tốt" },
+                { id: 8, title: "Tran, Q. M. (2025) - Ứng dụng mô hình ngôn ngữ lớn...", type: "article", desc: "Phù hợp bối cảnh tự học thực tiễn của sinh viên ngoại ngữ.", rank: "Tốt" },
+                { id: 9, title: "Swales, J. M. & Feak, C. B. (2020) - Academic Writing...", type: "book", desc: "NXB Đại học Michigan. Phân tích thể loại chuẩn mực.", rank: "Rất tốt" },
+                { id: 10, title: "British Council (2023) - Artificial Intelligence...", type: "report", desc: "Hội đồng Anh. Khảo sát diện rộng, gợi mở định hướng số.", rank: "Tốt" },
+                { id: 11, title: "Stanford Human-AI (2025) - AI and the Future of...", type: "report", desc: "Stanford University. Phân tích đa diện, phản biện tương lai.", rank: "Tốt" }
+            ],
+            3: {
+                1: {
+                    name: "Tác vụ 1: Tóm tắt bài đọc học thuật",
+                    basic: {
+                        prompt: "Tóm tắt bài nghiên cứu về phương pháp học tiếng Anh này cho tôi.",
+                        response: "Bài nghiên cứu này nói về cách sinh viên Việt Nam sử dụng các công cụ công nghệ để học tiếng Anh hiệu quả hơn. Bài viết khuyên sinh viên nên tương tác nhiều hơn và sử dụng tài nguyên số."
+                    },
+                    improved: {
+                        prompt: "Hãy tóm tắt bài nghiên cứu học thuật dưới đây thành 3 đoạn văn. Đoạn 1 về mục tiêu, đoạn 2 về phương pháp luận, đoạn 3 về kết quả thực chứng. Yêu cầu giữ nguyên các thuật ngữ tiếng Anh chuyên ngành.",
+                        response: "Đoạn 1: Nghiên cứu nhằm khảo sát thực trạng sinh viên ULIS ứng dụng Generative AI trong nâng cao kỹ năng viết.\nĐoạn 2: Phương pháp nghiên cứu khảo sát định lượng thu thập dữ liệu từ 200 sinh viên.\nĐoạn 3: Kết quả thực chứng chứng minh tỷ lệ 85% cải thiện tốc độ xây dựng ý tưởng học thuật."
+                    },
+                    advanced: {
+                        prompt: "Bạn là một chuyên gia nghiên cứu Ngôn ngữ học ứng dụng (Applied Linguistics). Hãy đọc tài liệu dưới đây và thực hiện tóm tắt theo các bước logic sau: Bước 1: Trích xuất câu hỏi nghiên cứu cốt lõi. Bước 2: Tóm tắt phương pháp thực nghiệm (mẫu khảo sát, công cụ). Bước 3: Chỉ ra ý nghĩa thực tiễn đối với sinh viên ULIS. Định dạng kết quả dưới dạng bảng so sánh và các bullet points mạch lạc.",
+                        response: "• CÂU HỎI NGHIÊN CỨU CỐT LÕI: Làm cách nào mô hình AI hỗ trợ rèn luyện tư duy lập luận phản biện cho sinh viên ngoại ngữ?\n• PHƯƠNG PHÁP THỰC NGHIỆM: Nghiên cứu thực nghiệm đối chứng (mẫu n=80) kết hợp khảo sát bảng hỏi.\n• Ý NGHĨA THỰC TIỄN ULIS: Giúp sinh viên ULIS chủ động xây dựng lộ trình học tập tự chủ, hạn chế đạo văn số."
+                    }
+                },
+                2: {
+                    name: "Tác vụ 2: Giải thích khái niệm Syntactic Ambiguity",
+                    basic: {
+                        prompt: "Syntactic Ambiguity là gì? Giải thích đi.",
+                        response: "Syntactic Ambiguity (mơ hồ cú pháp) là khi một câu tiếng Anh có thể được hiểu theo nhiều nghĩa khác nhau tùy thuộc vào cách bạn phân tích cấu trúc ngữ pháp của nó."
+                    },
+                    improved: {
+                        prompt: "Giải thích khái niệm Syntactic Ambiguity (Mơ hồ cú pháp) trong tiếng Anh. Cho 2 ví dụ minh họa rõ ràng và phân tích cấu trúc của các ví dụ đó.",
+                        response: "Syntactic Ambiguity xảy ra khi cấu trúc ngữ pháp của một câu tạo ra nhiều cách hiểu.\nVí dụ 1: 'The chicken is ready to eat' (Con gà đã sẵn sàng để được ăn hoặc con gà sẵn sàng ăn cái gì đó).\nVí dụ 2: 'I saw the man with the telescope' (Tôi nhìn thấy người đơn ông bằng kính viễn vọng của tôi, hoặc người đàn ông đó cầm kính viễn vọng)."
+                    },
+                    advanced: {
+                        prompt: "Bạn là một giảng viên ngữ pháp tiếng Anh kỳ cựu. Hãy giải thích khái niệm ’Syntactic Ambiguity’ cho sinh viên năm nhất theo 2 cấp độ: (1) Định nghĩa bình dân kèm ví dụ hài hước; (2) Phân tích sơ đồ cây cú pháp sâu sắc. Hãy học theo cách giải thích mẫu sau: [Ví dụ mẫu về Lexical Ambiguity: ’Bank’ có thể là bờ sông hoặc ngân hàng]. Hãy thực hiện tương tự cho Syntactic Ambiguity.",
+                        response: "• CẤP ĐỘ 1 (BÌNH DÂN): Chào các tân sinh viên! Hãy tưởng tượng câu: 'Visiting relatives can be boring'. Việc đi thăm họ hàng chán, hay những người họ hàng đến thăm ta chán? Ngữ pháp chơi khăm chúng ta đấy!\n• CẤP ĐỘ 2 (SƠ ĐỒ CÂY CÚ PHÁP): Để giải quyết hiện tượng mơ hồ này, chúng ta cần vẽ sơ đồ phân rã cụm danh từ (NP) và cụm động từ (VP). Ví dụ trong câu 'I saw the man with the telescope', giới từ 'with' có thể gắn trực tiếp vào VP (hành động nhìn) hoặc gắn vào NP (người đàn ông có kính)."
+                    }
+                },
+                3: {
+                    name: "Tác vụ 3: Thiết lập bộ câu hỏi ôn tập Văn hóa Anh - Mỹ",
+                    basic: {
+                        prompt: "Tạo cho tôi bài tập trắc nghiệm về văn hóa nước Anh.",
+                        response: "Câu 1: Thủ đô nước Anh là gì? A. London, B. Paris, C. New York. Đáp án đúng: A."
+                    },
+                    improved: {
+                        prompt: "Tạo bộ 5 câu hỏi trắc nghiệm kèm đáp án về chủ đề Hệ thống giáo dục Vương quốc Anh dành cho sinh viên đại học ngoại ngữ.",
+                        response: "Câu 1: Kỳ thi chuẩn quốc gia ở độ tuổi 16 tại Anh được gọi là gì? A. GCSE, B. A-Level, C. SAT. Đáp án đúng: A.\n(Hệ thống tự động hiển thị 5 câu hỏi chuẩn học thuật ngoại ngữ)."
+                    },
+                    advanced: {
+                        prompt: "Bạn là chuyên gia khảo thí và kiểm định giáo dục. Dựa trên tài liệu văn hóa Anh đính kèm, hãy tạo một bộ đề ôn tập gồm: 3 câu hỏi trắc nghiệm ở cấp độ ’Hiểu’ (Comprehension) và 2 câu hỏi tự luận ở cấp độ ’Phân tích phản biện’ (Critical Analysis). Đối với mỗi câu trắc nghiệm, cung cấp 4 đáp án gây nhiễu chất lượng và giải thích chi tiết lý do chọn đáp án đúng theo chuẩn tài liệu.",
+                        response: "• PHẦN TRẮC NGHIỆM (HIỂU):\nCâu 1: Sự phân cấp giữa 'State school' và 'Public school' phản ánh yếu tố nào trong xã hội Anh?\nA. Sự phân tầng giai cấp (Đáp án đúng)\nB. Sự khác biệt địa lý\nC. Quy mô phòng học\nD. Chính sách tài khóa công\nGiải thích: 'Public school' tại Anh thực chất là trường tư thục ưu tú, phản ánh ranh giới giai cấp sâu sắc.\n\n• PHẦN TỰ LUẬN (PHẢN BIỆN):\nCâu 4: Hãy phân tích ưu và nhược điểm của hệ thống kiểm thí quốc gia GCSE đối với cơ hội phát triển công bằng của học sinh nhập cư."
+                    }
+                }
+            },
+            4: {
+                todo: "Nhiệm vụ: Nghiên cứu tài liệu kỹ năng Đọc - Viết ULIS (Người phụ trách: Thảo)",
+                progress: "Nhiệm vụ: Xây dựng bộ câu hỏi khảo sát sinh viên K58 (Người phụ trách: Nam)",
+                done: "Nhiệm vụ: Tổng hợp kết quả dự án cẩm nang (Người phụ trách: Linh)"
+            },
+            5: {
+                1: "• Giai đoạn 1 (ChatGPT): Sử dụng Prompt phân cấp 3 lượt để định hình nội dung, bản địa hóa đoạn hội thoại nộp bài muộn chuẩn văn phong lịch sự, tinh tế của giảng đường ULIS.",
+                2: "• Giai đoạn 2 (Canva AI): Đưa văn bản vào mẫu infographic Edtech màu xanh dương, chuẩn hóa định dạng văn phạm APA và sinh các icon line-art cuốn sách, cây bút đồng bộ.",
+                3: "• Giai đoạn 3 (DALL-E 3): Ứng dụng Prompt mô tả nâng cao tích hợp logo ULIS sinh ra tranh biểu diện sinh viên học tập vui vẻ trong thư viện đại học ảo vô cùng hài hòa (Sản phẩm xuất bản b5.jpg)."
+            },
+            6: {
+                1: "<strong>1. Tư duy độc lập:</strong> Luôn chủ động tự suy nghĩ và tự thiết lập dàn ý bài luận sư phạm thô trước khi mở bất kỳ công cụ AI nào để không bị thiên kiến công nghệ dẫn dắt.",
+                2: "<strong>2. Minh bạch tuyệt đối:</strong> Công khai trung thực mức độ can thiệp và hỗ trợ của AI trong mọi sản phẩm nộp cho nhà trường thông qua tờ tuyên bố sử dụng AI Disclosure.",
+                3: "<strong>3. Màng lọc phản biện:</strong> Coi mọi dữ liệu AI trả về là nguồn tin có nguy cơ ảo tưởng cao. Luôn chủ động đối chiếu, kiểm chứng chéo với các tài liệu sách giáo khoa, thư viện chính thống.",
+                4: "<strong>4. Bảo mật dữ liệu:</strong> Tuyệt đối không đăng tải thông tin cá nhân của bản thân, thông tin học sinh, tài liệu nội bộ nhà trường hoặc bài làm của bạn bè lên mô hình AI công cộng.",
+                5: "<strong>5. Làm chủ ngôn ngữ:</strong> Giữ vững bản sắc cá nhân (authorial voice). AI chỉ được sửa lỗi ngữ pháp, không được phép thay thế giọng văn biểu đạt cảm xúc sư phạm của chính mình.",
+                6: "<strong>6. Phát triển bền vững:</strong> Chỉ sử dụng AI với mục đích nâng cao hiệu suất học tập, tuyệt đối không dùng AI để đối phó với các kỳ thi hoặc bài đánh giá năng lực cốt lõi."
+            }
+        };
 
         // Render Widget Content dynamically [1]
         function initInteractiveWidget(id) {
