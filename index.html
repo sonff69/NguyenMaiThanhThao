@@ -98,6 +98,93 @@
             pointer-events: none;
         }
 
+        /* Master Spatial Viewport Wrapper */
+        .viewport-wrapper {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Horizontal Axis Container */
+        .spatial-axis-horizontal {
+            display: flex;
+            width: 200vw;
+            height: 100%;
+            transition: var(--transition-gentle);
+            transform: translateX(0);
+        }
+
+        /* Left Pane (Scrolls Vertically: Hero -> Reflection) */
+        .vertical-axis-pane {
+            width: 100vw;
+            height: 100%;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        /* Right Pane (Scrolls Vertically: Gallery grid of exercises) */
+        .exercises-axis-pane {
+            width: 100vw;
+            height: 100%;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            background: transparent;
+        }
+
+        /* Floating Edge Swipe Indicators (TO GẤP ĐÔI & CÓ VIỀN GLASS DÀY) */
+        .swipe-indicator {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 90;
+            background: rgba(15, 23, 42, 0.75);
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(16px);
+            padding: 2.5rem 1.1rem;
+            cursor: pointer;
+            transition: var(--transition-gentle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 
+                        0 0 25px rgba(192, 132, 252, 0.15);
+        }
+
+        .swipe-indicator span {
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-purple);
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            user-select: none;
+        }
+
+        .left-indicator {
+            left: 0;
+            border-radius: 0 24px 24px 0;
+            border-left: none;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-50%) translateX(-40px);
+        }
+
+        .right-indicator {
+            right: 0;
+            border-radius: 24px 0 0 24px;
+            border-right: none;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        .swipe-indicator:hover {
+            background: rgba(15, 23, 42, 0.9);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 
+                        0 0 35px rgba(192, 132, 252, 0.35);
+            border-color: var(--accent-purple);
+        }
+
         /* Diagonal Art Path Accent */
         .art-path {
             position: absolute;
@@ -308,7 +395,7 @@
             flex-direction: column;
         }
 
-        /* ULIS_DHQGHN Subtitle [1] */
+        /* Lược bỏ dòng chữ Monet, chỉ giữ lại ULIS_DHQGHN */
         .hero-subtitle {
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 0.8rem;
@@ -331,7 +418,7 @@
             text-shadow: 0 0 35px rgba(255, 255, 255, 0.35), 0 0 70px rgba(192, 132, 252, 0.15);
         }
 
-        /* Pedagogy-focused description text [1] */
+        /* Cập nhật nội dung liên quan tới công nghiệp, AI và Giáo dục Sư phạm Anh */
         .hero-desc {
             color: var(--text-secondary);
             font-size: 1rem;
@@ -340,7 +427,7 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Giới thiệu gì đó (chữ trắng, nền box mờ) [1] */
+        /* Giới thiệu mục tiêu Sư phạm của giáo viên tương lai [1] */
         .intro-glass-box {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -395,7 +482,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* Hero Right Spatial Board (Integrated profile only - removed portrait cards) */
+        /* Hero Right Spatial Board (Integrated profile only) */
         .hero-right-spatial-container {
             position: relative;
             width: 100%;
@@ -1051,18 +1138,17 @@
                     
                     <!-- Hero Left (New Sketch Layout) -->
                     <div class="hero-left">
-                        <span class="hero-subtitle">ULIS_DHQGHN • PORTFOLIO</span>
+                        <span class="hero-subtitle">ULIS_DHQGHN</span>
                         <h1 class="hero-name">Nguyễn Mai<br>Thanh Thảo</h1>
                         
-                        <!-- English Pedagogy Focused description text [1] -->
                         <p class="hero-desc">
-                            Trong kỷ nguyên số hóa, sự bùng nổ của công nghệ và Trí tuệ nhân tạo (AI) đang mở ra những chân trời tiềm năng vô hạn cho ngành giáo dục toàn cầu. Là một giáo viên tương lai thuộc ngành Sư phạm Tiếng Anh, tôi thấu hiểu sâu sắc rằng việc trang bị năng lực số và kỹ năng làm chủ AI là điều kiện tiên quyết. Đây là đòn bẩy đắc lực để đổi mới phương pháp giảng dạy, cá nhân hóa lộ trình học tập của học sinh và tối ưu hóa hiệu quả truyền thụ tri thức.
+                            Trong kỷ nguyên số, sự bùng nổ của công nghệ và trí tuệ nhân tạo (AI) đang mở ra những tiềm năng vô hạn cho ngành giáo dục. Là một sinh viên Sư phạm Tiếng Anh tương lai, em nhận thấy bản thân cần chủ động trang bị những kiến thức và kỹ năng số để sẵn sàng kiến tạo các phương pháp giảng dạy thông minh và truyền cảm hứng.
                         </p>
 
-                        <!-- Giới thiệu gì đó (chữ trắng, nền box mờ) [1] -->
+                        <!-- Giới thiệu mục tiêu Sư phạm của giáo viên tương lai [1] -->
                         <div class="intro-glass-box">
                             <span class="intro-box-title">Định hướng & Mục tiêu</span>
-                            <p>Tôi hướng tới việc kết hợp hài hòa giữa nền tảng khoa học sư phạm vững chắc và năng lực công nghệ vượt trội; chủ động ứng dụng AI vào thiết kế giáo án tiếng Anh, cá nhân hóa bài học và kích thích tinh thần tự học của thế hệ học sinh số.</p>
+                            <p>Mục tiêu của em là nghiên cứu ứng dụng Generative AI và các nền tảng EdTech hiện đại nhằm tối ưu hóa phương pháp giảng dạy tiếng Anh, cá nhân hóa lộ trình học tập và phát triển học liệu số tương tác cao cho học sinh.</p>
                         </div>
 
                         <!-- Gmail cá nhân hay j đó của mình -->
@@ -1119,7 +1205,7 @@
                                 <span class="hero-subtitle">03 / Reflection</span>
                                 <h3>Sự Phát Triển Trong Tầm Nhìn Kỹ Thuật Số</h3>
                                 <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
-                                    Thông qua quá trình xây dựng portfolio ấn tượng lấy cảm hứng từ những mảng màu của Claude Monet, tôi đã liên kết trọn vẹn tư duy ngôn từ mềm mại của ngành học Ngôn ngữ Anh với tư duy mạch lạc của công nghệ số.
+                                    Thông qua quá trình xây dựng portfolio cá nhân học tập chuyên ngành Sư phạm Tiếng Anh, em đã liên kết trọn vẹn tư duy sư phạm ngôn ngữ mềm mại với khả năng ứng dụng công nghệ thông minh.
                                 </p>
                                 <p style="color: var(--text-secondary); line-height: 1.8;">
                                     Không gian này không đơn thuần là một hệ thống lưu trữ học thuật, mà là cột mốc khẳng định kỹ năng số hóa toàn diện, sẵn sàng áp dụng các đột phá của Trí tuệ nhân tạo một cách nhân văn và có trách nhiệm vào các nghiên cứu học thuật tương lai.
@@ -1389,15 +1475,15 @@
         const modalData = {
             1: `
                 <h3>Bài 1: Thao tác cơ bản với tệp tin và thư mục</h3>
-                <p><strong>Mục tiêu:</strong> Thiết kế hệ thống dữ liệu số gọn gàng, có tính logic cao, bảo mật và dễ truy vết trên môi trường điện toán đám mây cá nhân.</p>
+                <p><strong>Mục tiêu:</strong> Thiết kế hệ thống dữ liệu số gọn gàng, có tính logic cao, bảo mật và dễ truy vết trên môi trường điện toán đám mây cá nhân khoa sư phạm.</p>
                 
                 <h4>Sơ đồ tổ chức cây thư mục chuẩn hóa</h4>
                 <p>Một kiến trúc thư mục có cấu trúc đa tầng, phân tách rõ rệt giữa tài nguyên nghiên cứu thô (Raw) và tài liệu đầu ra chính thức (Deliverables):</p>
                 <div class="modal-tree-view">
-                    ULIS_NNA_NguyenMaiThanhThao_25040190/
-                    <br>&nbsp;├── 01_ChuyenNganh_NgonNguAnh/
-                    <br>&nbsp;│&nbsp;&nbsp;&nbsp;├── 01_Phonetics_and_Phonology/
-                    <br>&nbsp;│&nbsp;&nbsp;&nbsp;└── 02_English_Literature_Studies/
+                    ULIS_SPA_NguyenMaiThanhThao_25040190/
+                    <br>&nbsp;├── 01_ChuyenNganh_SuPhamTiengAnh/
+                    <br>&nbsp;│&nbsp;&nbsp;&nbsp;├── 01_English_Pedagogy_Studies/
+                    <br>&nbsp;│&nbsp;&nbsp;&nbsp;└── 02_Educational_Technology_EdTech/
                     <br>&nbsp;├── 02_NghiepVu_KinhTe_CongNghe/
                     <br>&nbsp;│&nbsp;&nbsp;&nbsp;└── 01_NhapMon_CongNgheSo_AI/
                     <br>&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── 01_TaiLieu_Lectures/
@@ -1412,16 +1498,16 @@
                     [YYYYMMDD]_[MaMon]_[TenNhiemVu]_[HoTen]_[Version].pdf
                     <br>Ví dụ: 20261115_ARTI2026_BT1_NguyenMaiThanhThao_v2.0.pdf
                 </code>
-                <p><em>Phân tích chiều sâu:</em> Việc duy trì cây thư mục và quy tắc đặt tên khoa học giúp tiết kiệm thời gian cộng tác nhóm lên đến 30% và đảm bảo tính thống nhất trong quản trị tài liệu trực tuyến suốt 4 năm đại học.</p>
+                <p><em>Phân tích chiều sâu:</em> Việc duy trì cây thư mục và quy tắc đặt tên khoa học giúp tiết kiệm thời gian cộng tác nhóm lên đến 30% và đảm bảo tính thống nhất trong quản trị tài liệu trực tuyến suốt 4 năm học sư phạm.</p>
             `,
             2: `
                 <h3>Bài 2: Tìm kiếm và đánh giá thông tin học thuật</h3>
-                <p><strong>Mục tiêu:</strong> Làm chủ các kỹ thuật khai phá tri thức chất lượng cao trên các thư viện điện tử uy tín, sàng lọc dữ liệu chính xác hỗ trợ viết bài luận khoa học.</p>
+                <p><strong>Mục tiêu:</strong> Làm chủ các kỹ thuật khai phá tri thức chất lượng cao trên các thư viện điện tử uy tín, sàng lọc dữ liệu chính xác hỗ trợ xây dựng bài giảng tiếng Anh khoa học.</p>
                 
                 <h4>Chiến lược truy vấn nâng cao (Phối hợp đa toán tử)</h4>
                 <p>Sử dụng kết hợp hơn 4 toán tử tìm kiếm chuyên biệt để lọc bỏ tạp âm thông tin trên Google Scholar:</p>
                 <code style="color: var(--accent-purple); font-weight: 600; display: block; background: rgba(255, 255, 255, 0.03); padding: 0.8rem; border-radius: 8px; margin-bottom: 1rem; border: 1px solid rgba(255, 255, 255, 0.05);">
-                    ("cognitive linguistics" OR "conceptual metaphor") AND "language learning" site:edu filetype:pdf -commercial
+                    ("cognitive linguistics" OR "conceptual metaphor") AND "language teaching" site:edu filetype:pdf -commercial
                 </code>
 
                 <h4>Bảng đánh giá tài liệu khoa học theo mô hình CRAAP</h4>
@@ -1441,7 +1527,7 @@
                         </tr>
                         <tr>
                             <td><strong>Relevance</strong> (Sự liên quan)</td>
-                            <td>Giải quyết trực tiếp khó khăn của sinh viên ngôn ngữ.</td>
+                            <td>Giải quyết trực tiếp khó khăn của sinh viên và giáo viên sư phạm.</td>
                             <td>Phân tích chung chung nhằm mục đích giới thiệu dịch vụ.</td>
                         </tr>
                         <tr>
@@ -1461,49 +1547,49 @@
                         </tr>
                     </tbody>
                 </table>
-                <p><em>Kết luận:</em> Đảm bảo chỉ trích dẫn các tài liệu đạt tối thiểu 4/5 tiêu chí CRAAP loại A nhằm đảm bảo độ tin cậy tuyệt đối của các lập luận khoa học trong bài nghiên cứu chuyên ngành.</p>
+                <p><em>Kết luận:</em> Đảm bảo chỉ trích dẫn các tài liệu đạt tối thiểu 4/5 tiêu chí CRAAP loại A nhằm đảm bảo độ tin cậy tuyệt đối của các lập luận khoa học trong bài nghiên cứu chuyên ngành giảng dạy Anh ngữ.</p>
             `,
             3: `
                 <h3>Bài 3: Viết Prompt hiệu quả cho các tác vụ học tập</h3>
-                <p><strong>Mục tiêu:</strong> Ứng dụng kỹ nghệ Prompt (Prompt Engineering) để cá nhân hóa việc học tập, biến mô hình ngôn ngữ lớn (LLM) thành người trợ lý dịch thuật và phản biện học thuật thông minh.</p>
+                <p><strong>Mục tiêu:</strong> Ứng dụng kỹ nghệ Prompt (Prompt Engineering) để cá nhân hóa việc học tập, biến mô hình ngôn ngữ lớn (LLM) thành người trợ lý dịch thuật và phản biện bài giảng sư phạm thông minh.</p>
                 
                 <div class="modal-prompt-split">
                     <div class="modal-prompt-card red">
                         <strong style="color: #f43f5e;">Prompt thông thường (Chưa tối ưu)</strong>
-                        <p style="margin-top: 0.5rem; font-family: monospace; font-size: 0.85rem; color: #fda4af;">"Hãy tóm tắt bài báo khoa học này bằng tiếng Anh giúp tôi để viết tiểu luận."</p>
-                        <p style="font-size: 0.8rem; margin-top: 0.5rem; font-style: italic; color: #fecdd3;">Hạn chế: Kết quả trả về thiếu trọng tâm học thuật, cấu trúc lỏng lẻo, dùng nhiều từ vựng quá phổ thông.</p>
+                        <p style="margin-top: 0.5rem; font-family: monospace; font-size: 0.85rem; color: #fda4af;">"Hãy tóm tắt bài báo khoa học này bằng tiếng Anh giúp tôi để viết giáo án giảng dạy."</p>
+                        <p style="font-size: 0.8rem; margin-top: 0.5rem; font-style: italic; color: #fecdd3;">Hạn chế: Kết quả trả về thiếu trọng tâm học thuật giáo dục, cấu trúc lỏng lẻo, dùng nhiều từ vựng quá phổ thông.</p>
                     </div>
                     <div class="modal-prompt-card green">
                         <strong style="color: #10b981;">Prompt tối ưu học thuật (Đạt Mức 4)</strong>
-                        <p style="margin-top: 0.5rem; font-family: monospace; font-size: 0.85rem; color: #a7f3d0;">"Bạn là một chuyên gia nghiên cứu ngôn ngữ học ứng dụng (Role). Hãy viết bản tóm tắt học thuật (Executive Summary) dài 300 từ của bài nghiên cứu đính kèm (Task), tập trung phân tích sâu vào phương pháp nghiên cứu (Methodology) và kết luận chính (Context). Sử dụng định dạng gạch đầu dòng cấu trúc rõ ràng, văn phong trang trọng học thuật (Format & Tone)."</p>
+                        <p style="margin-top: 0.5rem; font-family: monospace; font-size: 0.85rem; color: #a7f3d0;">"Bạn là một chuyên gia nghiên cứu ngôn ngữ học ứng dụng và giáo dục số (Role). Hãy viết bản tóm tắt học thuật (Executive Summary) dài 300 từ của bài nghiên cứu đính kèm (Task), tập trung phân tích sâu vào phương pháp nghiên cứu (Methodology) và kết luận chính (Context). Sử dụng định dạng gạch đầu dòng cấu trúc rõ ràng, văn phong trang trọng học thuật (Format & Tone)."</p>
                     </div>
                 </div>
                 
                 <h4>Phân tích cơ chế kỹ thuật</h4>
-                <p>Việc áp dụng các biến số cấu trúc rõ ràng (Role, Context, Target, Format) giúp định hình "Không gian ngữ cảnh" (Context Window) của AI. Khi AI được định hướng trong một vai trò hàn lâm có trình độ chuyên môn cao, thuật toán xác xuất từ vựng sẽ tự động lựa chọn các cấu trúc từ vựng ở cấp độ chuyên sâu (Academic Word List) thay vì ngôn ngữ giao tiếp hằng ngày, giảm thiểu 90% lỗi sai lệch lập luận.</p>
+                <p>Việc áp dụng các biến số cấu trúc rõ ràng (Role, Context, Target, Format) giúp định hình "Không gian ngữ cảnh" (Context Window) của AI. Khi AI được định hướng trong một vai trò sư phạm có trình độ chuyên môn cao, thuật toán xác xuất từ vựng sẽ tự động lựa chọn các cấu trúc từ vựng ở cấp độ chuyên sâu (Academic Word List) thay vì ngôn ngữ giao tiếp hằng ngày, giảm thiểu 90% lỗi sai lệch lập luận.</p>
             `,
             4: `
                 <h3>Bài 4: Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm</h3>
-                <p><strong>Mục tiêu:</strong> Làm chủ kỹ năng quản lý dự án số, tối ưu hóa sự phối hợp của các thành viên trong các dự án dịch thuật học thuật phức tạp thông qua mô hình quản lý hiện đại.</p>
+                <p><strong>Mục tiêu:</strong> Làm chủ kỹ năng quản lý dự án số, tối ưu hóa sự phối hợp của các thành viên trong các dự án giáo án sư phạm phức tạp thông qua mô hình quản lý hiện đại.</p>
                 
-                <h4>Mô hình Kanban số hóa tốiưu quy trình cộng tác</h4>
+                <h4>Mô hình Kanban số hóa tối ưu quy trình cộng tác</h4>
                 <div class="modal-kanban">
                     <div class="modal-kanban-col">
                         <div class="modal-kanban-title" style="color: #f87171;">📋 Lên kế hoạch</div>
                         <div class="modal-kanban-card">
-                            <strong>Biên tập bản thảo chương 4</strong>
-                            <p style="margin-top: 0.3rem; font-size: 0.75rem; color: var(--text-muted);">Phân công: Nam (Dịch giả)</p>
+                            <strong>Biên tập giáo án giảng dạy chương 4</strong>
+                            <p style="margin-top: 0.3rem; font-size: 0.75rem; color: var(--text-muted);">Phân công: Nam (Soạn bài)</p>
                         </div>
                     </div>
                     <div class="modal-kanban-col">
                         <div class="modal-kanban-title" style="color: #60a5fa;">⚡ Đang xử lý</div>
                         <div class="modal-kanban-card">
-                            <strong>Hiệu đính ngữ nghĩa học thuật</strong>
+                            <strong>Kiểm tra hiệu ứng tương tác EdTech</strong>
                             <p style="margin-top: 0.3rem; font-size: 0.75rem; color: var(--text-muted);">Phân công: Thảo (Lead)</p>
                         </div>
                     </div>
                     <div class="modal-kanban-col">
-                        <div class="modal-kanban-title" style="color: #34d399;">🎯 Hoàn tất</div>
+                        <div class="modal-kanban-title" style="color: #047857;">🎯 Hoàn tất</div>
                         <div class="modal-kanban-card">
                             <strong>Thiết lập cấu trúc chương 1-3</strong>
                             <p style="margin-top: 0.3rem; font-size: 0.75rem; color: var(--text-muted);">Phân công: Cả nhóm</p>
@@ -1512,30 +1598,30 @@
                 </div>
 
                 <h4>Giải pháp cải tiến hiệu năng làm việc từ xa</h4>
-                <p>Bằng việc đồng bộ hóa dữ liệu thời gian thực (Real-time syncing) trên các nền tảng điện toán đám mây như Google Drive/Trello, nhóm nghiên cứu thiết lập các mốc cảnh báo tiến độ tự động (Automated Deadline Reminders). Giải pháp này giúp cắt giảm thời gian họp thảo luận trực tiếp không cần thiết, gia tăng tốc độ phản hồi và điều phối công việc hiệu quả giữa các thành viên.</p>
+                <p>Bằng việc đồng bộ hóa dữ liệu thời gian thực (Real-time syncing) trên các nền tảng điện toán đám mây như Google Drive/Trello, nhóm sư phạm thiết lập các mốc cảnh báo tiến độ tự động (Automated Deadline Reminders). Giải pháp này giúp cắt giảm thời gian họp thảo luận trực tiếp không cần thiết, gia tăng tốc độ phản hồi và điều phối công việc hiệu quả giữa các thành viên.</p>
             `,
             5: `
                 <h3>Bài 5: Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung</h3>
-                <p><strong>Mục tiêu:</strong> Ứng dụng khéo léo công cụ Trí tuệ nhân tạo sinh ảnh nghệ thuật để phục vụ việc minh họa nội dung giáo dục số hoặc trang trí giao diện Portfolio mang màu sắc hội họa cổ điển.</p>
+                <p><strong>Mục tiêu:</strong> Ứng dụng khéo léo công cụ Trí tuệ nhân tạo sinh ảnh nghệ thuật để phục vụ việc minh họa nội dung giáo dục số hoặc trang trí giáo diện bài giảng sư phạm tương tác cao.</p>
                 
-                <h4>Quy trình kỹ thuật tạo lập ảnh màu nước Monet</h4>
+                <h4>Quy trình kỹ thuật tạo lập ảnh học liệu minh họa EdTech</h4>
                 <p>Tác phẩm minh họa đại dương và sứa phát quang sinh học (Bioluminescence Jellyfish) trong Portfolio này được thực thi qua 3 bước tinh chỉnh mỹ thuật số bài bản:</p>
                 <ol style="margin-left: 1.5rem; color: var(--text-secondary); line-height: 1.8;">
-                    <li><strong>Bước 1 (Xác lập khái niệm):</strong> Thiết lập ý tưởng mỹ thuật - sự giao thoa giữa ánh sáng dưới biển sâu huyền bí và phong cách nét vẽ khuếch tán sơn dầu màu nước của Claude Monet.</li>
+                    <li><strong>Bước 1 (Xác lập khái niệm):</strong> Thiết lập ý tưởng mỹ thuật - sự giao thoa giữa ánh sáng dưới biển sâu huyền bí và phong cách nét vẽ khuếch tán sơn dầu màu nước để giảng dạy từ vựng sinh học Anh ngữ cho học sinh trực quan.</li>
                     <li><strong>Bước 2 (Xây dựng Prompt chuỗi):</strong> Thực thi truy vấn sinh ảnh với cú pháp chuyên sâu: <br>
                         <code style="display:block; margin: 0.4rem 0; padding: 0.5rem; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 6px;">"A delicate watercolor painting in Claude Monet style, soft light reflection, moving thin mist, a glowing cyan jellyfish floating gracefully in the deep navy ocean, diffuse lighting, masterpiece, high details"</code>
                     </li>
-                    <li><strong>Bước 3 (Tinh chỉnh hậu kỳ):</strong> Đưa hình ảnh đầu ra qua các bộ lọc độ nét (Upscaling) và hiệu chỉnh độ bão hòa màu để tích hợp khớp tuyệt đối với tông giấy trầm ấm của website.</li>
+                    <li><strong>Bước 3 (Tinh chỉnh hậu kỳ):</strong> Đưa hình ảnh đầu ra qua các bộ lọc độ nét (Upscaling) và hiệu chỉnh độ bão hòa màu để tích hợp khớp tuyệt đối với tông giáo án điện tử hiện đại.</li>
                 </ol>
             `,
             6: `
                 <h3>Bài 6: Sử dụng AI có trách nhiệm trong học tập và nghiên cứu</h3>
-                <p><strong>Mục tiêu:</strong> Định hình tư duy phản biện cao, xây dựng bộ chuẩn đạo đức trong việc sử dụng AI học thuật, đảm bảo giữ vững vị thế con người là chủ thể sáng tạo tri thức.</p>
+                <p><strong>Mục tiêu:</strong> Định hình tư duy phản biện cao, xây dựng bộ chuẩn đạo đức trong việc sử dụng AI học thuật của một giảng viên tương lai, đảm bảo giữ vững vị thế con người là chủ thể giáo dục sáng tạo.</p>
                 
                 <div class="modal-rules-grid">
                     <div class="modal-rule-item">
                         <strong style="color: var(--accent-purple);">1. Minh bạch hóa thông tin (Transparency)</strong>
-                        <p style="margin-top: 0.5rem; font-size: 0.85rem;">Luôn khai báo trung thực và cụ thể các phần văn bản hoặc mã nguồn có sự hỗ trợ gợi ý hoặc biên tập từ các công cụ AI trong các công trình học thuật chuyên ngành.</p>
+                        <p style="margin-top: 0.5rem; font-size: 0.85rem;">Luôn khai báo trung thực và cụ thể các phần văn bản hoặc mã nguồn có sự hỗ trợ gợi ý hoặc biên tập từ các công cụ AI trong các giáo án bài giảng hoặc báo cáo nghiên cứu sư phạm.</p>
                     </div>
                     <div class="modal-rule-item">
                         <strong style="color: var(--accent-purple);">2. Chống Thiên Kiến & Sai Lệch (Fact-checking)</strong>
@@ -1543,8 +1629,8 @@
                     </div>
                 </div>
 
-                <h4>Tư duy phản biện trước các thách thức đạo đức học máy</h4>
-                <p>Là sinh viên ngành Ngôn ngữ học, tôi nhận thức sâu sắc rằng các mô hình ngôn ngữ lớn được huấn luyện chủ yếu dựa trên nguồn kho ngữ liệu phương Tây khổng lồ, dễ dẫn đến định kiến văn hóa một chiều trong kết quả phân tích dịch thuật. Vì vậy, người sử dụng cần có nhãn quan phê bình sắc sảo, liên tục hiệu chỉnh các khía cạnh bản sắc văn hóa bản địa khi xuất bản học thuật, tránh việc phụ thuộc máy móc vào tư duy lập trình sẵn của AI.</p>
+                <h4>Tư duy phản biện trước các thách thức đạo đức học máy trong sư phạm</h4>
+                <p>Là sinh viên ngành Sư phạm Tiếng Anh, em nhận thức sâu sắc rằng các mô hình ngôn ngữ lớn được huấn luyện chủ yếu dựa trên nguồn kho ngữ liệu phương Tây khổng lồ, dễ dẫn đến định kiến văn hóa một chiều trong kết quả dịch thuật và giảng dạy ngoại ngữ. Vì vậy, thế hệ giáo viên tương lai cần có nhãn quan phê bình sắc sảo, liên tục hiệu chỉnh các khía cạnh bản sắc văn hóa bản địa khi xây dựng bài giảng số, tránh phụ thuộc máy móc vào tư duy lập trình sẵn của AI.</p>
             `
         };
 
