@@ -98,93 +98,6 @@
             pointer-events: none;
         }
 
-        /* Master Spatial Viewport Wrapper */
-        .viewport-wrapper {
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* Horizontal Axis Container */
-        .spatial-axis-horizontal {
-            display: flex;
-            width: 200vw;
-            height: 100%;
-            transition: var(--transition-gentle);
-            transform: translateX(0);
-        }
-
-        /* Left Pane (Scrolls Vertically: Hero -> Reflection) */
-        .vertical-axis-pane {
-            width: 100vw;
-            height: 100%;
-            overflow-y: auto;
-            scroll-behavior: smooth;
-        }
-
-        /* Right Pane (Scrolls Vertically: Gallery grid of exercises) */
-        .exercises-axis-pane {
-            width: 100vw;
-            height: 100%;
-            overflow-y: auto;
-            scroll-behavior: smooth;
-            background: transparent;
-        }
-
-        /* Floating Edge Swipe Indicators (TO GẤP ĐÔI & CÓ VIỀN GLASS DÀY) */
-        .swipe-indicator {
-            position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 90;
-            background: rgba(15, 23, 42, 0.75);
-            border: 1.5px solid rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(16px);
-            padding: 2.5rem 1.1rem;
-            cursor: pointer;
-            transition: var(--transition-gentle);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 
-                        0 0 25px rgba(192, 132, 252, 0.15);
-        }
-
-        .swipe-indicator span {
-            font-size: 0.95rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent-purple);
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            user-select: none;
-        }
-
-        .left-indicator {
-            left: 0;
-            border-radius: 0 24px 24px 0;
-            border-left: none;
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(-50%) translateX(-40px);
-        }
-
-        .right-indicator {
-            right: 0;
-            border-radius: 24px 0 0 24px;
-            border-right: none;
-            transform: translateY(-50%) translateX(0);
-        }
-
-        .swipe-indicator:hover {
-            background: rgba(15, 23, 42, 0.9);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 
-                        0 0 35px rgba(192, 132, 252, 0.35);
-            border-color: var(--accent-purple);
-        }
-
         /* Diagonal Art Path Accent */
         .art-path {
             position: absolute;
@@ -395,6 +308,7 @@
             flex-direction: column;
         }
 
+        /* ULIS_DHQGHN Subtitle [1] */
         .hero-subtitle {
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 0.8rem;
@@ -417,6 +331,7 @@
             text-shadow: 0 0 35px rgba(255, 255, 255, 0.35), 0 0 70px rgba(192, 132, 252, 0.15);
         }
 
+        /* Pedagogy-focused description text [1] */
         .hero-desc {
             color: var(--text-secondary);
             font-size: 1rem;
@@ -425,7 +340,7 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Giới thiệu gì đó (chữ trắng, nền box mờ) */
+        /* Giới thiệu gì đó (chữ trắng, nền box mờ) [1] */
         .intro-glass-box {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -480,7 +395,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* Hero Right Spatial Board (Integrated profile only) */
+        /* Hero Right Spatial Board (Integrated profile only - removed portrait cards) */
         .hero-right-spatial-container {
             position: relative;
             width: 100%;
@@ -1136,17 +1051,18 @@
                     
                     <!-- Hero Left (New Sketch Layout) -->
                     <div class="hero-left">
-                        <span class="hero-subtitle">ULIS_DHQGHN • MONET-INSPIRED PORTFOLIO</span>
+                        <span class="hero-subtitle">ULIS_DHQGHN • PORTFOLIO</span>
                         <h1 class="hero-name">Nguyễn Mai<br>Thanh Thảo</h1>
                         
+                        <!-- English Pedagogy Focused description text [1] -->
                         <p class="hero-desc">
-                            Một không gian portfolio mang cảm giác tranh màu nước ấn tượng: ánh sáng khuếch tán, mặt nước phản chiếu, sương mỏng chuyển động và bố cục tối giản như một gallery cá nhân.
+                            Trong kỷ nguyên số hóa, sự bùng nổ của công nghệ và Trí tuệ nhân tạo (AI) đang mở ra những chân trời tiềm năng vô hạn cho ngành giáo dục toàn cầu. Là một giáo viên tương lai thuộc ngành Sư phạm Tiếng Anh, tôi thấu hiểu sâu sắc rằng việc trang bị năng lực số và kỹ năng làm chủ AI là điều kiện tiên quyết. Đây là đòn bẩy đắc lực để đổi mới phương pháp giảng dạy, cá nhân hóa lộ trình học tập của học sinh và tối ưu hóa hiệu quả truyền thụ tri thức.
                         </p>
 
-                        <!-- Giới thiệu gì đó (chữ trắng, nền box mờ) -->
+                        <!-- Giới thiệu gì đó (chữ trắng, nền box mờ) [1] -->
                         <div class="intro-glass-box">
                             <span class="intro-box-title">Định hướng & Mục tiêu</span>
-                            <p>Tối ưu hóa tiềm năng của Trí tuệ nhân tạo để hỗ trợ dịch thuật học thuật khoa học, nghiên cứu dữ liệu ngôn ngữ ứng dụng và thiết lập các quy trình số hóa tư liệu hiệu quả.</p>
+                            <p>Tôi hướng tới việc kết hợp hài hòa giữa nền tảng khoa học sư phạm vững chắc và năng lực công nghệ vượt trội; chủ động ứng dụng AI vào thiết kế giáo án tiếng Anh, cá nhân hóa bài học và kích thích tinh thần tự học của thế hệ học sinh số.</p>
                         </div>
 
                         <!-- Gmail cá nhân hay j đó của mình -->
@@ -1181,7 +1097,7 @@
                                     </div>
                                     <div class="widget-card">
                                         <span class="widget-label">Ngành học</span>
-                                        <span class="widget-value">Ngôn ngữ và Văn hoá Anh</span>
+                                        <span class="widget-value">Sư phạm Tiếng Anh</span>
                                     </div>
                                     <div class="widget-card">
                                         <span class="widget-label">Lớp học phần</span>
