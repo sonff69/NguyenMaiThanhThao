@@ -582,7 +582,7 @@
 
         /* Custom Glassmorphic Google Drive Button - Harmonized to glow with the design [1] */
         .btn-drive-glass {
-            background: rgba(192, 132, 252, 0.05);
+            background: rgba(192, 132, 252, 0.06);
             border: 1.5px solid rgba(192, 132, 252, 0.35); /* Glowing violet border */
             color: var(--text-primary);
             backdrop-filter: blur(16px);
@@ -690,31 +690,58 @@
         /* Split-button action row for gallery cards [1] */
         .card-btn-group {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
+            grid-template-columns: 1.15fr 0.85fr; /* Cân chỉnh lại tỷ lệ hoàn hảo */
             gap: 0.6rem;
             width: 100%;
+            margin-top: auto; /* Đẩy sát đáy thẻ một cách nhất quán */
         }
 
-        .card-action-link {
-            text-decoration: none;
-            text-align: center;
-            border: 1px solid rgba(192, 132, 252, 0.25);
-            color: var(--accent-purple);
-            padding: 0.75rem 0.5rem;
+        /* Chi tiết (Modal) - Solid Purple Design [1] */
+        .btn-card-modal {
+            background: #7c3aed;
+            color: #ffffff;
+            border: none;
+            padding: 0.7rem 1rem;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 0.95rem; /* Tăng 15% */
+            font-size: 0.98rem; /* Tăng 15% kích thước */
+            cursor: pointer;
             transition: var(--transition-gentle);
-            display: flex;
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 4px;
         }
 
-        .card-action-link:hover {
+        .btn-card-modal:hover {
+            background: #8b5cf6;
+            box-shadow: 0 6px 18px rgba(124, 58, 237, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Tệp gốc - Glowing Glassmorphic Design [1] */
+        .btn-card-drive {
+            background: rgba(192, 132, 252, 0.05);
+            border: 1px solid rgba(192, 132, 252, 0.3);
+            color: var(--accent-purple) !important;
+            padding: 0.7rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.98rem; /* Tăng 15% kích thước */
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: var(--transition-gentle);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+
+        .btn-card-drive:hover {
             background: rgba(192, 132, 252, 0.15);
             border-color: var(--accent-purple);
-            box-shadow: 0 4px 12px rgba(192, 132, 252, 0.2);
+            box-shadow: 0 6px 18px rgba(192, 132, 252, 0.2);
             transform: translateY(-2px);
         }
 
@@ -1307,7 +1334,7 @@
                             <p class="section-intro-text" style="margin-top: 1rem; max-width: 650px;">
                                 Tổng hợp và tóm tắt tiến trình thực hiện các bài tập thực hành học phần được lưu giữ chính thức trên Google Drive cá nhân.
                             </p>
-                            <!-- Elegant glowing glassmorphic button perfectly matching the website design -->
+                            <!-- Harmonious, sleek glowing glassmorphic button matching the website design [1] -->
                             <div style="margin-top: 1.5rem;">
                                 <a href="https://drive.google.com/drive/folders/1WxK5N13-DsHVcmxPzxaP6B_z1EcSHbcb" target="_blank" class="btn-drive-glass">
                                     <span style="font-size: 1.1rem; vertical-align: middle;">📂</span> Xem báo cáo GG drive
@@ -1328,8 +1355,8 @@
                                 <p class="card-desc">Thiết lập nền tảng, tổ chức sơ đồ cây lưu trữ thư mục khoa học và định hình quy tắc đặt tên tệp tối ưu.</p>
                             </div>
                             <div class="card-btn-group">
-                                <button class="card-action" onclick="openModal(1)">Chi tiết (Modal)</button>
-                                <a href="https://drive.google.com/file/d/1hg7ES0Lz_4SFlyO84o5T3WCLY7QwcJ8y/view?usp=drive_link" target="_blank" class="card-action-link">Tệp gốc 📂</a>
+                                <button class="btn-card-modal" onclick="openModal(1)">Chi tiết (Modal)</button>
+                                <a href="https://drive.google.com/file/d/1hg7ES0Lz_4SFlyO84o5T3WCLY7QwcJ8y/view?usp=drive_link" target="_blank" class="btn-card-drive">Tệp gốc 📂</a>
                             </div>
                         </div>
 
@@ -1344,8 +1371,8 @@
                                 <p class="card-desc">Kỹ thuật truy vấn thông tin học thuật nâng cao kết hợp mô hình kiểm định nguồn CRAAP uy tín.</p>
                             </div>
                             <div class="card-btn-group">
-                                <button class="card-action" onclick="openModal(2)">Chi tiết (Modal)</button>
-                                <a href="https://drive.google.com/file/d/1YrH7FMfryK2P2yKjfNdQSdmcX70VK5mb/view?usp=drive_link" target="_blank" class="card-action-link">Tệp gốc 📂</a>
+                                <button class="btn-card-modal" onclick="openModal(2)">Chi tiết (Modal)</button>
+                                <a href="https://drive.google.com/file/d/1YrH7FMfryK2P2yKjfNdQSdmcX70VK5mb/view?usp=drive_link" target="_blank" class="btn-card-drive">Tệp gốc 📂</a>
                             </div>
                         </div>
 
@@ -1360,8 +1387,8 @@
                                 <p class="card-desc">Xây dựng giải pháp kỹ nghệ Prompt Engineering (vai trò, bối cảnh) cải thiện kết quả ngôn ngữ học máy.</p>
                             </div>
                             <div class="card-btn-group">
-                                <button class="card-action" onclick="openModal(3)">Chi tiết (Modal)</button>
-                                <a href="https://drive.google.com/file/d/19940-k2CX1aoSr7I8i1n9CBgAGFj4LrZ/view?usp=drive_link" target="_blank" class="card-action-link">Tệp gốc 📂</a>
+                                <button class="btn-card-modal" onclick="openModal(3)">Chi tiết (Modal)</button>
+                                <a href="https://drive.google.com/file/d/19940-k2CX1aoSr7I8i1n9CBgAGFj4LrZ/view?usp=drive_link" target="_blank" class="btn-card-drive">Tệp gốc 📂</a>
                             </div>
                         </div>
 
@@ -1376,8 +1403,8 @@
                                 <p class="card-desc">Ứng dụng công cụ kỹ thuật số trong thiết lập mục tiêu, phân phối đầu việc và theo dõi hiệu năng nhóm.</p>
                             </div>
                             <div class="card-btn-group">
-                                <button class="card-action" onclick="openModal(4)">Chi tiết (Modal)</button>
-                                <a href="https://drive.google.com/file/d/1fXwbZSF18DPDm5VFjsDMSqi4tD800wlU/view?usp=drive_link" target="_blank" class="card-action-link">Tệp gốc 📂</a>
+                                <button class="btn-card-modal" onclick="openModal(4)">Chi tiết (Modal)</button>
+                                <a href="https://drive.google.com/file/d/1fXwbZSF18DPDm5VFjsDMSqi4tD800wlU/view?usp=drive_link" target="_blank" class="btn-card-drive">Tệp gốc 📂</a>
                             </div>
                         </div>
 
@@ -1392,8 +1419,8 @@
                                 <p class="card-desc">Thực thi quy trình thiết kế mỹ thuật ứng dụng, tinh chỉnh thẩm mỹ bằng công nghệ GenAI hiện đại.</p>
                             </div>
                             <div class="card-btn-group">
-                                <button class="card-action" onclick="openModal(5)">Chi tiết (Modal)</button>
-                                <a href="https://drive.google.com/file/d/1j41mbKOmIQtgBWsmy57JvNxidVKx_7hE/view?usp=drive_link" target="_blank" class="card-action-link">Tệp gốc 📂</a>
+                                <button class="btn-card-modal" onclick="openModal(5)">Chi tiết (Modal)</button>
+                                <a href="https://drive.google.com/file/d/1j41mbKOmIQtgBWsmy57JvNxidVKx_7hE/view?usp=drive_link" target="_blank" class="btn-card-drive">Tệp gốc 📂</a>
                             </div>
                         </div>
 
@@ -1408,8 +1435,8 @@
                                 <p class="card-desc">Hệ thống nguyên tắc đạo đức và tư duy phản biện, phòng ngừa thiên kiến học máy trong nghiên cứu khoa học.</p>
                             </div>
                             <div class="card-btn-group">
-                                <button class="card-action" onclick="openModal(6)">Chi tiết (Modal)</button>
-                                <a href="https://drive.google.com/file/d/18HhMDGGIiZ6cOkcLndAln6fuxNsljypb/view?usp=drive_link" target="_blank" class="card-action-link">Tệp gốc 📂</a>
+                                <button class="btn-card-modal" onclick="openModal(6)">Chi tiết (Modal)</button>
+                                <a href="https://drive.google.com/file/d/18HhMDGGIiZ6cOkcLndAln6fuxNsljypb/view?usp=drive_link" target="_blank" class="btn-card-drive">Tệp gốc 📂</a>
                             </div>
                         </div>
                     </div>
@@ -1670,7 +1697,7 @@
         }
         animateCursorParticles();
 
-        // Modal database containing actual academic solutions from student's reports [1, 2]
+        // Modal database containing actual academic solutions from student's reports
         const modalData = {
             1: `
                 <h3>Bài 1: Thao tác cơ bản với tệp tin và thư mục</h3>
@@ -1679,25 +1706,25 @@
                         <span>📂 Xem tệp báo cáo gốc trên Google Drive</span>
                     </a>
                 </div>
-                <p><strong>Mục tiêu:</strong> Làm quen với giao diện hệ điều hành Windows, hoàn thành chuẩn xác 12 bước thực hành quản trị tệp tin và thư mục học tập có cấu trúc khoa học ngay trên máy tính cá nhân [1, 2].</p>
+                <p><strong>Mục tiêu:</strong> Làm quen với giao diện hệ điều hành Windows, hoàn thành chuẩn xác 12 bước thực hành quản trị tệp tin và thư mục học tập có cấu trúc khoa học ngay trên máy tính cá nhân.</p>
                 
-                <h4>12 Bước Thực Hành Thao Tác Chuẩn Xác Trên Hệ Thống [1, 2]</h4>
+                <h4>12 Bước Thực Hành Thao Tác Chuẩn Xác Trên Hệ Thống</h4>
                 <ol style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 1.5rem;">
-                    <li><strong>Bước 1:</strong> Nhấn tổ hợp phím <code>Windows + E</code> để mở nhanh cửa sổ File Explorer hệ thống [1, 2].</li>
-                    <li><strong>Bước 2:</strong> Tại khung điều hướng bên trái, nhấp chọn <code>This PC</code> và truy cập trực tiếp vào ổ đĩa <code>D:</code> [1, 2].</li>
-                    <li><strong>Bước 3:</strong> Click chuột phải vào khoảng trống, chọn <code>New → Folder</code>, đặt tên thư mục gốc là <code>ThucHanh_NguyenMaiThanhThao</code> rồi nhấn Enter [1, 2].</li>
-                    <li><strong>Bước 4:</strong> Nhấp đúp chuột để truy cập trực tiếp vào thư mục gốc vừa khởi tạo [1, 2].</li>
-                    <li><strong>Bước 5:</strong> Click chuột phải vào khoảng trống, chọn <code>New → Text Document</code>, đặt tên tệp văn bản thô mới là <code>GhiChu.txt</code> [1, 2].</li>
-                    <li><strong>Bước 6:</strong> Nhấp chuột phải vào tệp <code>GhiChu.txt</code>, chọn <code>Rename</code> và đổi tên tệp thành <code>GhiChuQuanTrong.txt</code> [1, 2].</li>
-                    <li><strong>Bước 7:</strong> Click chuột phải vào khoảng trống, chọn <code>New → Folder</code> để tạo thư mục con đặt tên là <code>TaiLieu</code> [1, 2].</li>
-                    <li><strong>Bước 8:</strong> Click chuột phải vào tệp <code>GhiChuQuanTrong.txt</code>, chọn <code>Copy</code>, sau đó mở thư mục <code>TaiLieu</code> và chọn <code>Paste</code> để sao chép [1, 2].</li>
-                    <li><strong>Bước 9:</strong> Quay lại thư mục gốc, click chuột phải tạo tệp mới tên <code>DiChuyen.txt</code>. Click chuột phải chọn <code>Cut</code>, sau đó mở thư mục <code>TaiLieu</code> và chọn <code>Paste</code> để di dời tệp [1, 2].</li>
-                    <li><strong>Bước 10:</strong> Tại thư mục con <code>TaiLieu</code>, click chuột phải vào tệp <code>GhiChuQuanTrong.txt</code> chọn <code>Delete</code> để đưa tệp vào Thùng rác (Recycle Bin) [1, 2].</li>
-                    <li><strong>Bước 11:</strong> Chọn tệp <code>DiChuyen.txt</code>, nhấn tổ hợp phím <code>Shift + Delete</code> và chọn <code>Yes</code> trên hộp thoại cảnh báo để xóa vĩnh viễn tệp [1, 2].</li>
-                    <li><strong>Bước 12:</strong> Ra màn hình Desktop, mở biểu tượng <code>Recycle Bin</code>, click chuột phải vào tệp <code>GhiChuQuanTrong.txt</code> và chọn <code>Restore</code> để khôi phục về vị trí ban đầu [1, 2].</li>
+                    <li><strong>Bước 1:</strong> Nhấn tổ hợp phím <code>Windows + E</code> để mở nhanh cửa sổ File Explorer hệ thống.</li>
+                    <li><strong>Bước 2:</strong> Tại khung điều hướng bên trái, nhấp chọn <code>This PC</code> và truy cập trực tiếp vào ổ đĩa <code>D:</code>.</li>
+                    <li><strong>Bước 3:</strong> Click chuột phải vào khoảng trống, chọn <code>New → Folder</code>, đặt tên thư mục gốc là <code>ThucHanh_NguyenMaiThanhThao</code> rồi nhấn Enter.</li>
+                    <li><strong>Bước 4:</strong> Nhấp đúp chuột để truy cập trực tiếp vào thư mục gốc vừa khởi tạo.</li>
+                    <li><strong>Bước 5:</strong> Click chuột phải vào khoảng trống, chọn <code>New → Text Document</code>, đặt tên tệp văn bản thô mới là <code>GhiChu.txt</code>.</li>
+                    <li><strong>Bước 6:</strong> Nhấp chuột phải vào tệp <code>GhiChu.txt</code>, chọn <code>Rename</code> và đổi tên tệp thành <code>GhiChuQuanTrong.txt</code>.</li>
+                    <li><strong>Bước 7:</strong> Click chuột phải vào khoảng trống, chọn <code>New → Folder</code> để tạo thư mục con đặt tên là <code>TaiLieu</code>.</li>
+                    <li><strong>Bước 8:</strong> Click chuột phải vào tệp <code>GhiChuQuanTrong.txt</code>, chọn <code>Copy</code>, sau đó mở thư mục <code>TaiLieu</code> và chọn <code>Paste</code> để sao chép.</li>
+                    <li><strong>Bước 9:</strong> Quay lại thư mục gốc, click chuột phải tạo tệp mới tên <code>DiChuyen.txt</code>. Click chuột phải chọn <code>Cut</code>, sau đó mở thư mục <code>TaiLieu</code> và chọn <code>Paste</code> để di dời tệp.</li>
+                    <li><strong>Bước 10:</strong> Tại thư mục con <code>TaiLieu</code>, click chuột phải vào tệp <code>GhiChuQuanTrong.txt</code> chọn <code>Delete</code> để đưa tệp vào Thùng rác (Recycle Bin).</li>
+                    <li><strong>Bước 11:</strong> Chọn tệp <code>DiChuyen.txt</code>, nhấn tổ hợp phím <code>Shift + Delete</code> và chọn <code>Yes</code> trên hộp thoại cảnh báo để xóa vĩnh viễn tệp.</li>
+                    <li><strong>Bước 12:</strong> Ra màn hình Desktop, mở biểu tượng <code>Recycle Bin</code>, click chuột phải vào tệp <code>GhiChuQuanTrong.txt</code> và chọn <code>Restore</code> để khôi phục về vị trí ban đầu.</li>
                 </ol>
 
-                <h4>Sơ Đồ Minh Họa Tương Tác: Khám Phá Cây Thư Mục Thực Tế [1, 2]</h4>
+                <h4>Sơ Đồ Minh Họa Tương Tác: Khám Phá Cây Thư Mục Thực Tế</h4>
                 <p>Click chọn thư mục bên dưới để khám phá danh sách tệp lưu trữ động mô phỏng hệ điều hành Windows:</p>
                 <div class="interactive-widget-box" style="display: grid; grid-template-columns: 200px 1fr; gap: 1.5rem; background: rgba(15,23,42,0.8);">
                     <div style="border-right: 1px dashed rgba(255,255,255,0.1); padding-right: 1rem; display: flex; flex-direction: column; gap: 0.8rem;">
@@ -1710,7 +1737,7 @@
                 </div>
 
                 <h4>Bài học rút ra</h4>
-                <p>Nhiệm vụ rèn luyện tác phong quản lý dữ liệu chính xác, cẩn thận; bồi dưỡng tư duy tổ chức khoa học nhằm kiểm soát tốt học liệu số và tối ưu hóa năng suất tự học [1, 2].</p>
+                <p>Nhiệm vụ rèn luyện tác phong quản lý dữ liệu chính xác, cẩn thận; bồi dưỡng tư duy tổ chức khoa học nhằm kiểm soát tốt học liệu số và tối ưu hóa năng suất tự học.</p>
             `,
             2: `
                 <h3>Bài 2: Khai thác dữ liệu và thông tin</h3>
@@ -1719,10 +1746,10 @@
                         <span>📂 Xem tệp báo cáo gốc trên Google Drive</span>
                     </a>
                 </div>
-                <p><strong>Mục tiêu:</strong> Khai phá tri thức chất lượng cao dựa trên cơ sở dữ liệu mở (Google Scholar, VNU JFS...) để khảo sát toàn diện 11 nguồn học liệu chuẩn phục vụ đề tài nghiên cứu [1, 2]:</p>
-                <p style="font-style: italic; color: var(--accent-purple); margin-bottom: 1.5rem;">"Tác động của Trí tuệ nhân tạo tạo sinh (Generative AI) đối với năng lực viết học thuật bằng tiếng Anh của sinh viên ngành Ngôn ngữ tại Việt Nam." [1, 2]</p>
+                <p><strong>Mục tiêu:</strong> Khai phá tri thức chất lượng cao dựa trên cơ sở dữ liệu mở (Google Scholar, VNU JFS...) để khảo sát toàn diện 11 nguồn học liệu chuẩn phục vụ đề tài nghiên cứu:</p>
+                <p style="font-style: italic; color: var(--accent-purple); margin-bottom: 1.5rem;">"Tác động của Trí tuệ nhân tạo tạo sinh (Generative AI) đối với năng lực viết học thuật bằng tiếng Anh của sinh viên ngành Ngôn ngữ tại Việt Nam."</p>
 
-                <h4>Sơ Đồ Minh Họa Tương Tác: Bộ Lọc Phân Loại 11 Nguồn Học Liệu [1, 2]</h4>
+                <h4>Sơ Đồ Minh Họa Tương Tác: Bộ Lọc Phân Loại 11 Nguồn Học Liệu</h4>
                 <p>Nhấp chọn bộ lọc để phân nhóm tài liệu theo thể loại thực chứng nghiên cứu:</p>
                 <div class="interactive-widget-box" style="background: rgba(15,23,42,0.8); display: flex; flex-direction: column; gap: 1rem;">
                     <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
@@ -1750,7 +1777,7 @@
                 </div>
 
                 <h4>Bài học rút ra</h4>
-                <p>Năng lực thẩm định nguồn tin theo mô hình CRAAP là màng lọc vàng loại bỏ thông tin rác, bảo chứng 100% cho giá trị khoa học của các bài báo luận nghiên cứu [1, 2].</p>
+                <p>Năng lực thẩm định nguồn tin theo mô hình CRAAP là màng lọc vàng loại bỏ thông tin rác, bảo chứng 100% cho giá trị khoa học của các bài báo luận nghiên cứu.</p>
             `,
             3: `
                 <h3>Bài 3: Tổng quan về trí tuệ nhân tạo</h3>
@@ -1759,9 +1786,9 @@
                         <span>📂 Xem tệp báo cáo gốc trên Google Drive</span>
                     </a>
                 </div>
-                <p><strong>Mục tiêu:</strong> Ứng dụng kỹ nghệ viết Prompt (Prompt Engineering) chuyên sâu để tối ưu chất lượng phản hồi từ ChatGPT phục vụ 3 tác vụ tự học ngoại ngữ và ngôn ngữ học [1, 2].</p>
+                <p><strong>Mục tiêu:</strong> Ứng dụng kỹ nghệ viết Prompt (Prompt Engineering) chuyên sâu để tối ưu chất lượng phản hồi từ ChatGPT phục vụ 3 tác vụ tự học ngoại ngữ và ngôn ngữ học.</p>
                 
-                <h4>Sơ Đồ Minh Họa Tương Tác: Trình Mô Phỏng Viết Prompt Đa Cấp [1, 2]</h4>
+                <h4>Sơ Đồ Minh Họa Tương Tác: Trình Mô Phỏng Viết Prompt Đa Cấp</h4>
                 <p>Chọn tác vụ học thuật bên dưới và bấm nút chuyển đổi để so sánh sự khác biệt của AI trước và sau khi viết prompt kỹ thuật:</p>
                 <div class="interactive-widget-box" style="background: rgba(15,23,42,0.8); display: flex; flex-direction: column; gap: 1rem;">
                     <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
@@ -1782,11 +1809,11 @@
                     </div>
                 </div>
 
-                <h4>Cơ Chế Kỹ Thuật Đằng Sau Kỹ Ngệ Prompt [1, 2]</h4>
-                <p>Khác biệt cốt lõi nằm ở cơ chế vận hành của mô hình ngôn ngữ lớn (LLM). Prompt cơ bản nhận kết quả ngẫu nhiên và chung chung [1, 2]. Prompt nâng cao áp dụng <strong>Role Prompting</strong> giúp AI định vị chính xác phân phối xác suất vùng tri thức sư phạm chuyên sâu [1, 2]; kỹ thuật <strong>Few-Shot</strong> định hướng cấu trúc mẫu chuẩn; và <strong>CoT (Chain-of-Thought)</strong> thúc đẩy AI phân tích tuần tự trước khi kết luận, triệt tiêu 95% hiện tượng ảo tưởng (hallucination) của máy tính [1, 2].</p>
+                <h4>Cơ Chế Kỹ Thuật Đằng Sau Kỹ Ngệ Prompt</h4>
+                <p>Khác biệt cốt lõi nằm ở cơ chế vận hành của mô hình ngôn ngữ lớn (LLM). Prompt cơ bản nhận kết quả ngẫu nhiên và chung chung. Prompt nâng cao áp dụng <strong>Role Prompting</strong> giúp AI định vị chính xác phân phối xác suất vùng tri thức sư phạm chuyên sâu; kỹ thuật <strong>Few-Shot</strong> định hướng cấu trúc mẫu chuẩn; và <strong>CoT (Chain-of-Thought)</strong> thúc đẩy AI phân tích tuần tự trước khi kết luận, triệt tiêu 95% hiện tượng ảo tưởng (hallucination) của máy tính.</p>
 
                 <h4>Bài học rút ra</h4>
-                <p>Nghệ thuật viết Prompt dựa trên mô hình CREATE giúp sinh viên ngoại ngữ chuyển dịch hoàn toàn từ lối tương tác thô sơ sang làm chủ công nghệ, khai phóng hiệu quả phản biện học thuật thông minh [1, 2].</p>
+                <p>Nghệ thuật viết Prompt dựa trên mô hình CREATE giúp sinh viên ngoại ngữ chuyển dịch hoàn toàn từ lối tương tác thô sơ sang làm chủ công nghệ, khai phóng hiệu quả phản biện học thuật thông minh.</p>
             `,
             4: `
                 <h3>Bài 4: Giao tiếp và hợp tác trong môi trường số</h3>
@@ -1795,9 +1822,9 @@
                         <span>📂 Xem tệp báo cáo gốc trên Google Drive</span>
                     </a>
                 </div>
-                <p><strong>Mục tiêu:</strong> Thiết lập và vận hành hệ sinh thái cộng tác trực tuyến (Trello, Discord, Google Docs, Google Drive) để đồng thiết kế cẩm nang Sư phạm Anh quốc tế cùng nhóm bạn học [1, 2].</p>
+                <p><strong>Mục tiêu:</strong> Thiết lập và vận hành hệ sinh thái cộng tác trực tuyến (Trello, Discord, Google Docs, Google Drive) để đồng thiết kế cẩm nang Sư phạm Anh quốc tế cùng nhóm bạn học.</p>
                 
-                <h4>Sơ Đồ Minh Họa Tương Tác: Bảng Quản Trị Dự Án Kanban Cá Nhân [1, 2]</h4>
+                <h4>Sơ Đồ Minh Họa Tương Tác: Bảng Quản Trị Dự Án Kanban Cá Nhân</h4>
                 <p>Bấm chọn phím "Di chuyển" bên dưới để dịch chuyển mô phỏng thẻ nhiệm vụ sư phạm qua các bước quy trình Kanban mượt mà:</p>
                 <div class="interactive-widget-box" style="background: rgba(15,23,42,0.8); display: flex; flex-direction: column; gap: 1.2rem;">
                     <div style="display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap;">
@@ -1818,7 +1845,7 @@
                     </div>
                 </div>
 
-                <h4>3 Thách Thức Lớn & Giải Pháp Xử Lý Thành Công [1, 2]</h4>
+                <h4>3 Thách Thức Lớn & Giải Pháp Xử Lý Thành Công</h4>
                 <div style="overflow-x: auto;">
                     <table class="modal-table" style="min-width: 700px; margin-bottom: 1.5rem;">
                         <thead>
@@ -1830,33 +1857,33 @@
                         <tbody>
                             <tr>
                                 <td><strong>Quá tải luồng tin nhắn trên Discord</strong></td>
-                                <td>Thành lập riêng một kệnh văn bản đặt tên là <code>#announcements-only</code> khóa tính năng chat thường. Chỉ ghim các quyết định cuối cùng kèm tag @everyone bắt buộc thả emoji xác nhận đã đọc [1, 2].</td>
+                                <td>Thành lập riêng một kệnh văn bản đặt tên là <code>#announcements-only</code> khóa tính năng chat thường. Chỉ ghim các quyết định cuối cùng kèm tag @everyone bắt buộc thả emoji xác nhận đã đọc.</td>
                             </tr>
                             <tr>
                                 <td><strong>Xung đột định dạng trên Google Docs</strong></td>
-                                <td>Bôi đen gán việc trực tiếp trên văn bản thông qua bình luận gõ cú pháp <code>@+EmailThànhViên</code>. Yêu cầu sửa đổi văn bản của người khác bắt buộc dùng chế độ "Đề xuất" (Suggesting) [1, 2].</td>
+                                <td>Bôi đen gán việc trực tiếp trên văn bản thông qua bình luận gõ cú pháp <code>@+EmailThànhViên</code>. Yêu cầu sửa đổi văn bản của người khác bắt buộc dùng chế độ "Đề xuất" (Suggesting).</td>
                             </tr>
                             <tr>
                                 <td><strong>Rò rỉ dữ liệu, nhầm lẫn quyền truy cập trên Google Drive</strong></td>
-                                <td>Cấu hình chia sẻ giới hạn trong miền học tập của trường (đuôi email sinh viên). Khóa tệp tài liệu hoàn thiện bằng cách chuyển sang PDF tĩnh và gắn nhãn <code>_FINAL</code> [1, 2].</td>
+                                <td>Cấu hình chia sẻ giới hạn trong miền học tập của trường (đuôi email sinh viên). Khóa tệp tài liệu hoàn thiện bằng cách chuyển sang PDF tĩnh và gắn nhãn <code>_FINAL</code>.</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
                 <h4>Bài học rút ra</h4>
-                <p>Làm việc nhóm trên môi trường số đòi hỏi tư duy tổ chức dữ liệu khoa học, phân quyền an toàn thông tin chặt chẽ và tác phong giao tiếp minh bạch giữa các thành viên [1, 2].</p>
+                <p>Làm việc nhóm trên môi trường số đòi hỏi tư duy tổ chức dữ liệu khoa học, phân quyền an toàn thông tin chặt chẽ và tác phong giao tiếp minh bạch giữa các thành viên.</p>
             `,
             5: `
-                <h3>Bài 5: Sáng tạo nội dung với AI sinh nghệ thuật</h3>
+                <h3>Bài 5: Sáng tạo nội dung with AI sinh nghệ thuật</h3>
                 <div style="margin: 1rem 0 1.5rem 0;">
                     <a href="https://drive.google.com/file/d/1j41mbKOmIQtgBWsmy57JvNxidVKx_7hE/view?usp=drive_link" target="_blank" class="btn-drive-glass" style="font-size: 0.85rem; padding: 0.5rem 1.2rem;">
                         <span>📂 Xem tệp báo cáo gốc trên Google Drive</span>
                     </a>
                 </div>
-                <p><strong>Mục tiêu:</strong> Ứng dụng chuỗi công cụ AI tạo sinh (ChatGPT, Canva AI, DALL-E 3) thiết kế cẩm nang giáo dục tiếng Anh giao tiếp tương tác cao chuẩn ULIS [1, 2].</p>
+                <p><strong>Mục tiêu:</strong> Ứng dụng chuỗi công cụ AI tạo sinh (ChatGPT, Canva AI, DALL-E 3) thiết kế cẩm nang giáo dục tiếng Anh giao tiếp tương tác cao chuẩn ULIS.</p>
                 
-                <h4>Sơ Đồ Minh Họa Tương Tác: Trình Duyệt Dòng Thời Gian Sáng Tạo [1, 2]</h4>
+                <h4>Sơ Đồ Minh Họa Tương Tác: Trình Duyệt Dòng Thời Gian Sáng Tạo</h4>
                 <p>Click các nút giai đoạn để xem cách thức kết nối và tối ưu hóa 3 nền tảng AI tạo tác học liệu sư phạm:</p>
                 <div class="interactive-widget-box" style="background: rgba(15,23,42,0.8); display: flex; flex-direction: column; gap: 1.2rem;">
                     <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
@@ -1869,11 +1896,11 @@
                     </div>
                 </div>
 
-                <h4>Hình Ảnh Sản Phẩm Truyền Thông Sư Phạm Hoàn Thiện (b5.jpg) [1, 2]</h4>
+                <h4>Hình Ảnh Sản Phẩm Truyền Thông Sư Phạm Hoàn Thiện (b5.jpg)</h4>
                 <img src="b5.jpg" alt="Sản phẩm cuối cùng - Cẩm nang tiếng Anh chuẩn ULIS" style="width: 100%; border-radius: 12px; margin-top: 1rem; border: 1px solid rgba(255, 255, 255, 0.1);">
 
                 <h4>Bài học rút ra</h4>
-                <p>EdTech và AI giúp giáo viên Anh ngữ tương lai tự chủ thiết kế học liệu sinh động, cá nhân hóa nội dung lớp học trực quan nhanh chóng mà không bị cản trở bởi rào cản kỹ thuật đồ họa [1, 2].</p>
+                <p>EdTech và AI giúp giáo viên Anh ngữ tương lai tự chủ thiết kế học liệu sinh động, cá nhân hóa nội dung lớp học trực quan nhanh chóng mà không bị cản trở bởi rào cản kỹ thuật đồ họa.</p>
             `,
             6: `
                 <h3>Bài 6: An toàn và liêm chính học thuật trong môi trường số</h3>
@@ -1882,9 +1909,9 @@
                         <span>📂 Xem tệp báo cáo gốc trên Google Drive</span>
                     </a>
                 </div>
-                <p><strong>Mục tiêu:</strong> Đánh giá sâu sắc chính sách trí tuệ nhân tạo cởi mở, khuyến khích tư duy của ULIS; kiến tạo bộ nguyên tắc đạo đức sử dụng công nghệ số cá nhân vững vàng [1, 2].</p>
+                <p><strong>Mục tiêu:</strong> Đánh giá sâu sắc chính sách trí tuệ nhân tạo cởi mở, khuyến khích tư duy của ULIS; kiến tạo bộ nguyên tắc đạo đức sử dụng công nghệ số cá nhân vững vàng.</p>
                 
-                <h4>Sơ Đồ Minh Họa Tương Tác: Vòng Quay 6 Nguyên Tắc AI Có Trách Nhiệm [1, 2]</h4>
+                <h4>Sơ Đồ Minh Họa Tương Tác: Vòng Quay 6 Nguyên Tắc AI Có Trách Nhiệm</h4>
                 <p>Click chọn nút nguyên tắc xung quanh hệ mặt trời sư phạm để khám phá nội dung hành động đạo đức tương tác chi tiết:</p>
                 <div class="interactive-widget-box" style="background: rgba(15,23,42,0.8); display: grid; grid-template-columns: 240px 1fr; gap: 1.5rem;">
                     <div style="display: flex; flex-direction: column; gap: 0.5rem; border-right: 1px dashed rgba(255,255,255,0.1); padding-right: 1rem;">
@@ -1900,11 +1927,11 @@
                     </div>
                 </div>
 
-                <h4>Nhận Định Cá Nhân Về Chính Sách AI Của Đại Học Ngoại Ngữ [1, 2]</h4>
-                <p>Em hoàn toàn ủng hộ triết lý quản lý AI của nhà trường: coi AI là công cụ bổ trợ nâng cao hiệu suất học tập nhưng nghiêm cấm đạo văn số (AI-Plagiarism). AI giống như kính hiển vi giúp phóng đại các lỗi sai ngữ pháp, mở rộng trường từ vựng nhưng không thể thay thế bộ não con người trong việc kiến tạo tư duy phản biện độc lập [1, 2]. Quy chuẩn nộp Tờ khai báo sử dụng AI (AI Disclosure Statement) giúp tụi em tự tin nghiên cứu trong ranh giới đạo đức cho phép [1, 2].</p>
+                <h4>Nhận Định Cá Nhân Về Chính Sách AI Của Đại Học Ngoại Ngữ</h4>
+                <p>Em hoàn toàn ủng hộ triết lý quản lý AI của nhà trường: coi AI là công cụ bổ trợ nâng cao hiệu suất học tập nhưng nghiêm cấm đạo văn số (AI-Plagiarism). AI giống như kính hiển vi giúp phóng đại các lỗi sai ngữ pháp, mở rộng trường từ vựng nhưng không thể thay thế bộ não con người trong việc kiến tạo tư duy phản biện độc lập. Quy chuẩn nộp Tờ khai báo sử dụng AI (AI Disclosure Statement) giúp tụi em tự tin nghiên cứu trong ranh giới đạo đức cho phép.</p>
 
                 <h4>Bài học rút ra</h4>
-                <p>Bản lĩnh ứng dụng công nghệ nằm ở khả năng kiểm soát đạo đức tự thân của người học. Đạo đức học thuật vững vàng giúp nhà giáo tương lai làm chủ tiến trình giảng dạy sáng tạo, liêm chính số [1, 2].</p>
+                <p>Bản lĩnh ứng dụng công nghệ nằm ở khả năng kiểm soát đạo đức tự thân của người học. Đạo đức học thuật vững vàng giúp nhà giáo tương lai làm chủ tiến trình giảng dạy sáng tạo, liêm chính số.</p>
             `
         };
 
@@ -1932,14 +1959,14 @@
                 { id: 1, title: "Hyland, K. (2024) - Academic writing in the age of AI...", type: "article", desc: "Tác giả: Chuyên gia đầu ngành viết luận. Tạp chí Scopus Q1 uy tín.", rank: "Rất tốt" },
                 { id: 2, title: "Nguyen, T. H. (2024) - Generative AI in English language...", type: "article", desc: "Bám sát ĐH VN. Tạp chí chuẩn quốc gia ULIS-VNU.", rank: "Rất tốt" },
                 { id: 3, title: "UNESCO (2024) - Guidance for generative AI...", type: "report", desc: "Tổ chức giáo dục toàn cầu. Khung năng lực chiến lược vĩ mô.", rank: "Rất tốt" },
-                { id: 4, title: "Warschauer, M. (2023) - Automated writing evaluation...", type: "article", desc: "Phương pháp tổng quan hệ thống. Tính tin cậy rất cao.", rank: "Tốt" },
-                { id: 5, title: "Zhang, D. & Cui, Y. (2024) - The impact of AI-assisted...", type: "article", desc: "Thực nghiệm định lượng tâm lý và kết quả viết luận.", rank: "Rất tốt" },
-                { id: 6, title: "Bailey, S. (2021) - Academic Writing: A Handbook...", type: "book", desc: "NXB Routledge. Cẩm nang cấu trúc chuẩn quốc tế kinh điển.", rank: "Rất tốt" },
-                { id: 7, title: "Belcher, D. (2023) - Writing in the disciplines...", type: "article", desc: "Đánh giá trực diện rủi ro suy giảm kỹ năng. Scopus Q1.", rank: "Tốt" },
-                { id: 8, title: "Tran, Q. M. (2025) - Ứng dụng mô hình ngôn ngữ lớn...", type: "article", desc: "Phù hợp bối cảnh tự học thực tiễn của sinh viên ngoại ngữ.", rank: "Tốt" },
-                { id: 9, title: "Swales, J. M. & Feak, C. B. (2020) - Academic Writing...", type: "book", desc: "NXB Đại học Michigan. Phân tích thể loại chuẩn mực.", rank: "Rất tốt" },
-                { id: 10, title: "British Council (2023) - Artificial Intelligence...", type: "report", desc: "Hội đồng Anh. Khảo sát diện rộng, gợi mở định hướng số.", rank: "Tốt" },
-                { id: 11, title: "Stanford Human-AI (2025) - AI and the Future of...", type: "report", desc: "Stanford University. Phân tích đa diện, phản biện tương lai.", rank: "Tốt" }
+                { id: 4, title: "Warschauer, M. (2023) - Automated writing evaluation...", type: "article", desc: "Phương pháp tổng quan hệ thống. Tính học thuật và độ tin cậy cao.", rank: "Tốt" },
+                { id: 5, title: "Zhang, D. & Cui, Y. (2024) - The impact of AI-assisted...", type: "article", desc: "Phương pháp: Thực nghiệm định lượng. Phân tích tâm lý viết của sinh viên.", rank: "Rất tốt" },
+                { id: 6, title: "Bailey, S. (2021) - Academic Writing: A Handbook...", type: "book", desc: "Nhà xuất bản: Routledge uy tín. Cẩm nang cấu trúc viết chuẩn mực.", rank: "Rất tốt" },
+                { id: 7, title: "Belcher, D. (2023) - Writing in the disciplines...", type: "article", desc: "Nội dung: Đánh giá thách thức kỹ năng. Tạp chí chuyên ngành ngôn ngữ sâu.", rank: "Tốt" },
+                { id: 8, title: "Tran, Q. M. (2025) - Ứng dụng mô hình ngôn ngữ lớn...", type: "article", desc: "Nghiên cứu sâu về tư duy ngôn ngữ. Phù hợp thực tiễn sinh viên ngoại ngữ.", rank: "Tốt" },
+                { id: 9, title: "Swales, J. M. & Feak, C. B. (2020) - Academic Writing...", type: "book", desc: "Khung lý thuyết kinh điển về thể loại. Độ tin cậy tuyệt đối trong giảng dạy.", rank: "Rất tốt" },
+                { id: 10, title: "British Council (2023) - Artificial Intelligence...", type: "report", desc: "Số liệu khảo sát diện rộng chất lượng. Định hướng phương pháp giảng dạy mới.", rank: "Tốt" },
+                { id: 11, title: "Stanford Human-AI (2025) - AI and the Future of...", type: "report", desc: "Góc nhìn công nghệ mang tính tương lai. Phân tích đa chiều từ ĐH hàng đầu.", rank: "Tốt" }
             ],
             3: {
                 1: {
@@ -1954,7 +1981,7 @@
                     },
                     advanced: {
                         prompt: "Bạn là một chuyên gia nghiên cứu Ngôn ngữ học ứng dụng (Applied Linguistics). Hãy đọc tài liệu dưới đây và thực hiện tóm tắt theo các bước logic sau: Bước 1: Trích xuất câu hỏi nghiên cứu cốt lõi. Bước 2: Tóm tắt phương pháp thực nghiệm (mẫu khảo sát, công cụ). Bước 3: Chỉ ra ý nghĩa thực tiễn đối với sinh viên ULIS. Định dạng kết quả dưới dạng bảng so sánh và các bullet points mạch lạc.",
-                        response: "• CÂU HỎI NGHIÊN CỨU CỐT LÕI: Làm cách nào mô hình AI hỗ trợ rèn luyện tư duy lập luận phản biện cho sinh viên ngoại ngữ?\n• PHƯƠNG PHÁP THỰC NGHIỆM: Nghiên cứu thực nghiệm đối chứng (mẫu n=80) kết hợp khảo sát bảng hỏi.\n• Ý NGHĨA THỰC TIỄN ULIS: Giúp sinh viên ULIS chủ động xây dựng lộ trình học tập tự chủ, hạn chế đạo văn số."
+                        response: "• CẤU HỎI NGHIÊN CỨU CỐT LÕI: Làm cách nào mô hình AI hỗ trợ rèn luyện tư duy lập luận phản biện cho sinh viên ngoại ngữ?\n• PHƯƠNG PHÁP THỰC NGHIỆM: Nghiên cứu thực nghiệm đối chứng (mẫu n=80) kết hợp khảo sát bảng hỏi.\n• Ý NGHĨA THỰC TIỄN ULIS: Giúp sinh viên ULIS chủ động xây dựng lộ trình học tập tự chủ, hạn chế đạo văn số."
                     }
                 },
                 2: {
@@ -1968,7 +1995,7 @@
                         response: "Syntactic Ambiguity xảy ra khi cấu trúc ngữ pháp của một câu tạo ra nhiều cách hiểu.\nVí dụ 1: 'The chicken is ready to eat' (Con gà đã sẵn sàng để được ăn hoặc con gà sẵn sàng ăn cái gì đó).\nVí dụ 2: 'I saw the man with the telescope' (Tôi nhìn thấy người đàn ông bằng kính viễn vọng của tôi, hoặc người đàn ông đó cầm kính viễn vọng)."
                     },
                     advanced: {
-                        prompt: "Bạn là một giảng viên ngữ pháp tiếng Anh kỳ cựu. Hãy giải thích khái niệm ’Syntactic Ambiguity’ cho sinh viên năm nhất theo 2 cấp độ: (1) Định nghĩa bình dân kèm ví dụ hài hước; (2) Phân tích sơ đồ cây cú pháp sâu sắc. Hãy học theo cách giải thích mẫu sau: [Ví dụ mẫu về Lexical Ambiguity]. Hãy thực hiện tương tự cho Syntactic Ambiguity.",
+                        prompt: "Bạn là một giảng viên ngữ pháp tiếng Anh kỳ cựu. Hãy giải thích khái niệm ’Syntactic Ambiguity’ cho sinh viên năm nhất theo 2 cấp độ: (1) Định nghĩa bình dân kèm ví dụ hài hước; (2) Phân tích sơ đồ cây cú pháp sâu sắc. Hãy học theo cách giải thích mẫu sau: [Ví dụ mẫu về Lexical Ambiguity: ’Bank’ có thể là bờ sông hoặc ngân hàng]. Hãy thực hiện tương tự cho Syntactic Ambiguity.",
                         response: "• CẤP ĐỘ 1 (BÌNH DÂN): Chào các tân sinh viên! Hãy tưởng tượng câu: 'Visiting relatives can be boring'. Việc đi thăm họ hàng chán, hay những người họ hàng đến thăm ta chán? Ngữ pháp chơi khăm chúng ta đấy!\n• CẤP ĐỘ 2 (SƠ ĐỒ CÂY CÚ PHÁP): Để giải quyết hiện tượng mơ hồ này, chúng ta cần vẽ sơ đồ phân rã cụm danh từ (NP) và cụm động từ (VP). Ví dụ trong câu 'I saw the man with the telescope', giới từ 'with' có thể gắn trực tiếp vào VP (hành động nhìn) hoặc gắn vào NP (người đàn ông có kính)."
                     }
                 },
@@ -2003,10 +2030,19 @@
                 2: "<strong>2. Minh bạch tuyệt đối:</strong> Công khai trung thực mức độ can thiệp và hỗ trợ của AI trong mọi sản phẩm nộp cho nhà trường thông qua tờ tuyên bố sử dụng AI Disclosure.",
                 3: "<strong>3. Màng lọc phản biện:</strong> Coi mọi dữ liệu AI trả về là nguồn tin có nguy cơ ảo tưởng cao. Luôn chủ động đối chiếu, kiểm chứng chéo với các tài liệu sách giáo khoa, thư viện chính thống.",
                 4: "<strong>4. Bảo mật dữ liệu:</strong> Tuyệt đối không đăng tải thông tin cá nhân của bản thân, thông tin học sinh, tài liệu nội bộ nhà trường hoặc bài làm của bạn bè lên mô hình AI công cộng.",
-                5: "<strong>5. Làm chủ ngôn ngữ:</strong> Giữ vững bản sắc cá nhân (authorial voice). Chỉ cho phép AI gợi ý sửa lỗi ngữ pháp, không cho phép thay thế giọng văn biểu đạt cảm xúc sư phạm của chính mình.",
-                6: "<strong>6. Phát triển bền vững:</strong> Chỉ sử dụng AI làm bệ phóng nâng cao hiệu suất tự học học thuật, tuyệt đối không lạm dụng AI để đối phó vượt qua các bài thi đánh giá năng lực cốt lõi."
+                5: "<strong>5. Làm chủ ngôn ngữ:</strong> Giữ vững bản sắc cá nhân (authorial voice). AI chỉ được sửa lỗi ngữ pháp, không được phép thay thế giọng văn biểu đạt cảm xúc sư phạm của chính mình.",
+                6: "<strong>6. Phát triển bền vững:</strong> Chỉ sử dụng AI với mục đích nâng cao hiệu suất học tập, tuyệt đối không dùng AI để đối phó với các kỳ thi hoặc bài đánh giá năng lực cốt lõi."
             }
         };
+
+        // Simulated dynamic widgets controller [1]
+        let currentExplorerDir = 'root';
+        let currentPaperFilter = 'all';
+        let currentPromptTask = 1;
+        let currentPromptLevel = 'basic';
+        let currentKanbanIndex = 1; // 1: todo, 2: progress, 3: done
+        let currentDesignTimelineStep = 1;
+        let currentEthicalRuleIndex = 1;
 
         // Render Widget Content dynamically [1]
         function initInteractiveWidget(id) {
