@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Portfolio | Nguyễn Mai Thanh Thảo</title>
-    <!-- Google Fonts including Agbalumo [1] -->
+    <!-- Google Fonts including Agbalumo & Lexend [1] -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Lexend:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -35,7 +35,7 @@
             overflow: hidden;
             height: 100vh;
             background-color: transparent; /* Trong suốt để tránh đè video nền [1] */
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Lexend', sans-serif; /* Chuyển đổi toàn bộ nội dung sang phông Lexend [1] */
             color: var(--text-primary);
             position: relative;
         }
@@ -152,10 +152,10 @@
         }
 
         .swipe-indicator span {
-            font-size: 0.95rem;
+            font-size: 1.05rem; /* Tăng 15% kích thước phông chữ */
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
             color: var(--accent-purple);
             writing-mode: vertical-rl;
             text-orientation: mixed;
@@ -277,7 +277,7 @@
 
         .logo-island {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
+            font-size: 1.45rem;
             font-weight: 700;
             color: var(--text-primary);
             text-decoration: none;
@@ -298,7 +298,7 @@
         }
 
         .nav-links a {
-            font-size: 0.9rem;
+            font-size: 1.03rem; /* Tăng 15% kích thước phông chữ */
             color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
@@ -358,7 +358,7 @@
         }
 
         .dropdown-menu li a {
-            font-size: 0.85rem;
+            font-size: 0.95rem; /* Tăng 15% kích thước phông chữ */
             color: var(--text-secondary) !important;
             padding: 0.45rem 1rem;
             border-radius: 10px;
@@ -397,8 +397,8 @@
 
         /* Lược bỏ dòng chữ Monet, chỉ giữ lại ULIS_DHQGHN */
         .hero-subtitle {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 0.8rem;
+            font-family: 'Lexend', sans-serif;
+            font-size: 0.92rem; /* Tăng 15% kích thước phông chữ */
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -410,7 +410,7 @@
         /* Heading Name using Agbalumo Google Font [1] */
         .hero-name {
             font-family: 'Agbalumo', cursive, system-ui;
-            font-size: 4.8rem;
+            font-size: 5.5rem; /* Cỡ chữ tên lớn ấn tượng */
             line-height: 1.1;
             font-weight: 400;
             color: var(--text-primary);
@@ -421,8 +421,8 @@
         /* Cập nhật nội dung liên quan tới công nghiệp, AI và Giáo dục Sư phạm Anh */
         .hero-desc {
             color: var(--text-secondary);
-            font-size: 1rem;
-            line-height: 1.6;
+            font-size: 1.15rem; /* Tăng 15% kích thước phông chữ */
+            line-height: 1.7;
             max-width: 520px;
             margin-bottom: 1.5rem;
         }
@@ -441,7 +441,7 @@
 
         .intro-box-title {
             display: block;
-            font-size: 0.72rem;
+            font-size: 0.83rem; /* Tăng 15% kích thước phông chữ */
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.5px;
@@ -451,8 +451,8 @@
 
         .intro-glass-box p {
             color: var(--text-primary);
-            font-size: 0.92rem;
-            line-height: 1.6;
+            font-size: 1.05rem; /* Tăng 15% kích thước phông chữ */
+            line-height: 1.7;
         }
 
         /* Gmail cá nhân hay j đó của mình */
@@ -472,11 +472,11 @@
 
         .contact-icon {
             color: var(--accent-purple);
-            font-size: 1rem;
+            font-size: 1.15rem; /* Tăng 15% kích thước phông chữ */
         }
 
         .contact-text {
-            font-size: 0.88rem;
+            font-size: 1.02rem; /* Tăng 15% kích thước phông chữ */
             font-weight: 500;
             color: var(--text-primary);
             letter-spacing: 0.5px;
@@ -519,15 +519,16 @@
             cursor: pointer;
         }
 
+        /* Thêm hoạt họa mượt mà phản hồi lực lò xo khi hover vào các thẻ thông tin */
         .widget-card:hover {
             background: rgba(15, 23, 42, 0.85);
             border-color: var(--accent-purple);
-            transform: scale(1.04);
-            box-shadow: 0 15px 35px rgba(124, 58, 237, 0.25);
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.3);
         }
 
         .widget-label {
-            font-size: 0.72rem; /* Phóng to nhãn chữ phụ */
+            font-size: 0.83rem; /* Tăng 15% kích thước phông chữ nhãn phụ */
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.2px;
@@ -535,8 +536,8 @@
         }
 
         .widget-value {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.25rem; /* Phóng to chữ giá trị chính nổi bật */
+            font-family: 'Lexend', sans-serif; /* Sử dụng phông chữ Lexend đồng bộ nội dung [1] */
+            font-size: 1.35rem; /* Tăng 15% chữ giá trị giúp hiển thị vô cùng sắc nét */
             font-weight: 700;
             color: var(--text-primary);
         }
@@ -567,14 +568,14 @@
 
         .section-intro-text {
             color: var(--text-secondary);
-            font-size: 1.05rem;
+            font-size: 1.2rem; /* Tăng 15% kích thước phông chữ */
             line-height: 1.7;
             max-width: 500px;
         }
 
         .section-title-large {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
+            font-size: 4rem; /* Tăng kích thước tiêu đề bài tập */
             font-weight: 700;
             line-height: 1.1;
             color: var(--text-primary);
@@ -607,10 +608,11 @@
             transition: var(--transition-gentle);
         }
 
+        /* Hoạt họa nâng nhẹ và phát quầng sáng khi hover vào thẻ bài tập */
         .gallery-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-12px) scale(1.03);
             border-color: var(--accent-purple);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(192, 132, 252, 0.25);
         }
 
         .card-top {
@@ -630,12 +632,12 @@
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 1.03rem; /* Tăng 15% kích thước số */
             box-shadow: 0 4px 10px rgba(192, 132, 252, 0.3);
         }
 
         .card-status {
-            font-size: 0.75rem;
+            font-size: 0.86rem; /* Tăng 15% kích thước trạng thái */
             font-weight: 600;
             color: var(--accent-purple);
             background: rgba(192, 132, 252, 0.12);
@@ -646,7 +648,7 @@
 
         .card-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
+            font-size: 2rem; /* Tăng kích cỡ chữ tiêu đề */
             font-weight: 700;
             line-height: 1.2;
             color: var(--text-primary);
@@ -654,7 +656,7 @@
         }
 
         .card-desc {
-            font-size: 0.9rem;
+            font-size: 1.03rem; /* Tăng 15% kích thước mô tả bài tập */
             color: var(--text-secondary);
             line-height: 1.6;
             margin-bottom: 2rem;
@@ -668,7 +670,7 @@
             padding: 0.75rem 1.2rem;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.98rem; /* Tăng 15% kích thước chữ nút bấm */
             cursor: pointer;
             transition: var(--transition-gentle);
             text-align: center;
@@ -705,7 +707,7 @@
             align-items: center;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.5s ease, backdrop-filter 0.5s ease;
         }
 
         .modal-overlay.active {
@@ -720,16 +722,19 @@
             max-width: 800px;
             max-height: 85vh;
             border-radius: 30px;
-            box-shadow: 0 40px 90px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 40px 90px rgba(0, 0, 0, 0.6), 0 0 30px rgba(192, 132, 252, 0.15);
             padding: 3rem;
             overflow-y: auto;
             position: relative;
-            transform: scale(0.9);
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            /* Thiết lập hiệu ứng phóng to lò xo mượt mà từ dưới lên khi kích hoạt */
+            transform: scale(0.85) translateY(30px);
+            opacity: 0;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
         }
 
         .modal-overlay.active .modal-window {
-            transform: scale(1);
+            transform: scale(1) translateY(0);
+            opacity: 1;
         }
 
         .modal-close {
@@ -758,7 +763,7 @@
 
         .modal-content-area h3 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.4rem;
+            font-size: 2.7rem; /* Tăng 15% kích thước */
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 1.5rem;
@@ -767,7 +772,7 @@
         }
 
         .modal-content-area h4 {
-            font-size: 1.1rem;
+            font-size: 1.26rem; /* Tăng 15% kích thước */
             font-weight: 700;
             color: var(--text-primary);
             margin: 1.8rem 0 0.6rem 0;
@@ -780,7 +785,7 @@
             color: var(--text-secondary);
             line-height: 1.7;
             margin-bottom: 1rem;
-            font-size: 0.95rem;
+            font-size: 1.09rem; /* Tăng 15% kích thước */
         }
 
         /* Modal internal components */
@@ -793,7 +798,7 @@
             color: var(--accent-purple);
             line-height: 1.5;
             margin: 1rem 0;
-            font-size: 0.9rem;
+            font-size: 1.03rem; /* Tăng 15% kích thước */
         }
 
         .modal-table {
@@ -806,7 +811,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 0.75rem 1rem;
             text-align: left;
-            font-size: 0.9rem;
+            font-size: 1.03rem; /* Tăng 15% kích thước */
             color: var(--text-secondary);
         }
 
@@ -848,7 +853,7 @@
         }
 
         .modal-kanban-title {
-            font-size: 0.8rem;
+            font-size: 0.92rem; /* Tăng 15% kích thước */
             font-weight: 700;
             text-transform: uppercase;
             color: var(--text-primary);
@@ -860,7 +865,7 @@
             border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 8px;
             padding: 0.7rem;
-            font-size: 0.8rem;
+            font-size: 0.92rem; /* Tăng 15% kích thước */
             margin-bottom: 0.6rem;
             color: var(--text-secondary);
         }
@@ -903,7 +908,7 @@
 
         .conclusion-text h3 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.8rem;
+            font-size: 3.2rem; /* Tăng kích thước */
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 1.5rem;
@@ -925,7 +930,7 @@
 
         .stat-num {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
+            font-size: 4rem; /* Tăng kích thước */
             font-weight: 700;
             color: var(--accent-purple);
             line-height: 1;
@@ -933,7 +938,7 @@
         }
 
         .stat-label {
-            font-size: 0.8rem;
+            font-size: 0.92rem; /* Tăng 15% kích thước */
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -949,7 +954,7 @@
         }
 
         footer p {
-            font-size: 0.95rem;
+            font-size: 1.09rem; /* Tăng 15% kích thước */
             color: var(--text-secondary);
             margin-bottom: 0.8rem;
         }
@@ -1471,6 +1476,103 @@
             leftPaneScrollCheck();
         });
 
+        // Creative Bioluminescent Floating Bubbles Cursor Particle System
+        const cursorCanvas = document.createElement('canvas');
+        cursorCanvas.style.position = 'fixed';
+        cursorCanvas.style.top = '0';
+        cursorCanvas.style.left = '0';
+        cursorCanvas.style.width = '100vw';
+        cursorCanvas.style.height = '100vh';
+        cursorCanvas.style.pointerEvents = 'none';
+        cursorCanvas.style.zIndex = '9999';
+        document.body.appendChild(cursorCanvas);
+
+        const cCtx = cursorCanvas.getContext('2d');
+        let cursorParticles = [];
+
+        window.addEventListener('resize', () => {
+            cursorCanvas.width = window.innerWidth;
+            cursorCanvas.height = window.innerHeight;
+        });
+        cursorCanvas.width = window.innerWidth;
+        cursorCanvas.height = window.innerHeight;
+
+        // Sinh bong bóng liên tục khi rê chuột
+        window.addEventListener('mousemove', (e) => {
+            if (Math.random() < 0.6) { // Điều tiết tần suất sinh để bảo toàn hiệu năng mượt mà nhất
+                cursorParticles.push({
+                    x: e.clientX,
+                    y: e.clientY,
+                    vx: (Math.random() - 0.5) * 1.2,
+                    vy: -Math.random() * 1.5 - 0.5, // Xu hướng trôi lờ lững lên trên
+                    radius: Math.random() * 5 + 2,
+                    alpha: 0.95,
+                    color: 'rgba(192, 132, 252, 0.55)'
+                });
+            }
+        });
+
+        // Hỗ trợ sinh bong bóng trên màn hình cảm ứng di động
+        window.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0 && Math.random() < 0.6) {
+                const t = e.touches[0];
+                cursorParticles.push({
+                    x: t.clientX,
+                    y: t.clientY,
+                    vx: (Math.random() - 0.5) * 1.2,
+                    vy: -Math.random() * 1.5 - 0.5,
+                    radius: Math.random() * 5 + 2,
+                    alpha: 0.95,
+                    color: 'rgba(192, 132, 252, 0.55)'
+                });
+            }
+        }, { passive: true });
+
+        // Hiệu ứng "Bong bóng nổ" bung tỏa mạnh mẽ khi click vào các phần tử tương tác
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('button, a, .widget-card, .gallery-card, .swipe-indicator')) {
+                for (let i = 0; i < 10; i++) {
+                    cursorParticles.push({
+                        x: e.clientX,
+                        y: e.clientY,
+                        vx: (Math.random() - 0.5) * 5, // Tốc độ bắn tia nhanh hơn khi nổ
+                        vy: (Math.random() - 0.5) * 5,
+                        radius: Math.random() * 6 + 1.5,
+                        alpha: 1,
+                        color: 'rgba(192, 132, 252, 0.8)'
+                    });
+                }
+            }
+        });
+
+        function animateCursorParticles() {
+            cCtx.clearRect(0, 0, cursorCanvas.width, cursorCanvas.height);
+            for (let i = cursorParticles.length - 1; i >= 0; i--) {
+                let p = cursorParticles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.alpha -= 0.016; // Mờ dần theo thời gian
+
+                if (p.alpha <= 0) {
+                    cursorParticles.splice(i, 1);
+                    continue;
+                }
+
+                cCtx.save();
+                cCtx.globalAlpha = p.alpha;
+                cCtx.beginPath();
+                cCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                cCtx.strokeStyle = 'rgba(192, 132, 252, 0.85)';
+                cCtx.lineWidth = 1.2;
+                cCtx.stroke();
+                cCtx.fillStyle = 'rgba(192, 132, 252, 0.12)';
+                cCtx.fill();
+                cCtx.restore();
+            }
+            requestAnimationFrame(animateCursorParticles);
+        }
+        animateCursorParticles();
+
         // Modal database containing deep academic solutions for Rubric Mức 4
         const modalData = {
             1: `
@@ -1572,7 +1674,7 @@
                 <h3>Bài 4: Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm</h3>
                 <p><strong>Mục tiêu:</strong> Làm chủ kỹ năng quản lý dự án số, tối ưu hóa sự phối hợp của các thành viên trong các dự án giáo án sư phạm phức tạp thông qua mô hình quản lý hiện đại.</p>
                 
-                <h4>Mô hình Kanban số hóa tối ưu quy trình cộng tác</h4>
+                <h4>Mô hình Kanban số hóa tốiưu quy trình cộng tác</h4>
                 <div class="modal-kanban">
                     <div class="modal-kanban-col">
                         <div class="modal-kanban-title" style="color: #f87171;">📋 Lên kế hoạch</div>
