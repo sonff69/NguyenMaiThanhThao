@@ -418,7 +418,16 @@
             text-shadow: 0 0 35px rgba(255, 255, 255, 0.35), 0 0 70px rgba(192, 132, 252, 0.15);
         }
 
-        /* Giới thiệu mục tiêu Sư phạm của giáo viên tương lai [1] (Đã xóa mô tả dòng văn cũ và cụm phím hành động dưới cùng) */
+        /* Cập nhật nội dung liên quan tới công nghiệp, AI và Giáo dục Sư phạm Anh */
+        .hero-desc {
+            color: var(--text-secondary);
+            font-size: 1.15rem; /* Tăng 15% kích thước phông chữ */
+            line-height: 1.7;
+            max-width: 520px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Giới thiệu mục tiêu Sư phạm của giáo viên tương lai [1] */
         .intro-glass-box {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1228,13 +1237,20 @@
                 <!-- Projects / Exercises Section -->
                 <section id="projects" class="container">
                     <div class="section-header-panel">
-                        <div>
+                        <div style="width: 100%;">
                             <span class="hero-subtitle">02 / Project Space</span>
-                            <h2 class="section-title-large">Sáu bài thực hành được lưu giữ trong một gallery tinh gọn.</h2>
+                            <h2 class="section-title-large">6 bài tập</h2>
+                            <!-- Simplified explanation under the new title [1] -->
+                            <p class="section-intro-text" style="margin-top: 1rem; max-width: 650px;">
+                                Hệ thống báo cáo thực hành chi tiết, giáo án EdTech tương tác và tài liệu nghiên cứu ứng dụng AI trong giảng dạy Anh ngữ được lưu trữ chính thức trên Google Drive [1, 2].
+                            </p>
+                            <!-- Google Drive direct link button added [1] -->
+                            <div style="margin-top: 1.5rem;">
+                                <a href="https://drive.google.com/drive/folders/1WxK5N13-DsHVcmxPzxaP6B_z1EcSHbcb" target="_blank" class="btn-primary" style="padding: 0.7rem 1.6rem; font-size: 0.98rem; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);">
+                                    <span style="margin-right: 4px;">📂</span> Xem báo cáo GG drive [2]
+                                </a>
+                            </div>
                         </div>
-                        <p class="section-intro-text">
-                            Mỗi khung trưng bày thể hiện một mảng kiến thức đã được số hóa và kiểm duyệt chặt chẽ, tối ưu hóa mức độ hoàn thiện chuyên môn.
-                        </p>
                     </div>
 
                     <div class="gallery-grid">
@@ -1765,7 +1781,7 @@
             `,
             4: `
                 <h3>Bài 4: Giao tiếp và hợp tác trong môi trường số</h3>
-                <p><strong>Mục tiêu:</strong> Thiết lập và vận hành hệ sinh thái cộng tác trực tuyến chuẩn mực để đồng thiết kế cẩm nang Sư phạm Anh quốc tế cùng nhóm bạn học [1, 2].</p>
+                <p><strong>Mục tiêu:</strong> Thiết lập và vận hành hệ sinh thái cộng tác trực tuyến (Trello, Discord, Google Docs, Google Drive) để đồng thiết kế cẩm nang Sư phạm Anh quốc tế cùng nhóm bạn học [1, 2].</p>
                 
                 <h4>Tổ Chức Hệ Sinh Thái Cộng Tác Trực Tuyến [1, 2]</h4>
                 <ol style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 1.5rem;">
@@ -1791,7 +1807,7 @@
                             </tr>
                             <tr>
                                 <td><strong>Xung đột định dạng trên Google Docs</strong></td>
-                                <td>Bôi đen gán việc trực tiếp trên văn bản nhờ tính năng Comment gõ cú pháp <code>@+EmailThànhViên</code>. Yêu cầu sửa đổi văn bản của người khác bắt buộc dùng chế độ "Đề xuất" (Suggesting) [1, 2].</td>
+                                <td>Bôi đen gán việc trực tiếp trên văn bản thông qua bình luận gõ cú pháp <code>@+EmailThànhViên</code>. Yêu cầu sửa đổi văn bản của người khác bắt buộc dùng chế độ "Đề xuất" (Suggesting) [1, 2].</td>
                             </tr>
                             <tr>
                                 <td><strong>Rò rỉ dữ liệu, nhầm lẫn phiên bản trên Google Drive</strong></td>
