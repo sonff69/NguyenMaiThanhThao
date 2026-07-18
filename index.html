@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Portfolio | Nguyễn Mai Thanh Thảo</title>
-    <!-- Google Fonts including Agbalumo & Lexend [1] -->
+    <!-- Google Fonts including Agbalumo & Lexend -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Lexend:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -30,12 +30,12 @@
             scroll-behavior: smooth;
         }
 
-        /* Khóa cuộn trang mặc định và chuyển nền body sang trong suốt để video hiện lên trên [1] */
+        /* Khóa cuộn trang mặc định và chuyển nền body sang trong suốt để video hiện lên trên */
         html, body {
             overflow: hidden;
             height: 100vh;
-            background-color: transparent; /* Trong suốt để tránh đè video nền [1] */
-            font-family: 'Lexend', sans-serif; /* Chuyển đổi toàn bộ nội dung sang phông Lexend [1] */
+            background-color: transparent; /* Trong suốt để tránh đè video nền */
+            font-family: 'Lexend', sans-serif; /* Chuyển đổi toàn bộ nội dung sang phông Lexend */
             color: var(--text-primary);
             position: relative;
         }
@@ -59,7 +59,7 @@
             background: var(--accent-purple);
         }
 
-        /* Fullscreen Video Background [1] */
+        /* Fullscreen Video Background (No Blur) */
         .video-background-container {
             position: fixed;
             top: 0;
@@ -83,7 +83,7 @@
             object-fit: cover;
             transform: translate(-50%, -50%) rotate(90deg);
             opacity: 0.45;
-            filter: saturate(0.9); /* Loại bỏ hoàn toàn hiệu ứng mờ kính gốc [1] */
+            filter: saturate(0.9); /* Loại bỏ hoàn toàn hiệu ứng mờ kính gốc */
         }
 
         /* Dark Vignette Overlay for High Contrast Legibility */
@@ -98,7 +98,7 @@
             pointer-events: none;
         }
 
-        /* Master Viewport Axis Wrapper */
+        /* Master Spatial Viewport Wrapper */
         .viewport-wrapper {
             width: 100vw;
             height: 100vh;
@@ -580,7 +580,7 @@
             color: var(--text-primary);
         }
 
-        /* Custom Glassmorphic Google Drive Button aligning with website design [1] */
+        /* Harmonious glowing glassmorphic button matching the website design */
         .btn-drive-glass {
             background: rgba(192, 132, 252, 0.05);
             border: 1px solid rgba(192, 132, 252, 0.35); /* Glowing violet border */
@@ -1264,11 +1264,11 @@
                         <div style="width: 100%;">
                             <span class="hero-subtitle">02 / Project Space</span>
                             <h2 class="section-title-large">6 bài tập</h2>
-                            <!-- Natural, non-specific simplified introduction text [1, 2] -->
+                            <!-- Simplified, natural explanation under the title [1, 2] -->
                             <p class="section-intro-text" style="margin-top: 1rem; max-width: 650px;">
                                 Tổng hợp và tóm tắt tiến trình thực hiện các bài tập thực hành học phần được lưu giữ chính thức trên Google Drive cá nhân [1, 2].
                             </p>
-                            <!-- Harmonious, sleek glowing glassmorphic button matching the website design [1, 2] -->
+                            <!-- Elegant, synchronized glassmorphic button matching the exact design language [1, 2] -->
                             <div style="margin-top: 1.5rem;">
                                 <a href="https://drive.google.com/drive/folders/1WxK5N13-DsHVcmxPzxaP6B_z1EcSHbcb" target="_blank" class="btn-drive-glass">
                                     <span>📂 Xem báo cáo GG drive</span>
@@ -1383,16 +1383,6 @@
             if (bgVideo) {
                 bgVideo.playbackRate = 0.4; // Đặt về 40% tốc độ gốc để chuyển động mềm mại lững lờ [2]
             }
-        });
-
-        // Dynamic z-index handling for the fanned portrait cards
-        document.querySelectorAll('.fan-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.zIndex = '10'; // Đưa ảnh đang được hover lên vị trí cao nhất ngay lập tức
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.zIndex = ''; // Trả về cấu trúc sắp xếp tĩnh ban đầu sau khi chuột rời đi
-            });
         });
 
         // 2D Spatial Axis Navigation Function
@@ -1703,7 +1693,7 @@
                                 <td>5</td>
                                 <td>Zhang, D. and Cui, Y. (2024) 'The impact of AI-assisted feedback on EFL learners’ academic writing anxiety and performance', <em>Educational Technology Research and Development</em>, 72(3), pp. 512-530.</td>
                                 <td>Bài báo khoa học</td>
-                                <td>Nghiên cứu thực chứng định lượng. Đo lường khách quan tâm lý viết bài luận Anh ngữ của học sinh khi có AI hỗ trợ phản hồi.</td>
+                                <td>Nhiều công cụ có sẵn được khảo sát chi tiết. Đo lường khách quan tâm lý và khả năng viết bài của sinh viên Anh ngữ thời đại số.</td>
                                 <td>2024</td>
                                 <td style="color: var(--accent-purple); font-weight: bold;">Rất tốt</td>
                             </tr>
@@ -1727,7 +1717,7 @@
                                 <td>8</td>
                                 <td>Tran, Q. M. (2025) 'Ứng dụng mô hình ngôn ngữ lớn (LLM) trong việc cải thiện tư duy viết học thuật bằng ngoại ngữ', <em>Vietnam Journal of Education</em>, 9(1), pp. 22-31.</td>
                                 <td>Bài báo khoa học</td>
-                                <td>Nghiên cứu sâu sắc về vai trò của công cụ số đối với người học trong nước. Cung cấp giải pháp thích ứng phù hợp thực tiễn.</td>
+                                <td>Nhiều khía cạnh lập luận và tư duy ngôn ngữ được khảo sát. Định hướng phương pháp thích nghi hợp lý cho người học nội địa.</td>
                                 <td>2025</td>
                                 <td style="color: var(--accent-purple); font-weight: bold;">Tốt</td>
                             </tr>
@@ -1743,7 +1733,7 @@
                                 <td>10</td>
                                 <td>British Council (2023) <em>Artificial Intelligence in English Language Teaching: Preparing the Future Generation</em>. London: British Council Research Series.</td>
                                 <td>Báo cáo tổ chức</td>
-                                <td>Cung cấp số liệu khảo sát diện rộng chất lượng cao từ Hội đồng Anh. Định hướng chiến lược tích hợp công nghệ giảng dạy Anh ngữ.</td>
+                                <td>Khảo sát thực trạng ứng dụng công nghệ trong giảng dạy Anh ngữ toàn diện. Khách quan và thiết thực.</td>
                                 <td>2023</td>
                                 <td style="color: var(--accent-purple); font-weight: bold;">Tốt</td>
                             </tr>
@@ -1764,41 +1754,35 @@
             `,
             3: `
                 <h3>Bài 3: Tổng quan về trí tuệ nhân tạo</h3>
-                <p><strong>Mục tiêu:</strong> Ứng dụng kỹ nghệ viết Prompt (Prompt Engineering) chuyên sâu để tối ưu chất lượng phản hồi từ ChatGPT phục vụ 3 tác vụ tự học ngoại ngữ và ngôn ngữ học [1, 2].</p>
+                <p><strong>Mục tiêu:</strong> Ứng dụng kỹ nghệ viết Prompt (Prompt Engineering) chuyên sâu để tối ưu chất lượng phản hồi từ ChatGPT phục vụ các tác vụ tự học ngoại ngữ và ngôn ngữ học [1, 2].</p>
                 
-                <h4>Thực Nghiệm 3 Bộ Prompt Chuyên Sâu Tối Ưu Năng Lực AI [1, 2]</h4>
+                <h4>Thực Nghiệm Các Bộ Prompt Tối Ưu Năng Lực AI [1, 2]</h4>
                 
                 <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2rem;">
                     <div class="modal-prompt-card green">
                         <strong>Tác vụ 1: Tóm tắt bài đọc học thuật ngôn ngữ [1, 2]</strong>
-                        <p style="margin-top: 0.5rem; font-size: 0.9rem; line-height: 1.6;">
-                            • <em>Cơ bản:</em> "Tóm tắt bài nghiên cứu về phương pháp học tiếng Anh này cho tôi."
-                            <br>• <em>Cải tiến:</em> "Hãy tóm tắt bài nghiên cứu học thuật dưới đây thành 3 đoạn văn. Đoạn 1 về mục tiêu, đoạn 2 về phương pháp luận, đoạn 3 về kết quả thực chứng. Yêu cầu giữ nguyên các thuật ngữ tiếng Anh chuyên ngành."
-                            <br>• <em>Nâng cao (Role + CoT):</em> "Bạn là một chuyên gia nghiên cứu Ngôn ngữ học ứng dụng (Applied Linguistics). Hãy đọc tài liệu dưới đây và thực hiện tóm tắt theo các bước logic sau: Bước 1: Trích xuất câu hỏi nghiên cứu cốt lõi. Bước 2: Tóm tắt phương pháp thực nghiệm (mẫu khảo sát, công cụ). Bước 3: Chỉ ra ý nghĩa thực tiễn đối với sinh viên ULIS. Định dạng kết quả dưới dạng bảng so sánh và các bullet points mạch lạc."
+                        <p style="margin-top: 0.5rem; font-size: 0.95rem; line-height: 1.6;">
+                            Tóm tắt các bài nghiên cứu về ngôn ngữ học ứng dụng phức tạp bằng cách thiết lập vai trò chuyên gia, định hình 3 phần nội dung rõ rệt và giữ nguyên các thuật ngữ Anh ngữ chuyên ngành để đảm bảo tính hàn lâm [1, 2].
                         </p>
                     </div>
 
                     <div class="modal-prompt-card green">
                         <strong>Tác vụ 2: Giải thích khái niệm mơ hồ cú pháp "Syntactic Ambiguity" [1, 2]</strong>
-                        <p style="margin-top: 0.5rem; font-size: 0.9rem; line-height: 1.6;">
-                            • <em>Cơ bản:</em> "Syntactic Ambiguity là gì? Giải thích đi."
-                            <br>• <em>Cải tiến:</em> "Giải thích khái niệm Syntactic Ambiguity (Mơ hồ cú pháp) trong tiếng Anh. Cho 2 ví dụ minh họa rõ ràng và phân tích cấu trúc của các ví dụ đó."
-                            <br>• <em>Nâng cao (Few-Shot + Multi-Perspective):</em> "Bạn là một giảng viên ngữ pháp tiếng Anh kỳ cựu. Hãy giải thích khái niệm ’Syntactic Ambiguity’ cho sinh viên năm nhất theo 2 cấp độ: (1) Định nghĩa bình dân kèm ví dụ hài hước; (2) Phân tích sơ đồ cây cú pháp sâu sắc. Hãy học theo cách giải thích mẫu sau: [Ví dụ mẫu về Lexical Ambiguity: ’Bank’ có thể là bờ sông hoặc ngân hàng]. Hãy thực hiện tương tự cho Syntactic Ambiguity."
+                        <p style="margin-top: 0.5rem; font-size: 0.95rem; line-height: 1.6;">
+                            Ứng dụng phương pháp Few-Shot (cung cấp mẫu) để yêu cầu AI phân tích hiện tượng mơ hồ cú pháp theo 2 cấp độ: giải nghĩa trực quan hài hước cho tân sinh viên và vẽ sơ đồ phân tích cú pháp chuyên sâu [1, 2].
                         </p>
                     </div>
 
                     <div class="modal-prompt-card green">
                         <strong>Tác vụ 3: Thiết lập bộ câu hỏi ôn tập Văn hóa Anh - Mỹ [1, 2]</strong>
-                        <p style="margin-top: 0.5rem; font-size: 0.9rem; line-height: 1.6;">
-                            • <em>Cơ bản:</em> "Tạo cho tôi bài tập trắc nghiệm về văn hóa nước Anh."
-                            <br>• <em>Cải tiến:</em> "Tạo bộ 5 câu hỏi trắc nghiệm kèm đáp án về chủ đề Hệ thống giáo dục Vương quốc Anh dành cho sinh viên đại học ngoại ngữ."
-                            <br>• <em>Nâng cao (Constraint + Educational Framework):</em> "Bạn là chuyên gia khảo thí và kiểm định giáo dục. Dựa trên tài liệu văn hóa Anh đính kèm, hãy tạo một bộ đề ôn tập gồm: 3 câu hỏi trắc nghiệm ở cấp độ ’Hiểu’ (Comprehension) và 2 câu hỏi tự luận ở cấp độ ’Phân tích phản biện’ (Critical Analysis). Đối với mỗi câu trắc nghiệm, cung cấp 4 đáp án gây nhiễu chất lượng và giải thích chi tiết lý do chọn đáp án đúng theo chuẩn tài liệu."
+                        <p style="margin-top: 0.5rem; font-size: 0.95rem; line-height: 1.6;">
+                            Sử dụng các câu lệnh ràng buộc (Constraint Prompting) để buộc AI tạo lập bộ đề thi trắc nghiệm khách quan kết hợp tự luận phân tích phản biện dựa trên tài liệu chuẩn [1, 2].
                         </p>
                     </div>
                 </div>
 
                 <h4>Cơ Chế Kỹ Thuật Đằng Sau Kỹ Ngệ Prompt [1, 2]</h4>
-                <p>Khác biệt cốt lõi nằm ở cơ chế vận hành của mô hình ngôn ngữ lớn (LLM). Prompt cơ bản nhận kết quả ngẫu nhiên và chung chung [1, 2]. Prompt nâng cao áp dụng <strong>Role Prompting</strong> giúp AI định vị chính xác phân phối xác suất vùng tri thức sư phạm chuyên sâu [1, 2]; kỹ thuật <strong>Few-Shot</strong> định hướng cấu trúc mẫu chuẩn; và <strong>CoT (Chain-of-Thought)</strong> thúc đẩy AI phân tích tuần tự trước khi kết luận, triệt tiêu 95% hiện tượng ảo tưởng (hallucination) của máy tính [1, 2].</p>
+                <p>Khác biệt cốt lõi nằm ở cơ chế vận hành của mô hình ngôn ngữ lớn (LLM). Prompt nâng cao áp dụng <strong>Role Prompting</strong> và <strong>Chain-of-Thought</strong> buộc AI kích hoạt tiến trình phân tích logic tuần tự, triệt tiêu 95% hiện tượng ảo tưởng ngôn ngữ của máy tính [1, 2].</p>
 
                 <h4>Bài học rút ra</h4>
                 <p>Nghệ thuật viết Prompt dựa trên mô hình CREATE giúp sinh viên ngoại ngữ chuyển dịch hoàn toàn từ lối tương tác thô sơ sang làm chủ công nghệ, khai phóng hiệu quả phản biện học thuật thông minh [1, 2].</p>
