@@ -581,6 +581,31 @@
             color: var(--text-primary);
         }
 
+        /* Custom Glassmorphic Google Drive Button aligning with website design [1] */
+        .btn-drive-glass {
+            background: rgba(192, 132, 252, 0.05);
+            border: 1px solid rgba(192, 132, 252, 0.35); /* Glowing violet border */
+            color: var(--text-primary);
+            backdrop-filter: blur(12px);
+            padding: 0.75rem 1.8rem;
+            font-size: 0.98rem;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            transition: var(--transition-gentle);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(192, 132, 252, 0.1);
+        }
+
+        .btn-drive-glass:hover {
+            background: rgba(192, 132, 252, 0.18);
+            border-color: var(--accent-purple);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 30px rgba(192, 132, 252, 0.35);
+            transform: translateY(-3px);
+        }
+
         /* Exercises Gallery Section */
         #projects {
             padding-top: 10rem;
@@ -1240,14 +1265,14 @@
                         <div style="width: 100%;">
                             <span class="hero-subtitle">02 / Project Space</span>
                             <h2 class="section-title-large">6 bài tập</h2>
-                            <!-- Simplified explanation under the new title [1] -->
+                            <!-- Natural, non-specific simplified introduction text [1, 2] -->
                             <p class="section-intro-text" style="margin-top: 1rem; max-width: 650px;">
-                                Hệ thống báo cáo thực hành chi tiết, giáo án EdTech tương tác và tài liệu nghiên cứu ứng dụng AI trong giảng dạy Anh ngữ được lưu trữ chính thức trên Google Drive [1, 2].
+                                Tổng hợp và tóm tắt tiến trình thực hiện các bài tập thực hành học phần được lưu giữ chính thức trên Google Drive cá nhân [1, 2].
                             </p>
-                            <!-- Google Drive direct link button added [1] -->
+                            <!-- Harmonious, sleek glowing glassmorphic button matching the website design [1, 2] -->
                             <div style="margin-top: 1.5rem;">
-                                <a href="https://drive.google.com/drive/folders/1WxK5N13-DsHVcmxPzxaP6B_z1EcSHbcb" target="_blank" class="btn-primary" style="padding: 0.7rem 1.6rem; font-size: 0.98rem; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);">
-                                    <span style="margin-right: 4px;">📂</span> Xem báo cáo GG drive [2]
+                                <a href="https://drive.google.com/drive/folders/1WxK5N13-DsHVcmxPzxaP6B_z1EcSHbcb" target="_blank" class="btn-drive-glass">
+                                    <span>📂 Xem báo cáo GG drive</span>
                                 </a>
                             </div>
                         </div>
